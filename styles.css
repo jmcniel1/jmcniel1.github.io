@@ -174,24 +174,20 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
   max-width: 15ch;
 }
 
-/* Slow color cycle on the name */
+/* Slow color cycle on the name — palette trimmed to colors that read on cream */
 @keyframes name-cycle {
-  0%      { color: #d8ecc1; } /* Mint */
-  8.333%  { color: #b8dfee; } /* Sky */
-  16.666% { color: #3340e0; } /* Capri */
-  25%     { color: #e8a8e6; } /* Pink */
-  33.333% { color: #f6f0d2; } /* Vanilla */
-  41.666% { color: #c5eea8; } /* Lime */
-  50%     { color: #e04acf; } /* Rose */
-  58.333% { color: #f4d9bd; } /* Peach */
-  66.666% { color: #54d869; } /* Calypso */
-  75%     { color: #e25a26; } /* Sangria */
-  83.333% { color: #c33a48; } /* Claret */
-  91.666% { color: #9c4ba3; } /* Orchid */
-  100%    { color: #d8ecc1; } /* loop back to Mint */
+  0%    { color: #b8dfee; } /* Sky */
+  12.5% { color: #3340e0; } /* Capri */
+  25%   { color: #e8a8e6; } /* Pink */
+  37.5% { color: #e04acf; } /* Rose */
+  50%   { color: #54d869; } /* Calypso */
+  62.5% { color: #e25a26; } /* Sangria */
+  75%   { color: #c33a48; } /* Claret */
+  87.5% { color: #9c4ba3; } /* Orchid */
+  100%  { color: #b8dfee; } /* loop back to Sky */
 }
 .name {
-  animation: name-cycle 48s linear infinite;
+  animation: name-cycle 32s linear infinite;
   will-change: color;
 }
 .name--offset {
