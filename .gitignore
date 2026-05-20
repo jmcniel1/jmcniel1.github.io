@@ -2,3 +2,6 @@
 .idea/
 .vscode/
 *.log
+.gstack/
+.lazyweb/
+dist/

@@ -705,3 +705,511 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   html { scroll-behavior: auto; }
 }
+
+/* ─────────────────────────────────────────────────────────
+   Selected Work — typographic list (replaces card grid)
+   ───────────────────────────────────────────────────────── */
+
+.worklist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--rule);
+}
+
+.worklist__item {
+  border-bottom: 1px solid var(--rule);
+}
+
+.worklist__link {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  align-items: baseline;
+  gap: 32px;
+  padding: 28px 0;
+  transition: padding .25s ease, color .25s ease;
+}
+
+.worklist__link:hover { padding-left: 12px; padding-right: 12px; }
+.worklist__link:hover .worklist__title { color: var(--accent); }
+
+.worklist__num {
+  font-family: var(--serif);
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+}
+
+.worklist__body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.worklist__title {
+  font-family: var(--serif);
+  font-size: clamp(24px, 3vw, 32px);
+  line-height: 1.15;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  transition: color .2s ease;
+}
+
+.worklist__discipline {
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.worklist__year {
+  font-family: var(--serif);
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+  white-space: nowrap;
+  align-self: center;
+}
+
+.worklist__archive {
+  margin: 40px 0 0;
+  font-size: 15px;
+  color: var(--ink-soft);
+}
+.worklist__archive a {
+  border-bottom: 1px solid var(--rule);
+  transition: border-color .2s ease, color .2s ease;
+}
+.worklist__archive a:hover { color: var(--ink); border-color: var(--ink); }
+
+@media (max-width: 560px) {
+  .worklist__link {
+    grid-template-columns: 40px 1fr;
+    gap: 16px;
+    padding: 22px 0;
+  }
+  .worklist__year { grid-column: 2; align-self: start; margin-top: 4px; }
+}
+
+/* ─────────────────────────────────────────────────────────
+   Project detail pages (/projects/*.html)
+   Long-form essay layout — one hero, restrained reading column,
+   prev/next pager.
+   ───────────────────────────────────────────────────────── */
+
+.project {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 80px var(--gutter) 96px;
+}
+
+.project__back {
+  display: inline-block;
+  margin-bottom: 64px;
+  font-size: 14px;
+  color: var(--ink-soft);
+  border-bottom: 1px solid transparent;
+  transition: color .2s ease, border-color .2s ease;
+}
+.project__back:hover { color: var(--ink); border-color: var(--ink); }
+
+.project__head {
+  margin-bottom: 56px;
+}
+
+.project__kicker {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0 0 16px;
+}
+
+.project__title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(40px, 6vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin: 0 0 24px;
+}
+
+.project__lede {
+  font-family: var(--serif);
+  font-size: clamp(20px, 2.2vw, 26px);
+  line-height: 1.35;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.project__hero {
+  margin: 0 0 56px;
+  /* Pull hero slightly wider than the reading column for impact */
+  margin-left: calc(50% - 50vw + var(--gutter));
+  margin-right: calc(50% - 50vw + var(--gutter));
+  max-width: 1120px;
+  margin-inline: auto;
+  width: min(100%, 1120px);
+}
+.project__hero img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.project__meta {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 12px 24px;
+  padding: 28px 0;
+  margin: 0 0 56px;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  font-size: 15px;
+}
+.project__meta dt {
+  color: var(--ink-soft);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding-top: 3px;
+}
+.project__meta dd {
+  margin: 0;
+  color: var(--ink);
+}
+.project__meta dd a {
+  border-bottom: 1px solid var(--rule);
+  transition: border-color .2s ease;
+}
+.project__meta dd a:hover { border-color: var(--ink); }
+
+.project__body h2 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: -0.005em;
+  margin: 56px 0 16px;
+}
+.project__body p {
+  font-size: 17px;
+  line-height: 1.65;
+  margin: 0 0 1.2em;
+}
+.project__body p + p { margin-top: 0; }
+
+.project__figure {
+  margin: 40px 0;
+}
+.project__figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+.project__figure figcaption {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+/* Wider figure that breaks out beyond the reading column */
+.project__figure--wide {
+  margin-left: calc(50% - 50vw + var(--gutter));
+  margin-right: calc(50% - 50vw + var(--gutter));
+  max-width: 1120px;
+  margin-inline: auto;
+  width: min(100%, 1120px);
+}
+
+.project__pager {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 96px;
+  padding-top: 32px;
+  border-top: 1px solid var(--rule);
+}
+.project__pager a {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 0;
+  font-family: var(--serif);
+  transition: color .2s ease;
+}
+.project__pager__next { text-align: right; align-items: flex-end; }
+.project__pager__label {
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.project__pager__name {
+  font-size: 20px;
+  line-height: 1.2;
+  color: var(--ink);
+}
+.project__pager a:hover .project__pager__name { color: var(--accent); }
+
+@media (max-width: 560px) {
+  .project { padding-top: 56px; }
+  .project__meta { grid-template-columns: 1fr; gap: 4px 0; }
+  .project__meta dt { margin-top: 12px; }
+  .project__meta dt:first-of-type { margin-top: 0; }
+  .project__pager { grid-template-columns: 1fr; }
+  .project__pager__next { text-align: left; align-items: flex-start; }
+}
+
+/* ─────────────────────────────────────────────────────────
+   Dark mode — applied via body.is-dark on project pages.
+   One variable swap cascades through everything that uses
+   --bg / --ink / --rule / --bg-elev.
+   ───────────────────────────────────────────────────────── */
+
+body.is-dark {
+  --bg:        #0a0a0a;
+  --bg-elev:   #141414;
+  --ink:       #f2efe8;
+  --ink-soft:  #8a8780;
+  --rule:      rgba(255, 255, 255, 0.10);
+  background: var(--bg);
+  color: var(--ink);
+}
+
+body.is-dark .nav {
+  background: color-mix(in srgb, #0a0a0a 65%, transparent);
+}
+
+body.is-dark .project__meta dd a,
+body.is-dark .project__body a,
+body.is-dark .project__back {
+  border-bottom-color: rgba(255, 255, 255, 0.20);
+}
+body.is-dark .project__meta dd a:hover,
+body.is-dark .project__body a:hover,
+body.is-dark .project__back:hover {
+  border-bottom-color: var(--ink);
+}
+
+/* ─────────────────────────────────────────────────────────
+   Print / PDF — 2-page resume.
+   Page 1: light hero. Page 2: About, Experience, Skills, Feedback.
+   Hides Selected Work, Contact, footer, nav links/CTA.
+   Live site is unaffected.
+   ───────────────────────────────────────────────────────── */
+@media print {
+  @page { margin: 10mm 10mm; }
+
+  html, body {
+    background: #ffffff !important;
+    color: var(--ink) !important;
+    font-size: 11pt;
+    line-height: 1.4;
+  }
+
+  body.is-hero-dark { background: #ffffff !important; color: var(--ink) !important; }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hide entirely in print: nav (incl. top brand name), hero eyebrow,
+     Selected Work, Contact, footer, tag chips. */
+  .nav,
+  .hero__eyebrow,
+  #selected-work,
+  #selected-work-old,
+  #contact,
+  .footer,
+  .tags { display: none !important; }
+
+  /* ─── Hero — light resume header.
+     Two-up: name on the left, contact stack on the right. ─── */
+  .is-hero-dark .hero,
+  .hero {
+    background: transparent !important;
+    color: var(--ink) !important;
+    box-shadow: none !important;
+    clip-path: none !important;
+    min-height: 0 !important;
+    padding: 8px 0 28px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+    gap: 24px !important;
+  }
+  /* Replace the cycling hero title with a plain resume header in print.
+     Collapse the original H1 contents to zero size then inject new text
+     via ::before. The screen layout is untouched. */
+  .hero__title {
+    font-size: 0 !important;
+    line-height: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+    flex: 0 0 auto !important;
+  }
+  .hero__title::before {
+    content: "Jamie McNiel, designer";
+    display: block;
+    font-family: var(--serif);
+    font-size: 18.5pt;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  /* Meta stack — sits to the right of the name */
+  .hero__meta,
+  .is-hero-dark .hero__meta {
+    display: block !important;
+    border: none !important;
+    padding: 2pt 0 0 !important;
+    margin: 0 !important;
+    text-align: right !important;
+    font-size: 7.5pt !important;
+    line-height: 1.5 !important;
+    flex: 0 0 auto !important;
+  }
+  .hero__meta li { display: block !important; }
+  /* Keep Email, Based, LinkedIn — drop only the Role line */
+  .hero__meta li:nth-child(3) { display: none !important; }
+  .hero__meta .label {
+    display: inline !important;
+    color: var(--ink-soft) !important;
+    margin-right: 6px !important;
+    font-size: 6pt !important;
+    letter-spacing: 0.04em !important;
+    text-transform: uppercase !important;
+  }
+  .is-hero-dark .hero__meta .label,
+  .hero__meta .label { color: var(--ink-soft) !important; }
+  .is-hero-dark .hero__meta a,
+  .hero__meta a {
+    color: var(--ink) !important;
+    border-bottom-color: var(--rule) !important;
+  }
+
+  /* Freeze animations */
+  .name { animation: none !important; color: var(--ink) !important; }
+  .dot {
+    animation: none !important;
+    box-shadow: none !important;
+    background: var(--accent) !important;
+  }
+  .hero__cycle__word {
+    transition: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+    color: var(--ink) !important;
+  }
+
+  /* ─── Nav ─── */
+  .nav {
+    position: static !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    padding: 6px 0 !important;
+    border-bottom: none !important;
+  }
+  .is-hero-dark .nav { background: transparent !important; color: var(--ink) !important; }
+  .is-hero-dark .nav__brand { color: var(--ink) !important; }
+  .nav__cta, .nav__links { display: none !important; }
+
+  /* ─── Body sections — comfortable rhythm ─── */
+  main { max-width: none !important; padding: 0 4mm !important; }
+  .section {
+    padding: 28px 0 !important;
+    border-top: 1px solid var(--rule);
+  }
+  .section__head { margin-bottom: 16px !important; gap: 7px !important; }
+  .section__num { font-size: 8.5pt !important; }
+  .section__title {
+    font-size: 15pt !important;
+    letter-spacing: -0.015em !important;
+    font-weight: 500 !important;
+  }
+
+  /* About — prose, single column with normal flow */
+  .prose p {
+    font-size: 7.5pt !important;
+    line-height: 1.5 !important;
+    margin: 0 0 8px !important;
+    max-width: 78ch !important;
+  }
+  .prose p + p { margin-top: 0 !important; }
+
+  /* Material skills — now lives inside Skills & Tools, below the 3 cols */
+  .material {
+    margin-top: 22px !important;
+    padding-top: 18px !important;
+    border-top: 1px solid var(--rule) !important;
+  }
+  .material__heading { margin-bottom: 10px !important; font-size: 7pt !important; }
+  .material__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px 32px !important;
+    font-size: 8pt !important;
+    line-height: 1.5 !important;
+  }
+  .material__list li { padding-left: 16px !important; }
+  .material__list li::before { top: 0.7em !important; }
+
+  /* Experience timeline — breathing room between roles */
+  .timeline__item {
+    grid-template-columns: 90px 1fr !important;
+    gap: 20px !important;
+    padding: 10px 0 15px !important;
+    align-items: baseline !important;
+  }
+  /* Drop the closing rule on the last item so we don't double up
+     with the next section's top border. */
+  .timeline__item:last-child { border-bottom: none !important; }
+  .timeline__when { font-size: 7.5pt !important; padding-top: 0 !important; }
+  .timeline__body h3 { font-size: 9pt !important; margin: 0 0 3px !important; }
+  .timeline__body p {
+    font-size: 7.5pt !important;
+    line-height: 1.45 !important;
+    margin: 0 !important;
+    max-width: none !important;
+  }
+
+  /* Skills */
+  .skills { gap: 12px !important; }
+  .skills__group h4 { margin-bottom: 10px !important; font-size: 7pt !important; }
+  .skills__group ul { font-size: 7pt !important; line-height: 1.1 !important; padding: 0 !important; margin: 0 !important; }
+  .skills__group li { padding: 0 !important; border-bottom: none !important; margin: 0 !important; }
+
+  /* Feedback quotes — 3 columns to fit */
+  .quotes {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 10px !important;
+  }
+  .quote { padding: 0 !important; margin: 0 !important; background: transparent !important; border: none !important; }
+  .quote blockquote { font-size: 11.5pt !important; line-height: 1.35 !important; margin: 0 0 8px !important; padding: 0 !important; }
+  /* Attribution matches the Skills & Tools entries (7pt, ink) */
+  .quote figcaption {
+    font-family: var(--sans) !important;
+    font-size: 7pt !important;
+    line-height: 1.45 !important;
+    color: var(--ink) !important;
+    letter-spacing: 0 !important;
+  }
+
+  /* Page breaks */
+  .timeline__item,
+  .skills__group,
+  .quote {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  h2, h3 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+  #about { page-break-before: avoid; }
+}
