@@ -301,11 +301,9 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
 }
 .prose a:hover { border-color: var(--ink); }
 
-/* ─── Material skills (inside About) ─── */
+/* ─── Material skills (inside Skills & Tools) ─── */
 .material {
-  margin-top: 56px;
-  padding-top: 32px;
-  border-top: 1px solid var(--rule);
+  margin-top: 48px;
 }
 .material__heading {
   margin: 0 0 20px;
