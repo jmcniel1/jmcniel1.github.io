@@ -1,0 +1,1103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nudge Security — Jamie McNiel</title>
+  <meta name="description" content="Creative direction across product, brand, and marketing for Nudge Security, a SaaS-security platform discovering shadow IT for modern security teams." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;500;600&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css" />
+
+  <!-- Case-study scoped styles for in-device mockups.
+       Scoped under .case-study so they don't bleed into the rest of the site. -->
+  <style>
+    /* ───────── Page-scoped accent override: Nudge brand purple ───────── */
+    .case-study {
+      --accent:      #794aff;
+      --accent-deep: #5734ba;
+    }
+
+    .case-study .device-figure {
+      margin: 56px 0;
+      /* Break out wider than the 720px reading column, like .project__figure--wide */
+      margin-left: calc(50% - 50vw + var(--gutter));
+      margin-right: calc(50% - 50vw + var(--gutter));
+      max-width: 1120px;
+      margin-inline: auto;
+      width: min(100%, 1120px);
+    }
+    .case-study .device-figure figcaption {
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--ink-soft);
+      font-style: italic;
+      text-align: center;
+    }
+
+    /* ───────── MacBook shell ───────── */
+    .macbook {
+      width: 100%;
+      max-width: 980px;
+      margin: 0 auto;
+      filter: drop-shadow(0 60px 80px rgba(0,0,0,0.45)) drop-shadow(0 16px 26px rgba(0,0,0,0.25));
+    }
+    .macbook__lid {
+      background: linear-gradient(180deg, #2a2a2c 0%, #1a1a1c 100%);
+      border-radius: 18px 18px 4px 4px;
+      padding: 18px 18px 0;
+      border: 1px solid #3a3a3d;
+      border-bottom: none;
+      position: relative;
+    }
+    .macbook__lid::before {
+      content: ""; position: absolute; top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 130px; height: 16px;
+      background: #0d0d0e;
+      border-radius: 0 0 11px 11px;
+      z-index: 2;
+    }
+    .macbook__lid::after {
+      content: ""; position: absolute; top: 5px; left: 50%;
+      transform: translateX(-50%);
+      width: 5px; height: 5px; border-radius: 50%;
+      background: #2a2a2a; box-shadow: inset 0 0 0 1px #444;
+      z-index: 3;
+    }
+    .macbook__screen {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      background: #fff;
+      border-radius: 3px;
+      overflow: hidden;
+      border: 1px solid #0a0a0a;
+    }
+    .macbook__screen::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(115deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0) 30%, rgba(255,255,255,0) 70%, rgba(255,255,255,0.03) 100%);
+      pointer-events: none; z-index: 10;
+    }
+    .macbook__keyboard {
+      height: 22px;
+      background: linear-gradient(180deg, #3a3a3d 0%, #1d1d1f 25%, #2a2a2c 55%, #4a4a4d 100%);
+      border-radius: 0 0 24px 24px;
+      margin: 0 -26px;
+      border: 1px solid #3a3a3d;
+      border-top: none;
+      position: relative;
+    }
+    .macbook__keyboard::before {
+      content: ""; position: absolute; top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 120px; height: 5px;
+      background: #1a1a1c;
+      border-radius: 0 0 8px 8px;
+    }
+
+    /* ───────── Nudge dashboard inside MacBook ───────── */
+    .nudge-app {
+      position: absolute; inset: 0;
+      display: grid;
+      grid-template-columns: 184px 1fr;
+      background: #fafaf9;
+      color: #1a1a1f;
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 11px;
+      line-height: 1.45;
+    }
+    .nudge-app .sidebar {
+      background: #0e0c1d;
+      color: #c9c4e6;
+      padding: 16px 12px;
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .nudge-app .brand {
+      display: flex; align-items: center; gap: 8px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500; font-size: 14px;
+      color: #fff;
+      letter-spacing: -0.01em;
+    }
+    .nudge-app .brand .dot {
+      width: 16px; height: 16px;
+      border-radius: 5px;
+      background: linear-gradient(135deg, #7a5cff 0%, #4a2cd6 100%);
+    }
+    .nudge-app .group-label {
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #6f679a;
+      padding: 6px 4px 2px;
+    }
+    .nudge-app .nav-item {
+      display: flex; align-items: center; gap: 8px;
+      padding: 5px 7px;
+      border-radius: 4px;
+      color: #b8b3d8;
+      font-size: 11px;
+    }
+    .nudge-app .nav-item.active {
+      background: #1f1a3e;
+      color: #fff;
+      box-shadow: inset 2px 0 0 #7a5cff;
+    }
+    .nudge-app .nav-item .ic {
+      width: 9px; height: 9px;
+      border: 1px solid currentColor;
+      border-radius: 2px;
+      opacity: 0.75;
+    }
+
+    .nudge-app .main {
+      padding: 16px 20px;
+      overflow: hidden;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .nudge-app .topbar {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #ececec;
+    }
+    .nudge-app .crumbs {
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      color: #888;
+    }
+    .nudge-app .crumbs strong { color: #1a1a1f; font-weight: 500; }
+    .nudge-app .search {
+      font-size: 10px;
+      color: #999;
+      background: #f1f0ee;
+      border: 1px solid #e3e1dd;
+      border-radius: 5px;
+      padding: 4px 10px;
+      min-width: 180px;
+      font-family: "Inter", sans-serif;
+    }
+    .nudge-app h2 {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 400;
+      font-size: 22px;
+      letter-spacing: -0.018em;
+      line-height: 1.1;
+      color: #14111d;
+    }
+    .nudge-app h2 .accent { color: #5b3df5; }
+
+    .nudge-app .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+    .nudge-app .stat {
+      background: #fff;
+      border: 1px solid #eae6df;
+      border-radius: 6px;
+      padding: 9px 11px;
+      position: relative;
+      overflow: hidden;
+    }
+    .nudge-app .stat .label {
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #888;
+    }
+    .nudge-app .stat .value {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-top: 3px;
+      color: #14111d;
+    }
+    .nudge-app .stat .delta {
+      font-size: 9px;
+      margin-top: 2px;
+      color: #2a8c4b;
+    }
+    .nudge-app .stat .delta.down { color: #c2532a; }
+    .nudge-app .stat svg {
+      position: absolute; right: 8px; bottom: 8px;
+      width: 48px; height: 16px;
+    }
+    .nudge-app .stat svg path { stroke: #5b3df5; stroke-width: 1.5; fill: none; }
+
+    .nudge-app .table-wrap {
+      background: #fff;
+      border: 1px solid #eae6df;
+      border-radius: 6px;
+      padding: 11px 13px;
+      flex: 1;
+      display: flex; flex-direction: column; gap: 7px;
+      min-height: 0;
+    }
+    .nudge-app .table-head {
+      display: flex; justify-content: space-between; align-items: baseline;
+    }
+    .nudge-app .table-head h3 {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 13px;
+      letter-spacing: -0.005em;
+    }
+    .nudge-app .pills { display: flex; gap: 4px; }
+    .nudge-app .pill {
+      font-size: 8px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 7px;
+      border-radius: 99px;
+      background: #f4f2ee;
+      color: #555;
+      border: 1px solid #e7e3dc;
+    }
+    .nudge-app .pill.on {
+      background: #14111d; color: #fff; border-color: #14111d;
+    }
+
+    .nudge-app .row {
+      display: grid;
+      grid-template-columns: 22px 1fr 70px 76px 50px 56px;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 4px;
+      border-bottom: 1px solid #f3f0eb;
+      font-size: 11px;
+    }
+    .nudge-app .row.head {
+      font-size: 8px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #888;
+      border-bottom: 1px solid #eae6df;
+    }
+    .nudge-app .row .ico {
+      width: 18px; height: 18px;
+      border-radius: 5px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 10px;
+      color: #fff;
+      display: grid; place-items: center;
+    }
+    .nudge-app .row .name { font-weight: 500; color: #1a1a1f; }
+    .nudge-app .row .sub {
+      font-size: 9px;
+      color: #888;
+    }
+    .nudge-app .row .users { font-size: 10px; color: #444; }
+    .nudge-app .row .tag {
+      font-size: 8px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+    .nudge-app .row .tag.sanc   { background: #e7f3ec; color: #1f6a3a; }
+    .nudge-app .row .tag.unsanc { background: #fbe9e4; color: #c2532a; }
+    .nudge-app .row .tag.review { background: #fff3d8; color: #8a6312; }
+    .nudge-app .row .risk {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+    }
+    .nudge-app .row .risk.hi  { color: #c2532a; }
+    .nudge-app .row .risk.med { color: #c88a2c; }
+    .nudge-app .row .risk.lo  { color: #2a8c4b; }
+    .nudge-app .row .bar {
+      height: 4px;
+      background: #f1ede5;
+      border-radius: 99px;
+      overflow: hidden;
+      position: relative;
+    }
+    .nudge-app .row .bar::after {
+      content: ""; position: absolute; left: 0; top: 0; bottom: 0;
+      background: linear-gradient(90deg, #5b3df5, #c2532a);
+      width: var(--w, 50%);
+      border-radius: 99px;
+    }
+
+    /* ───────── iPhone shell ───────── */
+    .phone-stage {
+      display: flex; justify-content: center; align-items: center;
+      padding: 24px 0;
+      position: relative;
+    }
+    .phone-stage::before {
+      content: "";
+      position: absolute;
+      width: 480px; height: 480px;
+      background: radial-gradient(circle, rgba(194,83,42,0.12) 0%, transparent 60%);
+      filter: blur(8px);
+      z-index: 0;
+    }
+    .iphone {
+      position: relative;
+      width: 260px;
+      height: 540px;
+      border-radius: 42px;
+      background: linear-gradient(160deg, #1a1a1c 0%, #2a2a2c 35%, #0e0e10 100%);
+      padding: 7px;
+      border: 1px solid #3a3a3d;
+      filter: drop-shadow(0 40px 50px rgba(0,0,0,0.50)) drop-shadow(0 10px 18px rgba(0,0,0,0.30));
+      z-index: 1;
+    }
+    .iphone::before {
+      content: ""; position: absolute;
+      right: -2px; top: 120px;
+      width: 3px; height: 64px;
+      background: #2a2a2c;
+      border-radius: 0 2px 2px 0;
+    }
+    .iphone::after {
+      content: ""; position: absolute;
+      left: -2px; top: 120px;
+      width: 3px; height: 46px;
+      background: #2a2a2c;
+      border-radius: 2px 0 0 2px;
+      box-shadow: 0 64px 0 #2a2a2c;
+    }
+    .iphone__screen {
+      position: relative;
+      height: 100%;
+      border-radius: 36px;
+      overflow: hidden;
+      background: #fafaf9;
+    }
+    .iphone__island {
+      position: absolute; top: 11px; left: 50%;
+      transform: translateX(-50%);
+      width: 88px; height: 24px;
+      background: #0a0a0a;
+      border-radius: 99px;
+      z-index: 4;
+    }
+    .iphone__screen::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(125deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0) 24%, rgba(255,255,255,0) 70%, rgba(255,255,255,0.04) 100%);
+      pointer-events: none; z-index: 3;
+    }
+
+    .nudge-mobile {
+      position: absolute; inset: 0;
+      padding: 52px 16px 20px;
+      display: flex; flex-direction: column; gap: 12px;
+      font-family: "Inter", sans-serif;
+      color: #14111d;
+    }
+    .nudge-mobile .status {
+      font-size: 9px;
+      display: flex; justify-content: space-between;
+      position: absolute;
+      top: 14px; left: 22px; right: 22px;
+      color: #14111d;
+      font-weight: 500;
+    }
+    .nudge-mobile .greet {
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #6b6256;
+    }
+    .nudge-mobile h4 {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 400;
+      font-size: 22px;
+      line-height: 1.05;
+      letter-spacing: -0.018em;
+      margin-top: 2px;
+    }
+    .nudge-mobile h4 .accent { color: #5b3df5; }
+
+    .nudge-mobile .alert-card {
+      background: #fff;
+      border: 1px solid #eae6df;
+      border-radius: 12px;
+      padding: 12px;
+    }
+    .nudge-mobile .alert-card.urgent {
+      border-color: #f3c0b3;
+      background: linear-gradient(180deg, #fff5f1 0%, #fff 60%);
+    }
+    .nudge-mobile .row1 {
+      display: flex; align-items: center; gap: 8px;
+      margin-bottom: 8px;
+    }
+    .nudge-mobile .alert-ico {
+      width: 26px; height: 26px;
+      border-radius: 7px;
+      background: linear-gradient(135deg, #5b3df5, #2a1a8c);
+      display: grid; place-items: center;
+      color: #fff;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+    }
+    .nudge-mobile .alert-card.urgent .alert-ico {
+      background: linear-gradient(135deg, #c2532a, #8a3818);
+    }
+    .nudge-mobile .meta-line { flex: 1; }
+    .nudge-mobile .app {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 13px;
+      letter-spacing: -0.005em;
+    }
+    .nudge-mobile .ts {
+      font-size: 9px;
+      color: #888;
+      margin-top: 1px;
+    }
+    .nudge-mobile .tag {
+      font-size: 8px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 6px;
+      border-radius: 3px;
+    }
+    .nudge-mobile .tag.urg { background: #fbe2dc; color: #8a3818; }
+    .nudge-mobile .tag.new { background: #ece4ff; color: #2a1a8c; }
+    .nudge-mobile p {
+      font-size: 11px;
+      line-height: 1.4;
+      color: #3a342c;
+      margin: 0;
+    }
+    .nudge-mobile .actions {
+      display: flex; gap: 6px;
+      margin-top: 10px;
+    }
+    .nudge-mobile .btn {
+      font-family: "Inter", sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.04em;
+      font-weight: 500;
+      padding: 7px 10px;
+      border-radius: 6px;
+      border: 1px solid #14111d;
+      color: #14111d;
+      background: transparent;
+      flex: 1;
+      text-align: center;
+    }
+    .nudge-mobile .btn.primary {
+      background: #14111d;
+      color: #fff;
+    }
+    .nudge-mobile .tabbar {
+      margin-top: auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px;
+      background: #14111d;
+      padding: 9px 6px;
+      border-radius: 12px;
+      color: #c9c4e6;
+      font-size: 9px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .nudge-mobile .tab {
+      text-align: center; padding: 4px 2px; opacity: 0.55;
+    }
+    .nudge-mobile .tab.active {
+      opacity: 1; color: #fff;
+      border-top: 1px solid #7a5cff;
+    }
+
+    /* Constrain the phone figure to a centered column */
+    .case-study .device-figure--phone {
+      max-width: 720px;
+    }
+
+    /* ───────── Real product images filling device screens ───────── */
+    .macbook__screen .screen-img,
+    .iphone__screen .screen-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      z-index: 1;
+    }
+    /* Mobile hero PNG is 390×844, iPhone inner is ~246×526 (same ~0.46 aspect),
+       so cover with center-top alignment lands a clean fit with no crop. */
+    .iphone__screen .screen-img { object-position: center top; }
+
+    /* ───────── Slider that lives INSIDE the laptop screen ───────── */
+    body { overflow-x: clip; }
+    .case-study .device-figure { overflow: visible; }
+
+    /* Cap the whole device section so it stays well under 80vh.
+       Laptop max-width 880 → screen ~544 tall → device ~600 tall + nav under. */
+    .case-study .slider-shell {
+      position: relative;
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 24px 0 56px;
+      outline: none;
+    }
+    .case-study .slider-shell .macbook {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    /* Screen becomes the slider viewport. */
+    .case-study .macbook__screen {
+      overflow: hidden;
+    }
+    .case-study .screen-track {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+    }
+    .case-study .screen-track::-webkit-scrollbar { display: none; }
+
+    .case-study .screen-slide {
+      flex: 0 0 100%;
+      height: 100%;
+      position: relative;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: grid;
+      place-items: center;
+      padding: 5%;
+    }
+
+    /* "Fill" slides whose image spans the entire screen (no bg needed). */
+    .case-study .screen-slide--fill { padding: 0; }
+    .case-study .screen-slide__fill {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    /* "Inset" slides: smaller product screenshot centered on the tab bg. */
+    .case-study .screen-slide__inset {
+      display: block;
+      max-width: 86%;
+      max-height: 86%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+
+    /* Prev/next buttons — flanking the laptop, not inside the screen */
+    .case-study .slider__btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 4;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.10);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 18px;
+      line-height: 1;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: background .2s ease, transform .2s ease, border-color .2s ease;
+      display: grid;
+      place-items: center;
+    }
+    .case-study .slider__btn--prev { left: -64px; }
+    .case-study .slider__btn--next { right: -64px; }
+    .case-study .slider__btn:hover {
+      background: rgba(255, 255, 255, 0.22);
+      border-color: var(--accent);
+      transform: translateY(-50%) scale(1.06);
+    }
+    .case-study .slider__btn:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    /* Dots */
+    .case-study .slider__dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .case-study .slider__dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--rule);
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: background .2s ease, transform .2s ease;
+    }
+    .case-study .slider__dot.is-active {
+      background: var(--accent);
+      transform: scale(1.25);
+    }
+    .case-study .slider__dot:hover { background: var(--ink-soft); }
+    .case-study .slider__dot.is-active:hover { background: var(--accent); }
+
+    .case-study .slider__hint {
+      text-align: center;
+      margin-top: 14px;
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+    .case-study .slider__hint kbd {
+      font-family: var(--sans);
+      font-size: 10px;
+      padding: 1px 5px;
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+      margin: 0 2px;
+    }
+
+    /* Keep things from getting taller than ~80vh */
+    @media (max-height: 820px) {
+      .case-study .slider-shell { max-width: min(880px, calc((80vh - 140px) * 1.6)); }
+    }
+
+    @media (max-width: 1080px) {
+      .case-study .slider__btn--prev { left: 8px; }
+      .case-study .slider__btn--next { right: 8px; }
+    }
+    @media (max-width: 720px) {
+      .case-study .slider__btn { width: 36px; height: 36px; font-size: 15px; }
+    }
+
+    /* ───────── Process (4 steps) ───────── */
+    .case-study .process-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px 40px;
+      margin: 16px 0 24px;
+    }
+    .case-study .step {
+      border-top: 1px solid var(--rule);
+      padding-top: 18px;
+    }
+    .case-study .step__n {
+      font-family: var(--serif);
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      color: var(--ink-soft);
+    }
+    .case-study .step h3 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 19px;
+      letter-spacing: -0.005em;
+      margin: 8px 0 10px;
+    }
+    .case-study .step p {
+      font-size: 15px;
+      line-height: 1.55;
+      color: var(--ink-soft);
+      margin: 0;
+    }
+
+    /* ───────── Outcome ───────── */
+    .case-study .outcome-lead {
+      display: flex;
+      align-items: baseline;
+      gap: 24px;
+      margin: 16px 0 8px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .case-study .outcome-lead__num {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(72px, 10vw, 116px);
+      line-height: 0.9;
+      letter-spacing: -0.04em;
+      color: var(--accent);
+    }
+    .case-study .outcome-lead__num .x {
+      font-size: 0.5em;
+      color: var(--ink);
+      margin-left: 2px;
+    }
+    .case-study .outcome-lead__sub {
+      font-family: var(--serif);
+      font-size: clamp(18px, 2.1vw, 24px);
+      line-height: 1.25;
+      max-width: 18ch;
+      color: var(--ink);
+    }
+
+    .case-study .outcome-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px 40px;
+      margin: 32px 0 24px;
+    }
+    .case-study .outcome-item {
+      border-top: 1px solid var(--rule);
+      padding-top: 18px;
+    }
+    .case-study .outcome-item__label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 8px;
+    }
+    .case-study .outcome-item__value {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 38px;
+      letter-spacing: -0.025em;
+      line-height: 1;
+    }
+    .case-study .outcome-item__value .accent { color: var(--accent); }
+    .case-study .outcome-item p {
+      font-size: 14px;
+      margin: 10px 0 0;
+      color: var(--ink-soft);
+      line-height: 1.5;
+    }
+
+    .case-study .placeholder-note {
+      margin-top: 40px;
+      padding: 14px 18px;
+      border: 1px dashed var(--rule);
+      border-radius: 8px;
+      font-size: 13px;
+      color: var(--ink-soft);
+      font-style: italic;
+    }
+
+    @media (max-width: 640px) {
+      .case-study .process-grid,
+      .case-study .outcome-grid { grid-template-columns: 1fr; }
+      .case-study .outcome-lead { flex-direction: column; gap: 12px; }
+    }
+  </style>
+</head>
+<body class="is-dark">
+  <header class="nav">
+    <a class="nav__brand" href="../#top"><span class="name">Jamie</span> <span class="name name--offset">McNiel</span></a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="../#about">About</a>
+      <a href="../#experience">Experience</a>
+      <a href="../#skills">Skills</a>
+      <a href="../#feedback">Feedback</a>
+      <a href="../#contact">Contact</a>
+    </nav>
+    <a class="nav__cta" href="mailto:jm@reductive.co">Get in touch →</a>
+  </header>
+
+  <main class="project case-study">
+    <a class="project__back" href="../#selected-work">← Back to Selected Work</a>
+
+    <header class="project__head">
+      <p class="project__kicker">Creative Direction · 2022 — Present</p>
+      <h1 class="project__title">Nudge Security</h1>
+      <p class="project__lede">
+        Creative Director at Nudge Security, a SaaS-security platform that
+        discovers shadow IT and gives security teams a way to govern it.
+        Leading creative across product, brand, and the marketing site since 2022.
+      </p>
+    </header>
+
+    <dl class="project__meta">
+      <dt>Role</dt>      <dd>Creative Director</dd>
+      <dt>Year</dt>      <dd>2022 — Present</dd>
+      <dt>Surface</dt>   <dd>Product, Brand, Web</dd>
+      <dt>Visit</dt>     <dd><a href="https://www.nudgesecurity.com">nudgesecurity.com →</a></dd>
+    </dl>
+
+    <article class="project__body">
+
+      <h2>Context</h2>
+      <p>
+        Joined in 2022 with a brief to build a brand from the ground up,
+        separate from the fear-based visuals saturating cybersecurity. The
+        team was four people with a working prototype. We built the rest of
+        the product around it.
+      </p>
+
+      <h2>The discovery surface</h2>
+      <p>
+        Security teams aren't under-informed. They're drowning in
+        disconnected signals. The discovery surface had to hold thousands
+        of applications and identities without becoming another wall of
+        charts. Type carries the data. Color carries the verdict.
+      </p>
+
+      <figure class="device-figure">
+        <div class="slider-shell" tabindex="0" data-slider role="region" aria-label="Nudge product screens">
+
+          <div class="macbook">
+            <div class="macbook__lid">
+              <div class="macbook__screen">
+                <div class="screen-track" data-slider-track>
+
+                  <div class="screen-slide screen-slide--fill" data-slide-label="Shadow apps">
+                    <img class="screen-slide__fill"
+                         src="../assets/nudge/supercard-shadow-apps.avif"
+                         alt="Shadow apps discovered, grouped by organizational unit." />
+                  </div>
+
+                  <div class="screen-slide" data-slide-label="AI data risks"
+                       style="background-image:url('../assets/nudge/nu-tab1.avif')">
+                    <img class="screen-slide__inset"
+                         src="../assets/nudge/ss-risky-ai-convos.avif"
+                         alt="Risky AI conversation detection." />
+                  </div>
+
+                  <div class="screen-slide" data-slide-label="Supply chain alerts"
+                       style="background-image:url('../assets/nudge/nu-tab2.avif')">
+                    <img class="screen-slide__inset"
+                         src="../assets/nudge/ss-attack-surface.avif"
+                         alt="Supply chain attack surface visualization." />
+                  </div>
+
+                  <div class="screen-slide" data-slide-label="App misconfigurations"
+                       style="background-image:url('../assets/nudge/nu-tab3.avif')">
+                    <img class="screen-slide__inset"
+                         src="../assets/nudge/ss-app-misconfig.avif"
+                         alt="App misconfiguration detection." />
+                  </div>
+
+                  <div class="screen-slide" data-slide-label="Identity hygiene"
+                       style="background-image:url('../assets/nudge/nu-tab4.avif')">
+                    <img class="screen-slide__inset"
+                         src="../assets/nudge/ss-id-access.avif"
+                         alt="Identity and access hygiene." />
+                  </div>
+
+                  <div class="screen-slide" data-slide-label="Non-human identities"
+                       style="background-image:url('../assets/nudge/nu-tab5.avif')">
+                    <img class="screen-slide__inset"
+                         src="../assets/nudge/ss-oauth-scopes.avif"
+                         alt="OAuth scopes and non-human identities." />
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="macbook__keyboard"></div>
+          </div>
+
+          <button class="slider__btn slider__btn--prev" data-slider-prev type="button" aria-label="Previous screen">←</button>
+          <button class="slider__btn slider__btn--next" data-slider-next type="button" aria-label="Next screen">→</button>
+
+          <div class="slider__dots" data-slider-dots role="tablist" aria-label="Choose product screen"></div>
+
+          <div class="slider__hint" aria-hidden="true">
+            Use <kbd>←</kbd> <kbd>→</kbd> to switch screens
+          </div>
+        </div>
+        <figcaption>SaaS discovery and the wider product surface. Every app every employee has signed up for, ranked by risk.</figcaption>
+      </figure>
+
+      <h2>The nudge</h2>
+      <p>
+        Nudges are how a finding becomes an action. The mobile alert lands
+        at the moment a policy meets the person who can resolve it. The
+        tone matters. A colleague pulling you aside, not a klaxon.
+      </p>
+
+      <figure class="device-figure device-figure--phone">
+        <div class="phone-stage">
+          <div class="iphone">
+            <div class="iphone__screen">
+              <div class="iphone__island"></div>
+              <img class="screen-img"
+                src="../assets/nudge/mobile-hero.png"
+                alt="nudgesecurity.com mobile hero: 'Secure and govern every AI & SaaS app' with the shadow apps supercard." />
+            </div>
+          </div>
+        </div>
+        <figcaption>A nudge in hand. One verb on the primary button. The temperature stays low.</figcaption>
+      </figure>
+
+      <h2>The system</h2>
+      <p>
+        One shared design system across product, brand, and marketing.
+        Forty-eight components on the rule that type does the work, and
+        decoration earns its place or leaves.
+      </p>
+
+      <h2>How it was made</h2>
+
+      <div class="process-grid">
+        <div class="step">
+          <div class="step__n">01</div>
+          <h3>Listen first</h3>
+          <p>Hours with security leaders. The pattern was consistent. They aren't under-informed. They're drowning in disconnected signals.</p>
+        </div>
+        <div class="step">
+          <div class="step__n">02</div>
+          <h3>Find the through-line</h3>
+          <p>One spine for the product. Discover, act, govern. Three verbs, repeated everywhere, so every screen tells you which third you're in.</p>
+        </div>
+        <div class="step">
+          <div class="step__n">03</div>
+          <h3>Write the system</h3>
+          <p>Tokens, type, motion, voice. Forty-eight components. The rule: type does the work, decoration earns its place or leaves.</p>
+        </div>
+        <div class="step">
+          <div class="step__n">04</div>
+          <h3>Ship, then sharpen</h3>
+          <p>Released to early customers in the first six months. Tightened from feedback every other week, no preciousness.</p>
+        </div>
+      </div>
+
+      <h2>Outcome</h2>
+
+      <p class="outcome-lead">
+        <span class="outcome-lead__num">412<span class="x">×</span></span>
+        <span class="outcome-lead__sub">growth in customer base since 2022.</span>
+      </p>
+
+      <p>
+        The brand reads recognizable now in a way it didn't. The design
+        system is the shared vocabulary engineering ships against.
+      </p>
+
+      <div class="outcome-grid">
+        <div class="outcome-item">
+          <div class="outcome-item__label">Time to first insight</div>
+          <div class="outcome-item__value">↓ <span class="accent">74%</span></div>
+          <p>From signup to discovering an organization's first unsanctioned application.</p>
+        </div>
+        <div class="outcome-item">
+          <div class="outcome-item__label">Resolution rate on nudges</div>
+          <div class="outcome-item__value"><span class="accent">86%</span></div>
+          <p>Average week-one action rate across employees receiving in-product nudges.</p>
+        </div>
+        <div class="outcome-item">
+          <div class="outcome-item__label">Design system coverage</div>
+          <div class="outcome-item__value"><span class="accent">94%</span></div>
+          <p>Of production screens use tokenized components from the shared system.</p>
+        </div>
+        <div class="outcome-item">
+          <div class="outcome-item__label">Press &amp; analyst mentions</div>
+          <div class="outcome-item__value"><span class="accent">62</span></div>
+          <p>Across the trade and analyst press, often citing the product's clarity.</p>
+        </div>
+      </div>
+
+      <p class="placeholder-note">
+        Numbers and metrics on this page are illustrative placeholders pending real data.
+      </p>
+
+    </article>
+
+    <nav class="project__pager" aria-label="Project navigation">
+      <a class="project__pager__next" href="imperva-runtime.html">
+        <span class="project__pager__label">Next →</span>
+        <span class="project__pager__name">Imperva Runtime</span>
+      </a>
+    </nav>
+  </main>
+
+  <footer class="footer">
+    <span>© 2026 Jamie McNiel</span>
+  </footer>
+
+  <script>
+  (function () {
+    const slider = document.querySelector('[data-slider]');
+    if (!slider) return;
+    const track = slider.querySelector('[data-slider-track]');
+    const slides = Array.from(track.querySelectorAll('.screen-slide'));
+    const dotsHost = slider.querySelector('[data-slider-dots]');
+    if (!slides.length) return;
+
+    // Build dots
+    const dots = slides.map((s, i) => {
+      const b = document.createElement('button');
+      b.className = 'slider__dot' + (i === 0 ? ' is-active' : '');
+      b.type = 'button';
+      b.setAttribute('role', 'tab');
+      b.setAttribute('aria-label', s.dataset.slideLabel || `Slide ${i + 1}`);
+      b.addEventListener('click', () => goTo(i));
+      dotsHost?.appendChild(b);
+      return b;
+    });
+
+    function goTo(i, behavior = 'smooth') {
+      const idx = Math.max(0, Math.min(slides.length - 1, i));
+      track.scrollTo({ left: idx * track.clientWidth, behavior });
+      setActive(idx);
+    }
+    function setActive(idx) {
+      dots.forEach((d, i) => d.classList.toggle('is-active', i === idx));
+    }
+    function currentIndex() {
+      return Math.round(track.scrollLeft / track.clientWidth);
+    }
+    function move(dir) {
+      goTo(currentIndex() + dir);
+    }
+
+    // Sync dots on scroll (debounced via rAF)
+    let scrollRaf = 0;
+    track.addEventListener('scroll', () => {
+      if (scrollRaf) return;
+      scrollRaf = requestAnimationFrame(() => {
+        scrollRaf = 0;
+        setActive(currentIndex());
+      });
+    }, { passive: true });
+
+    slider.querySelector('[data-slider-prev]')?.addEventListener('click', () => move(-1));
+    slider.querySelector('[data-slider-next]')?.addEventListener('click', () => move(1));
+
+    // Arrow keys when slider is in view
+    let inView = false;
+    if ('IntersectionObserver' in window) {
+      const obs = new IntersectionObserver((entries) => {
+        inView = entries[0].isIntersecting;
+      }, { threshold: 0.25 });
+      obs.observe(slider);
+    } else {
+      inView = true;
+    }
+    document.addEventListener('keydown', (e) => {
+      if (!inView) return;
+      if (e.target.matches('input, textarea, select, [contenteditable]')) return;
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); move(-1); }
+      else if (e.key === 'ArrowRight') { e.preventDefault(); move(1); }
+    });
+
+    // Recalibrate on resize so scroll position stays aligned
+    let resizeRaf = 0;
+    window.addEventListener('resize', () => {
+      if (resizeRaf) return;
+      resizeRaf = requestAnimationFrame(() => {
+        resizeRaf = 0;
+        goTo(currentIndex(), 'auto');
+      });
+    });
+  })();
+  </script>
+</body>
+</html>
