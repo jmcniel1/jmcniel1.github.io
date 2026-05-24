@@ -334,7 +334,6 @@
       position: absolute;
       width: 480px; height: 480px;
       background: radial-gradient(circle, rgba(194,83,42,0.12) 0%, transparent 60%);
-      filter: blur(8px);
       z-index: 0;
     }
     .iphone {
@@ -532,66 +531,86 @@
        so cover with center-top alignment lands a clean fit with no crop. */
     .iphone__screen .screen-img { object-position: center top; }
 
-    /* ───────── Slider that lives INSIDE the laptop screen ───────── */
+    /* ───────── Slider where slides scroll BEHIND the laptop chrome ─────────
+       The track extends to full viewport width. The laptop chrome is a
+       static overlay with a transparent cut-out where the screen would be —
+       so slides outside the laptop are fully visible, and as they scroll
+       horizontally, each one passes through the laptop's "screen" aperture. */
+
     body { overflow-x: clip; }
     .case-study .device-figure { overflow: visible; }
 
-    /* Cap the whole device section so it stays well under 80vh.
-       Laptop max-width 880 → screen ~544 tall → device ~600 tall + nav under. */
     .case-study .slider-shell {
+      /* Tunable size of the device. Keeps everything under 80vh. */
+      --device-w:   880px;
+      --bezel:      18px;
+      --bottom-lip: 4px;
+      --kbd-h:      26px;
+      --screen-w:   calc(var(--device-w) - var(--bezel) * 2);
+      --screen-h:   calc(var(--screen-w) * 10 / 16);
+      --row-h:      calc(var(--bezel) + var(--screen-h) + var(--bottom-lip) + var(--kbd-h));
+
       position: relative;
-      max-width: 880px;
+      max-width: var(--device-w);
       margin: 0 auto;
       padding: 24px 0 56px;
       outline: none;
     }
-    .case-study .slider-shell .macbook {
-      max-width: 100%;
-      margin: 0 auto;
+
+    /* Holds the moving track + the static chrome overlay */
+    .case-study .device-row {
+      position: relative;
+      height: var(--row-h);
+      filter: drop-shadow(0 50px 60px rgba(0,0,0,0.45)) drop-shadow(0 14px 22px rgba(0,0,0,0.25));
     }
 
-    /* Screen becomes the slider viewport. */
-    .case-study .macbook__screen {
-      overflow: hidden;
-    }
-    .case-study .screen-track {
+    /* ── Track — full viewport breakout, sits at the screen's vertical band ── */
+    .case-study .slider-track {
       position: absolute;
-      inset: 0;
+      top: var(--bezel);
+      height: var(--screen-h);
+      left: calc(50% - 50vw);
+      width: 100vw;
       display: flex;
       overflow-x: auto;
       overflow-y: hidden;
       scroll-behavior: smooth;
       scroll-snap-type: x mandatory;
       scrollbar-width: none;
+      column-gap: 150px;
+      /* Pad so end slides can still snap to the laptop's screen center */
+      padding-left:  calc(50vw - var(--screen-w) / 2);
+      padding-right: calc(50vw - var(--screen-w) / 2);
     }
-    .case-study .screen-track::-webkit-scrollbar { display: none; }
+    .case-study .slider-track::-webkit-scrollbar { display: none; }
 
-    .case-study .screen-slide {
-      flex: 0 0 100%;
+    .case-study .slide {
+      flex: 0 0 var(--screen-w);
       height: 100%;
-      position: relative;
-      scroll-snap-align: start;
+      scroll-snap-align: center;
       scroll-snap-stop: always;
+      border-radius: 8px;
+      overflow: hidden;
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       display: grid;
       place-items: center;
-      padding: 5%;
+      position: relative;
     }
-
-    /* "Fill" slides whose image spans the entire screen (no bg needed). */
-    .case-study .screen-slide--fill { padding: 0; }
-    .case-study .screen-slide__fill {
+    /* "Fill" slide whose image spans the entire screen (no tab bg needed) */
+    .case-study .slide--fill { padding: 0; }
+    .case-study .slide__fill {
       display: block;
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: top center;
     }
-
-    /* "Inset" slides: smaller product screenshot centered on the tab bg. */
-    .case-study .screen-slide__inset {
+    /* "Inset" slide: smaller product screenshot centered on its tab bg.
+       The screenshot itself is blurred (teaser/placeholder); the matted
+       color background and laptop chrome stay crisp. */
+    .case-study .slide__inset {
       display: block;
       max-width: 86%;
       max-height: 86%;
@@ -601,33 +620,140 @@
       border-radius: 10px;
     }
 
+    /* ── Laptop chrome — 4 strips + keyboard, framing a transparent cutout ── */
+    .case-study .laptop-chrome {
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: var(--device-w);
+      height: var(--row-h);
+      pointer-events: none;
+      z-index: 5;
+    }
+    .case-study .laptop-chrome__top {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: var(--bezel);
+      background: linear-gradient(180deg, #2a2a2c 0%, #1a1a1c 100%);
+      border-radius: 26px 26px 0 0;
+      border: 1px solid #3a3a3d;
+      border-bottom: none;
+    }
+    .case-study .laptop-chrome__notch {
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 130px; height: 16px;
+      background: #0d0d0e;
+      border-radius: 0 0 11px 11px;
+    }
+    .case-study .laptop-chrome__notch::after {
+      content: ""; position: absolute;
+      top: 5px; left: 50%; transform: translateX(-50%);
+      width: 5px; height: 5px; border-radius: 50%;
+      background: #2a2a2a; box-shadow: inset 0 0 0 1px #444;
+    }
+    .case-study .laptop-chrome__left,
+    .case-study .laptop-chrome__right {
+      position: absolute;
+      top: var(--bezel);
+      height: var(--screen-h);
+      width: var(--bezel);
+      background: #1a1a1c;
+    }
+    .case-study .laptop-chrome__left  { left: 0;  border-left: 1px solid #3a3a3d; }
+    .case-study .laptop-chrome__right { right: 0; border-right: 1px solid #3a3a3d; }
+    .case-study .laptop-chrome__bottom {
+      position: absolute;
+      top: calc(var(--bezel) + var(--screen-h));
+      left: 0; right: 0;
+      height: var(--bottom-lip);
+      background: linear-gradient(180deg, #1a1a1c 0%, #0e0e10 100%);
+      border-radius: 0 0 4px 4px;
+      border: 1px solid #3a3a3d;
+      border-top: none;
+    }
+    .case-study .laptop-chrome__keyboard {
+      position: absolute;
+      top: calc(var(--bezel) + var(--screen-h) + var(--bottom-lip));
+      left: -32px; right: -32px;
+      height: var(--kbd-h);
+      background: linear-gradient(180deg, #3a3a3d 0%, #1d1d1f 22%, #2a2a2c 50%, #4a4a4d 100%);
+      border-radius: 0 0 28px 28px;
+      border: 1px solid #3a3a3d;
+      border-top: none;
+    }
+    .case-study .laptop-chrome__keyboard::before {
+      content: ""; position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 140px; height: 6px;
+      background: #1a1a1c;
+      border-radius: 0 0 10px 10px;
+    }
+
+    /* Soft sheen across the screen area, sitting above the slide but
+       under the chrome edges. */
+    .case-study .laptop-chrome__sheen {
+      position: absolute;
+      top: var(--bezel); left: var(--bezel);
+      width: var(--screen-w);
+      height: var(--screen-h);
+      background: linear-gradient(115deg,
+        rgba(255,255,255,0.10) 0%,
+        rgba(255,255,255,0)    28%,
+        rgba(255,255,255,0)    70%,
+        rgba(255,255,255,0.04) 100%);
+      pointer-events: none;
+    }
+
+    /* Mask the part of the track that extends beyond the screen with a slight
+       fade so it reads as "off the device" without being distracting. */
+    .case-study .device-row::before,
+    .case-study .device-row::after {
+      content: "";
+      position: absolute;
+      top: var(--bezel);
+      height: var(--screen-h);
+      width: 18vw;
+      pointer-events: none;
+      z-index: 4;
+    }
+    .case-study .device-row::before {
+      left: calc(50% - var(--device-w) / 2 - 18vw);
+      background: linear-gradient(90deg, var(--bg) 0%, transparent 100%);
+    }
+    .case-study .device-row::after {
+      right: calc(50% - var(--device-w) / 2 - 18vw);
+      background: linear-gradient(270deg, var(--bg) 0%, transparent 100%);
+    }
+
     /* Prev/next buttons — flanking the laptop, not inside the screen */
     .case-study .slider__btn {
       position: absolute;
-      top: 50%;
+      top: calc(var(--bezel) + var(--screen-h) / 2);
       transform: translateY(-50%);
-      z-index: 4;
-      width: 44px; height: 44px;
+      z-index: 10;
+      width: 30px; height: 30px;
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.10);
       border: 1px solid rgba(255, 255, 255, 0.22);
       color: var(--ink);
       font-family: var(--sans);
-      font-size: 18px;
+      font-size: 12px;
       line-height: 1;
       cursor: pointer;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px) saturate(140%);
+      -webkit-backdrop-filter: blur(10px) saturate(140%);
       transition: background .2s ease, transform .2s ease, border-color .2s ease;
       display: grid;
       place-items: center;
     }
-    .case-study .slider__btn--prev { left: -64px; }
-    .case-study .slider__btn--next { right: -64px; }
+    .case-study .slider__btn--prev { left: -96px; }
+    .case-study .slider__btn--next { right: -96px; }
     .case-study .slider__btn:hover {
       background: rgba(255, 255, 255, 0.22);
       border-color: var(--accent);
-      transform: translateY(-50%) scale(1.06);
+      transform: translateY(-50%) scale(1.08);
     }
     .case-study .slider__btn:focus-visible {
       outline: 2px solid var(--accent);
@@ -685,7 +811,7 @@
       .case-study .slider__btn--next { right: 8px; }
     }
     @media (max-width: 720px) {
-      .case-study .slider__btn { width: 36px; height: 36px; font-size: 15px; }
+      .case-study .slider__btn { width: 26px; height: 26px; font-size: 11px; }
     }
 
     /* ───────── Process (4 steps) ───────── */
@@ -852,60 +978,70 @@
       <figure class="device-figure">
         <div class="slider-shell" tabindex="0" data-slider role="region" aria-label="Nudge product screens">
 
-          <div class="macbook">
-            <div class="macbook__lid">
-              <div class="macbook__screen">
-                <div class="screen-track" data-slider-track>
+          <div class="device-row">
 
-                  <div class="screen-slide screen-slide--fill" data-slide-label="Shadow apps">
-                    <img class="screen-slide__fill"
-                         src="../assets/nudge/supercard-shadow-apps.avif"
-                         alt="Shadow apps discovered, grouped by organizational unit." />
-                  </div>
+            <!-- The moving track (behind the chrome) -->
+            <div class="slider-track" data-slider-track>
 
-                  <div class="screen-slide" data-slide-label="AI data risks"
-                       style="background-image:url('../assets/nudge/nu-tab1.avif')">
-                    <img class="screen-slide__inset"
-                         src="../assets/nudge/ss-risky-ai-convos.avif"
-                         alt="Risky AI conversation detection." />
-                  </div>
-
-                  <div class="screen-slide" data-slide-label="Supply chain alerts"
-                       style="background-image:url('../assets/nudge/nu-tab2.avif')">
-                    <img class="screen-slide__inset"
-                         src="../assets/nudge/ss-attack-surface.avif"
-                         alt="Supply chain attack surface visualization." />
-                  </div>
-
-                  <div class="screen-slide" data-slide-label="App misconfigurations"
-                       style="background-image:url('../assets/nudge/nu-tab3.avif')">
-                    <img class="screen-slide__inset"
-                         src="../assets/nudge/ss-app-misconfig.avif"
-                         alt="App misconfiguration detection." />
-                  </div>
-
-                  <div class="screen-slide" data-slide-label="Identity hygiene"
-                       style="background-image:url('../assets/nudge/nu-tab4.avif')">
-                    <img class="screen-slide__inset"
-                         src="../assets/nudge/ss-id-access.avif"
-                         alt="Identity and access hygiene." />
-                  </div>
-
-                  <div class="screen-slide" data-slide-label="Non-human identities"
-                       style="background-image:url('../assets/nudge/nu-tab5.avif')">
-                    <img class="screen-slide__inset"
-                         src="../assets/nudge/ss-oauth-scopes.avif"
-                         alt="OAuth scopes and non-human identities." />
-                  </div>
-
-                </div>
+              <div class="slide slide--fill" data-slide-label="Shadow apps">
+                <img class="slide__fill"
+                     src="../assets/nudge/supercard-shadow-apps.avif"
+                     alt="Shadow apps discovered, grouped by organizational unit." />
               </div>
-            </div>
-            <div class="macbook__keyboard"></div>
-          </div>
 
-          <button class="slider__btn slider__btn--prev" data-slider-prev type="button" aria-label="Previous screen">←</button>
-          <button class="slider__btn slider__btn--next" data-slider-next type="button" aria-label="Next screen">→</button>
+              <div class="slide" data-slide-label="AI data risks"
+                   style="background-image:url('../assets/nudge/nu-tab1.avif')">
+                <img class="slide__inset"
+                     src="../assets/nudge/ss-risky-ai-convos.avif"
+                     alt="Risky AI conversation detection." />
+              </div>
+
+              <div class="slide" data-slide-label="Supply chain alerts"
+                   style="background-image:url('../assets/nudge/nu-tab2.avif')">
+                <img class="slide__inset"
+                     src="../assets/nudge/ss-attack-surface.avif"
+                     alt="Supply chain attack surface visualization." />
+              </div>
+
+              <div class="slide" data-slide-label="App misconfigurations"
+                   style="background-image:url('../assets/nudge/nu-tab3.avif')">
+                <img class="slide__inset"
+                     src="../assets/nudge/ss-app-misconfig.avif"
+                     alt="App misconfiguration detection." />
+              </div>
+
+              <div class="slide" data-slide-label="Identity hygiene"
+                   style="background-image:url('../assets/nudge/nu-tab4.avif')">
+                <img class="slide__inset"
+                     src="../assets/nudge/ss-id-access.avif"
+                     alt="Identity and access hygiene." />
+              </div>
+
+              <div class="slide" data-slide-label="Non-human identities"
+                   style="background-image:url('../assets/nudge/nu-tab5.avif')">
+                <img class="slide__inset"
+                     src="../assets/nudge/ss-oauth-scopes.avif"
+                     alt="OAuth scopes and non-human identities." />
+              </div>
+
+            </div>
+
+            <!-- The static laptop chrome on top, framing the active slide -->
+            <div class="laptop-chrome" aria-hidden="true">
+              <div class="laptop-chrome__top">
+                <div class="laptop-chrome__notch"></div>
+              </div>
+              <div class="laptop-chrome__left"></div>
+              <div class="laptop-chrome__right"></div>
+              <div class="laptop-chrome__sheen"></div>
+              <div class="laptop-chrome__bottom"></div>
+              <div class="laptop-chrome__keyboard"></div>
+            </div>
+
+            <button class="slider__btn slider__btn--prev" data-slider-prev type="button" aria-label="Previous screen">←</button>
+            <button class="slider__btn slider__btn--next" data-slider-next type="button" aria-label="Next screen">→</button>
+
+          </div>
 
           <div class="slider__dots" data-slider-dots role="tablist" aria-label="Choose product screen"></div>
 
@@ -1016,6 +1152,7 @@
         <span class="project__pager__name">Imperva Runtime</span>
       </a>
     </nav>
+
   </main>
 
   <footer class="footer">
@@ -1027,7 +1164,7 @@
     const slider = document.querySelector('[data-slider]');
     if (!slider) return;
     const track = slider.querySelector('[data-slider-track]');
-    const slides = Array.from(track.querySelectorAll('.screen-slide'));
+    const slides = Array.from(track.querySelectorAll('.slide'));
     const dotsHost = slider.querySelector('[data-slider-dots]');
     if (!slides.length) return;
 
@@ -1045,18 +1182,30 @@
 
     function goTo(i, behavior = 'smooth') {
       const idx = Math.max(0, Math.min(slides.length - 1, i));
-      track.scrollTo({ left: idx * track.clientWidth, behavior });
+      const slide = slides[idx];
+      const targetX = slide.offsetLeft - (track.clientWidth / 2) + (slide.clientWidth / 2);
+      track.scrollTo({ left: targetX, behavior });
       setActive(idx);
     }
     function setActive(idx) {
       dots.forEach((d, i) => d.classList.toggle('is-active', i === idx));
     }
     function currentIndex() {
-      return Math.round(track.scrollLeft / track.clientWidth);
+      const center = track.scrollLeft + track.clientWidth / 2;
+      let best = 0, bestDist = Infinity;
+      slides.forEach((s, i) => {
+        const sc = s.offsetLeft + s.clientWidth / 2;
+        const d = Math.abs(sc - center);
+        if (d < bestDist) { bestDist = d; best = i; }
+      });
+      return best;
     }
     function move(dir) {
       goTo(currentIndex() + dir);
     }
+
+    // The first slide is naturally centered at scrollLeft 0 because of the
+    // track's symmetric padding. No need to seed an initial scroll position.
 
     // Sync dots on scroll (debounced via rAF)
     let scrollRaf = 0;
