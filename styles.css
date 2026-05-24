@@ -67,7 +67,7 @@ em, .italic { font-style: italic; }
 .nav__links {
   display: flex;
   gap: 28px;
-  font-size: 14px;
+  font-size: 11px;
   color: var(--ink-soft);
 }
 .nav__links a {
@@ -89,7 +89,7 @@ em, .italic { font-style: italic; }
 .nav__links a:hover::after { transform: scaleX(1); }
 
 .nav__cta {
-  font-size: 14px;
+  font-size: 11px;
   padding: 8px 14px;
   border: 1px solid var(--ink);
   border-radius: 999px;
