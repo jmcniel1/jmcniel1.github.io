@@ -170,6 +170,10 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
   /* Lift the wordmark up so its top edge slips behind the meta block,
      while the lower portion still bleeds past the hero on scroll. */
   transform: translateY(-5%);
+  /* Fade the wordmark from full opacity at the top to transparent at the
+     bottom edge. */
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 35%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 35%, transparent 100%);
 }
 .hero__bgname text {
   font-family: var(--serif);
