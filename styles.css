@@ -363,8 +363,8 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
 .material__heading {
   margin: 0 0 20px;
   font-size: 13px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  text-transform: lowercase;
   color: #a8a8a8;
   font-weight: 500;
 }
@@ -406,8 +406,8 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
 }
 .timeline__item {
   display: grid;
-  grid-template-columns: 180px 1fr;
-  gap: 32px;
+  grid-template-columns: 120px 1fr;
+  gap: 22px;
   padding: 32px 0;
   border-top: 1px solid var(--rule);
 }
@@ -418,6 +418,28 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
   color: #a8a8a8;
   font-size: 17px;
   padding-top: 4px;
+}
+.timeline__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+.timeline__links .pill {
+  font-family: var(--sans);
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  padding: 4px 10px;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  color: var(--ink-soft);
+  transition: border-color .2s ease, color .2s ease, background .2s ease;
+}
+.timeline__links .pill:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+  background: var(--bg-elev);
 }
 
 .timeline__body h3 {
@@ -442,8 +464,8 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
 }
 .tags li {
   font-size: 12px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  text-transform: lowercase;
   color: var(--ink-soft);
   border: 1px solid var(--rule);
   padding: 5px 10px;
@@ -464,8 +486,8 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
 .skills__group h4 {
   margin: 0 0 16px;
   font-size: 13px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  text-transform: lowercase;
   color: var(--ink-soft);
   font-weight: 500;
 }
@@ -501,10 +523,10 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
 .quote blockquote {
   margin: 0 0 18px;
   font-family: "Cormorant", "Times New Roman", serif;
-  font-size: 22px;
-  line-height: 1.35;
+  font-size: 33px;
+  line-height: 1.15;
   font-style: normal;
-  letter-spacing: -0.005em;
+  letter-spacing: -0.015em;
 }
 .quote figcaption {
   font-size: 13px;
@@ -688,8 +710,8 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
 }
 .case__tag {
   font-size: 12px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  text-transform: lowercase;
   color: var(--ink-soft);
 }
 
@@ -727,8 +749,8 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
 }
 .contact__card .label {
   font-size: 12px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  text-transform: lowercase;
   color: var(--ink-soft);
 }
 .contact__card .value {
@@ -776,9 +798,9 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
 
 .worklist__link {
   display: grid;
-  grid-template-columns: 64px 1fr auto;
+  grid-template-columns: auto 1fr auto;
   align-items: baseline;
-  gap: 32px;
+  gap: 22px;
   padding: 28px 0;
   transition: padding .25s ease, color .25s ease;
 }
@@ -797,8 +819,8 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
 .worklist__link--disabled:hover .worklist__title { color: var(--ink); }
 .worklist__soon {
   font-size: 12px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  text-transform: lowercase;
   color: var(--ink-soft);
   margin-left: 4px;
 }
@@ -840,15 +862,33 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
 }
 
 .worklist__archive {
+  display: flex;
+  align-items: center;
+  gap: 16px;
   margin: 40px 0 0;
+  padding: 18px 24px;
+  border: 1px solid var(--rule);
+  border-radius: 14px;
   font-size: 15px;
   color: var(--ink-soft);
+  transition: border-color .2s ease, color .2s ease, background .2s ease;
 }
-.worklist__archive a {
-  border-bottom: 1px solid var(--rule);
-  transition: border-color .2s ease, color .2s ease;
+.worklist__archive:hover {
+  border-color: var(--ink);
+  color: var(--ink);
 }
-.worklist__archive a:hover { color: var(--ink); border-color: var(--ink); }
+.worklist__archive__logo {
+  display: block;
+  height: 24px;
+  width: auto;
+  flex-shrink: 0;
+}
+.worklist__archive__text { flex: 1; }
+.worklist__archive__arrow {
+  flex-shrink: 0;
+  transition: transform .2s ease;
+}
+.worklist__archive:hover .worklist__archive__arrow { transform: translateX(3px); }
 
 @media (max-width: 560px) {
   .worklist__link {
@@ -887,8 +927,8 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
 
 .project__kicker {
   font-size: 13px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  text-transform: lowercase;
   color: var(--ink-soft);
   margin: 0 0 16px;
 }
@@ -896,9 +936,9 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
 .project__title {
   font-family: var(--serif);
   font-weight: 500;
-  font-size: clamp(40px, 6vw, 64px);
-  line-height: 1.05;
-  letter-spacing: -0.01em;
+  font-size: clamp(80px, 12vw, 128px);
+  line-height: 1.0;
+  letter-spacing: -0.03em;
   margin: 0 0 24px;
 }
 
@@ -939,8 +979,8 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
 .project__meta dt {
   color: var(--ink-soft);
   font-size: 12px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  text-transform: lowercase;
   padding-top: 3px;
 }
 .project__meta dd {
@@ -1012,8 +1052,8 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
 .project__pager__label {
   font-family: var(--sans);
   font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  text-transform: lowercase;
   color: var(--ink-soft);
 }
 .project__pager__name {
@@ -1152,8 +1192,8 @@ body.is-dark .project__back:hover {
     color: var(--ink-soft) !important;
     margin-right: 6px !important;
     font-size: 6pt !important;
-    letter-spacing: 0.04em !important;
-    text-transform: uppercase !important;
+    letter-spacing: -0.02em !important;
+    text-transform: lowercase !important;
   }
   .is-hero-dark .hero__meta .label,
   .hero__meta .label { color: var(--ink-soft) !important; }

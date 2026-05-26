@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+  <rect width="1600" height="1000" fill="#14171c"/>
+  <rect x="1" y="1" width="1598" height="998" fill="none" stroke="#2a2f37" stroke-width="2" stroke-dasharray="10 10"/>
+  <text x="800" y="500" fill="#5b6472" font-family="Inter, system-ui, sans-serif" font-size="64" font-weight="600" text-anchor="middle">Prevoty</text>
+  <text x="800" y="560" fill="#3c434d" font-family="Inter, system-ui, sans-serif" font-size="28" text-anchor="middle">screenshot to come</text>
+</svg>

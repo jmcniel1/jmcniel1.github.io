@@ -127,8 +127,8 @@
     }
     .nudge-app .group-label {
       font-size: 9px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      text-transform: lowercase;
       color: #6f679a;
       padding: 6px 4px 2px;
     }
@@ -202,8 +202,8 @@
     }
     .nudge-app .stat .label {
       font-size: 9px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      text-transform: lowercase;
       color: #888;
     }
     .nudge-app .stat .value {
@@ -248,8 +248,8 @@
     .nudge-app .pills { display: flex; gap: 4px; }
     .nudge-app .pill {
       font-size: 8px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      text-transform: lowercase;
       padding: 3px 7px;
       border-radius: 99px;
       background: #f4f2ee;
@@ -271,8 +271,8 @@
     }
     .nudge-app .row.head {
       font-size: 8px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      text-transform: lowercase;
       color: #888;
       border-bottom: 1px solid #eae6df;
     }
@@ -293,8 +293,8 @@
     .nudge-app .row .users { font-size: 10px; color: #444; }
     .nudge-app .row .tag {
       font-size: 8px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      text-transform: lowercase;
       padding: 2px 6px;
       border-radius: 3px;
     }
@@ -400,8 +400,8 @@
     }
     .nudge-mobile .greet {
       font-size: 9px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      text-transform: lowercase;
       color: #6b6256;
     }
     .nudge-mobile h4 {
@@ -455,8 +455,8 @@
     }
     .nudge-mobile .tag {
       font-size: 8px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      text-transform: lowercase;
       padding: 3px 6px;
       border-radius: 3px;
     }
@@ -499,8 +499,8 @@
       border-radius: 12px;
       color: #c9c4e6;
       font-size: 9px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      text-transform: lowercase;
     }
     .nudge-mobile .tab {
       text-align: center; padding: 4px 2px; opacity: 0.55;
@@ -714,17 +714,17 @@
       position: absolute;
       top: var(--bezel);
       height: var(--screen-h);
-      width: 19vw;
+      width: calc(50vw - var(--device-w) / 2 + 1px);
       pointer-events: none;
       z-index: 4;
     }
     .case-study .device-row::before {
-      left: calc(50% - var(--device-w) / 2 - 19vw);
-      background: linear-gradient(90deg, var(--bg) 0%, transparent 100%);
+      left: calc(50% - 50vw);
+      background: linear-gradient(90deg, var(--bg) 60%, transparent 100%);
     }
     .case-study .device-row::after {
-      right: calc(50% - var(--device-w) / 2 - 19vw);
-      background: linear-gradient(270deg, var(--bg) 0%, transparent 100%);
+      right: calc(50% - 50vw);
+      background: linear-gradient(270deg, var(--bg) 60%, transparent 100%);
     }
 
     /* Prev/next buttons — flanking the laptop, not inside the screen */
@@ -788,8 +788,8 @@
       margin-top: 14px;
       font-family: var(--sans);
       font-size: 10px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      text-transform: lowercase;
       color: var(--ink-soft);
     }
     .case-study .slider__hint kbd {
@@ -812,6 +812,24 @@
     }
     @media (max-width: 720px) {
       .case-study .slider__btn { width: 26px; height: 26px; font-size: 11px; }
+    }
+
+    /* Mobile: drop the laptop frame — show just the screen full-bleed at 100vw. */
+    @media (max-width: 700px) {
+      .case-study .slider-shell {
+        --device-w:   100vw;
+        --bezel:      0px;
+        --bottom-lip: 0px;
+        --kbd-h:      0px;
+        max-width: 100vw;
+        padding: 8px 0 24px;
+      }
+      .case-study .device-row { filter: none; }
+      .case-study .laptop-chrome { display: none; }
+      .case-study .device-row::before,
+      .case-study .device-row::after { display: none; }
+      .case-study .slider-track { column-gap: 0; }
+      .case-study .slide { border-radius: 0; }
     }
 
     /* ───────── Process (4 steps) ───────── */
@@ -887,8 +905,8 @@
     }
     .case-study .outcome-item__label {
       font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      text-transform: lowercase;
       color: var(--ink-soft);
       margin-bottom: 8px;
     }
@@ -931,6 +949,7 @@
       <a href="../#about">About</a>
       <a href="../#experience">Experience</a>
       <a href="../#skills">Skills</a>
+      <a href="../#selected-work">Selected Work</a>
       <a href="../#feedback">Feedback</a>
       <a href="../#contact">Contact</a>
     </nav>
@@ -983,24 +1002,37 @@
             <!-- The moving track (behind the chrome) -->
             <div class="slider-track" data-slider-track>
 
-              <div class="slide slide--fill" data-slide-label="Shadow apps">
+              <div class="slide slide--fill" data-slide-label="Brand guidelines">
                 <img class="slide__fill"
+                     src="../assets/nudge/brand-guidelines.jpg"
+                     alt="Nudge brand identity guidelines — logo variants and colour palette." />
+              </div>
+
+              <div class="slide slide--fill" data-slide-label="Website">
+                <img class="slide__fill"
+                     src="../assets/nudge/home-hero.jpg"
+                     alt="Nudge Security homepage — hero and navigation." />
+              </div>
+
+              <div class="slide slide--fill" data-slide-label="Shadow apps"
+                   style="background:#ebeaef; padding:22px 30px 30px 30px; box-sizing:border-box;">
+                <img class="slide__fill"
+                     style="object-fit:contain; object-position:center;"
                      src="../assets/nudge/supercard-shadow-apps.avif"
                      alt="Shadow apps discovered, grouped by organizational unit." />
               </div>
 
-              <div class="slide" data-slide-label="AI data risks"
-                   style="background-image:url('../assets/nudge/nu-tab1.avif')">
-                <img class="slide__inset"
-                     src="../assets/nudge/ss-risky-ai-convos.avif"
-                     alt="Risky AI conversation detection." />
+              <div class="slide slide--fill" data-slide-label="Brand &amp; blog artwork"
+                   style="background:#01012c">
+                <img class="slide__fill" style="object-fit:contain"
+                     src="../assets/nudge/work-artboard-2026.png"
+                     alt="2026 brand and blog artwork — a board of campaign and editorial illustrations covering MCP, SSPM, agentic AI, OAuth scopes, and API access." />
               </div>
 
-              <div class="slide" data-slide-label="Supply chain alerts"
-                   style="background-image:url('../assets/nudge/nu-tab2.avif')">
-                <img class="slide__inset"
-                     src="../assets/nudge/ss-attack-surface.avif"
-                     alt="Supply chain attack surface visualization." />
+              <div class="slide slide--fill" data-slide-label="Design system">
+                <img class="slide__fill"
+                     src="../assets/nudge/design-system-board.png"
+                     alt="The Nudge design system in Figma — the Cards, Supercard, and Supercard Right Panel component libraries." />
               </div>
 
               <div class="slide" data-slide-label="App misconfigurations"
@@ -1015,13 +1047,6 @@
                 <img class="slide__inset"
                      src="../assets/nudge/ss-id-access.avif"
                      alt="Identity and access hygiene." />
-              </div>
-
-              <div class="slide" data-slide-label="Non-human identities"
-                   style="background-image:url('../assets/nudge/nu-tab5.avif')">
-                <img class="slide__inset"
-                     src="../assets/nudge/ss-oauth-scopes.avif"
-                     alt="OAuth scopes and non-human identities." />
               </div>
 
             </div>
@@ -1147,9 +1172,9 @@
     </article>
 
     <nav class="project__pager" aria-label="Project navigation">
-      <a class="project__pager__next" href="imperva-runtime.html">
+      <a class="project__pager__next" href="imperva.html">
         <span class="project__pager__label">Next →</span>
-        <span class="project__pager__name">Imperva Runtime</span>
+        <span class="project__pager__name">Imperva</span>
       </a>
     </nav>
 

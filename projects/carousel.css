@@ -1,0 +1,331 @@
+/* ============================================================================
+   Laptop carousel — shared across project case-study pages.
+   Scoped under .case-study so it never bleeds into the rest of the site.
+   Extracted from projects/nudge-security.html (which keeps its own inline copy).
+
+   Per-page accent: set --accent / --accent-deep on the .case-study element to
+   recolor the dots, focus rings and button hovers. Defaults below are neutral.
+   ========================================================================== */
+
+.case-study {
+  --accent:      #794aff;
+  --accent-deep: #5734ba;
+}
+
+/* Figure wrapper — breaks out wider than the reading column */
+.case-study .device-figure {
+  margin: 56px 0;
+  margin-left: calc(50% - 50vw + var(--gutter));
+  margin-right: calc(50% - 50vw + var(--gutter));
+  max-width: 1120px;
+  margin-inline: auto;
+  width: min(100%, 1120px);
+}
+.case-study .device-figure figcaption {
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-style: italic;
+  text-align: center;
+}
+
+.case-study .slider-shell {
+  /* Tunable size of the device. Keeps everything under 80vh. */
+  --device-w:   880px;
+  --bezel:      18px;
+  --bottom-lip: 4px;
+  --kbd-h:      26px;
+  --screen-w:   calc(var(--device-w) - var(--bezel) * 2);
+  --screen-h:   calc(var(--screen-w) * 10 / 16);
+  --row-h:      calc(var(--bezel) + var(--screen-h) + var(--bottom-lip) + var(--kbd-h));
+
+  position: relative;
+  max-width: var(--device-w);
+  margin: 0 auto;
+  padding: 24px 0 56px;
+  outline: none;
+}
+
+/* Holds the moving track + the static chrome overlay */
+.case-study .device-row {
+  position: relative;
+  height: var(--row-h);
+  filter: drop-shadow(0 50px 60px rgba(0,0,0,0.45)) drop-shadow(0 14px 22px rgba(0,0,0,0.25));
+}
+
+/* ── Track — full viewport breakout, sits at the screen's vertical band ── */
+.case-study .slider-track {
+  position: absolute;
+  top: var(--bezel);
+  height: var(--screen-h);
+  left: calc(50% - 50vw);
+  width: 100vw;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  column-gap: 150px;
+  /* Pad so end slides can still snap to the laptop's screen center */
+  padding-left:  calc(50vw - var(--screen-w) / 2);
+  padding-right: calc(50vw - var(--screen-w) / 2);
+}
+.case-study .slider-track::-webkit-scrollbar { display: none; }
+
+.case-study .slide {
+  flex: 0 0 var(--screen-w);
+  height: 100%;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  border-radius: 8px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+/* "Fill" slide whose image spans the entire screen (no tab bg needed) */
+.case-study .slide--fill { padding: 0; }
+.case-study .slide__fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+/* "Inset" slide: smaller product screenshot centered on its tab bg. */
+.case-study .slide__inset {
+  display: block;
+  max-width: 86%;
+  max-height: 86%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+/* ── Laptop chrome — 4 strips + keyboard, framing a transparent cutout ── */
+.case-study .laptop-chrome {
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: var(--device-w);
+  height: var(--row-h);
+  pointer-events: none;
+  z-index: 5;
+}
+.case-study .laptop-chrome__top {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: var(--bezel);
+  background: linear-gradient(180deg, #2a2a2c 0%, #1a1a1c 100%);
+  border-radius: 26px 26px 0 0;
+  border: 1px solid #3a3a3d;
+  border-bottom: none;
+}
+.case-study .laptop-chrome__notch {
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 130px; height: 16px;
+  background: #0d0d0e;
+  border-radius: 0 0 11px 11px;
+}
+.case-study .laptop-chrome__notch::after {
+  content: ""; position: absolute;
+  top: 5px; left: 50%; transform: translateX(-50%);
+  width: 5px; height: 5px; border-radius: 50%;
+  background: #2a2a2a; box-shadow: inset 0 0 0 1px #444;
+}
+.case-study .laptop-chrome__left,
+.case-study .laptop-chrome__right {
+  position: absolute;
+  top: var(--bezel);
+  height: var(--screen-h);
+  width: var(--bezel);
+  background: #1a1a1c;
+}
+.case-study .laptop-chrome__left  { left: 0;  border-left: 1px solid #3a3a3d; }
+.case-study .laptop-chrome__right { right: 0; border-right: 1px solid #3a3a3d; }
+.case-study .laptop-chrome__bottom {
+  position: absolute;
+  top: calc(var(--bezel) + var(--screen-h));
+  left: 0; right: 0;
+  height: var(--bottom-lip);
+  background: linear-gradient(180deg, #1a1a1c 0%, #0e0e10 100%);
+  border-radius: 0 0 4px 4px;
+  border: 1px solid #3a3a3d;
+  border-top: none;
+}
+.case-study .laptop-chrome__keyboard {
+  position: absolute;
+  top: calc(var(--bezel) + var(--screen-h) + var(--bottom-lip));
+  left: -32px; right: -32px;
+  height: var(--kbd-h);
+  background: linear-gradient(180deg, #3a3a3d 0%, #1d1d1f 22%, #2a2a2c 50%, #4a4a4d 100%);
+  border-radius: 0 0 28px 28px;
+  border: 1px solid #3a3a3d;
+  border-top: none;
+}
+.case-study .laptop-chrome__keyboard::before {
+  content: ""; position: absolute;
+  top: 0; left: 50%; transform: translateX(-50%);
+  width: 140px; height: 6px;
+  background: #1a1a1c;
+  border-radius: 0 0 10px 10px;
+}
+
+/* Soft sheen across the screen area, above the slide but under the chrome edges. */
+.case-study .laptop-chrome__sheen {
+  position: absolute;
+  top: var(--bezel); left: var(--bezel);
+  width: var(--screen-w);
+  height: var(--screen-h);
+  background: linear-gradient(115deg,
+    rgba(255,255,255,0.10) 0%,
+    rgba(255,255,255,0)    28%,
+    rgba(255,255,255,0)    70%,
+    rgba(255,255,255,0.04) 100%);
+  pointer-events: none;
+}
+
+/* Mask the off-device part of the track with a fade that reaches the viewport
+   edge, hiding the prev/next slides peeking past the laptop. */
+.case-study .device-row::before,
+.case-study .device-row::after {
+  content: "";
+  position: absolute;
+  top: var(--bezel);
+  height: var(--screen-h);
+  width: calc(50vw - var(--device-w) / 2 + 1px);
+  pointer-events: none;
+  z-index: 4;
+}
+.case-study .device-row::before {
+  left: calc(50% - 50vw);
+  background: linear-gradient(90deg, var(--bg) 60%, transparent 100%);
+}
+.case-study .device-row::after {
+  right: calc(50% - 50vw);
+  background: linear-gradient(270deg, var(--bg) 60%, transparent 100%);
+}
+
+/* Prev/next buttons — flanking the laptop, not inside the screen */
+.case-study .slider__btn {
+  position: absolute;
+  top: calc(var(--bezel) + var(--screen-h) / 2);
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 12px;
+  line-height: 1;
+  cursor: pointer;
+  backdrop-filter: blur(10px) saturate(140%);
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+  transition: background .2s ease, transform .2s ease, border-color .2s ease;
+  display: grid;
+  place-items: center;
+}
+.case-study .slider__btn--prev { left: -96px; }
+.case-study .slider__btn--next { right: -96px; }
+.case-study .slider__btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: var(--accent);
+  transform: translateY(-50%) scale(1.08);
+}
+.case-study .slider__btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Dots */
+.case-study .slider__dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+.case-study .slider__dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--rule);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background .2s ease, transform .2s ease;
+}
+.case-study .slider__dot.is-active {
+  background: var(--accent);
+  transform: scale(1.25);
+}
+.case-study .slider__dot:hover { background: var(--ink-soft); }
+.case-study .slider__dot.is-active:hover { background: var(--accent); }
+
+.case-study .slider__hint {
+  text-align: center;
+  margin-top: 14px;
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: -0.02em;
+  text-transform: lowercase;
+  color: var(--ink-soft);
+}
+.case-study .slider__hint kbd {
+  font-family: var(--sans);
+  font-size: 10px;
+  padding: 1px 5px;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  margin: 0 2px;
+}
+
+/* Keep things from getting taller than ~80vh */
+@media (max-height: 820px) {
+  .case-study .slider-shell { max-width: min(880px, calc((80vh - 140px) * 1.6)); }
+}
+@media (max-width: 1080px) {
+  .case-study .slider__btn--prev { left: 8px; }
+  .case-study .slider__btn--next { right: 8px; }
+}
+@media (max-width: 720px) {
+  .case-study .slider__btn { width: 26px; height: 26px; font-size: 11px; }
+}
+
+/* Mobile: drop the laptop frame entirely — show just the screen, full-bleed at
+   100vw in a 16:10 band, as a clean swipe carousel. */
+@media (max-width: 700px) {
+  .case-study .slider-shell {
+    --device-w:   100vw;
+    --bezel:      0px;
+    --bottom-lip: 0px;
+    --kbd-h:      0px;
+    max-width: 100vw;
+    padding: 8px 0 24px;
+  }
+  .case-study .device-row { filter: none; }
+  .case-study .laptop-chrome { display: none; }
+  .case-study .device-row::before,
+  .case-study .device-row::after { display: none; }
+  .case-study .slider-track { column-gap: 0; }
+  .case-study .slide { border-radius: 0; }
+}
+
+/* Tall full-page web screenshots: full-width, slow auto-scroll then fade to black.
+   Driven by carousel.js — only animates while centered in the device and in view. */
+.case-study .slide--scroll { background: #000; overflow: hidden; }
+.case-study .slide--scroll .slide__scroll {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: auto;
+  display: block;
+  will-change: transform, opacity;
+}

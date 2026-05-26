@@ -4,11 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Leadership University — Jamie McNiel</title>
-  <meta name="description" content="{{One-sentence project summary for SEO and social previews.}}" />
+  <meta name="description" content="Leadership University — a leadership-development platform built like prestige television, grounded in how the brain actually learns." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;500;600&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="carousel.css" />
 </head>
 <body class="is-dark">
   <header class="nav">
@@ -17,89 +18,117 @@
       <a href="../#about">About</a>
       <a href="../#experience">Experience</a>
       <a href="../#skills">Skills</a>
+      <a href="../#selected-work">Selected Work</a>
       <a href="../#feedback">Feedback</a>
       <a href="../#contact">Contact</a>
     </nav>
     <a class="nav__cta" href="mailto:jm@reductive.co">Get in touch →</a>
   </header>
 
-  <main class="project">
+  <main class="project case-study">
     <a class="project__back" href="../#selected-work">← Back to Selected Work</a>
 
     <header class="project__head">
-      <p class="project__kicker">Brand & Web · 2025</p>
+      <p class="project__kicker">Brand & Web · 2019</p>
       <h1 class="project__title">Leadership University</h1>
       <p class="project__lede">
-        {{One- or two-sentence positioning statement. What this project is and
-        why it mattered. Plain prose — no marketing-speak.}}
+        A leadership-development platform that feels less like a course and more like prestige television. Twelve episodes, shot on location, built on how the brain actually learns.
       </p>
     </header>
 
-    <figure class="project__hero">
-      <img src="../assets/leadu.jpg" alt="{{Descriptive alt text for the hero image.}}" />
+    <figure class="device-figure">
+      <div class="slider-shell" tabindex="0" data-slider role="region" aria-label="Leadership University screens">
+
+        <div class="device-row">
+
+          <!-- The moving track (behind the chrome) -->
+          <div class="slider-track" data-slider-track>
+
+              <div class="slide slide--fill" data-slide-label="Home">
+                <img class="slide__fill" src="../assets/leadu/leadu-1.png" alt="Leadership University home — the wordmark set over an aerial city view." />
+              </div>
+              <div class="slide slide--fill" data-slide-label="The science">
+                <img class="slide__fill" src="../assets/leadu/leadu-3.png" alt="Based on how the brain works — neuroscience-led instructional design across four learning components." />
+              </div>
+              <div class="slide slide--fill" data-slide-label="Pricing">
+                <img class="slide__fill" src="../assets/leadu/leadu-4.png" alt="Pricing — $25 per month or $275 annually, with corporate pricing and gifting." />
+              </div>
+              <div class="slide slide--fill" data-slide-label="Lesson player" style="background:#000">
+                <img class="slide__fill" src="../assets/leadu/app-dubrovnik.jpg" alt="Leadership University lesson player — Episode 6, ‘Thinking’, with a Dubrovnik film still and an aerial location panel." />
+              </div>
+              <div class="slide slide--fill" data-slide-label="Episode menu" style="background:#000">
+                <img class="slide__fill" src="../assets/leadu/app-thinking-menu.jpg" alt="Leadership University episode navigation — the section list and full 12-episode menu overlay." />
+              </div>
+
+          </div>
+
+          <!-- The static laptop chrome on top, framing the active slide -->
+          <div class="laptop-chrome" aria-hidden="true">
+            <div class="laptop-chrome__top">
+              <div class="laptop-chrome__notch"></div>
+            </div>
+            <div class="laptop-chrome__left"></div>
+            <div class="laptop-chrome__right"></div>
+            <div class="laptop-chrome__sheen"></div>
+            <div class="laptop-chrome__bottom"></div>
+            <div class="laptop-chrome__keyboard"></div>
+          </div>
+
+          <button class="slider__btn slider__btn--prev" data-slider-prev type="button" aria-label="Previous screen">←</button>
+          <button class="slider__btn slider__btn--next" data-slider-next type="button" aria-label="Next screen">→</button>
+
+        </div>
+
+        <div class="slider__dots" data-slider-dots role="tablist" aria-label="Choose screen"></div>
+
+        <div class="slider__hint" aria-hidden="true">
+          Use <kbd>←</kbd> <kbd>→</kbd> to switch screens
+        </div>
+      </div>
+      <figcaption>Leadership University — the marketing site and the in-product lesson player and episode navigation.</figcaption>
     </figure>
 
     <dl class="project__meta">
-      <dt>Role</dt>      <dd>{{Creative Director / Lead Designer / etc.}}</dd>
-      <dt>Team</dt>      <dd>{{Who you worked with}}</dd>
-      <dt>Year</dt>      <dd>2025</dd>
-      <dt>Tools</dt>     <dd>{{Figma, Webflow, etc.}}</dd>
-      <dt>Visit</dt>     <dd><a href="https://example.com">example.com →</a></dd>
+      <dt>Role</dt>      <dd>Creative Director</dd>
+      <dt>Team</dt>      <dd>Founders, instructional designers, and a film crew</dd>
+      <dt>Year</dt>      <dd>2019</dd>
+      <dt>Tools</dt>     <dd>Figma, Webflow, Premiere</dd>
+      <dt>Visit</dt>     <dd><a href="https://leadu.tv">leadu.tv →</a></dd>
     </dl>
 
     <article class="project__body">
       <h2>Context</h2>
       <p>
-        {{2–3 paragraphs setting up what the company / product / brief was, what
-        state things were in when you arrived, and what the constraints or
-        opportunities looked like. This is the "why this work existed" section.
-        Write it as prose — no bullet points yet.}}
+        Most corporate leadership training is a slide deck with a pulse. Leadership University started from the opposite premise — that development sticks when it's watchable, when the content respects your attention the way a good documentary does. The brief was a brand and a platform that could carry twenty-four hours of video and a full curriculum without ever feeling like homework.
       </p>
       <p>
-        {{Second paragraph if needed — stakeholders, scale, prior attempts.}}
+        The science set the constraints. The program is built on the idea that the brain learns when four components are in place — information, relationship, experience, and structure. That framework had to be legible in the product itself, not buried on a methodology page.
       </p>
-
-      <figure class="project__figure">
-        <img src="../assets/leadu.jpg" alt="{{Alt text.}}" />
-        <figcaption>{{Optional caption — keep short.}}</figcaption>
-      </figure>
 
       <h2>Approach</h2>
       <p>
-        {{How you worked the problem. Process, key decisions, what you cut and
-        what you doubled down on. Show your thinking — this section is what
-        distinguishes a creative-director portfolio from a production
-        portfolio. 2–4 paragraphs.}}
+        We treated the platform like a streaming service, not an LMS. Episodes, not modules. A home screen that opens on motion and location instead of a course catalog. Typography does the heavy lifting — one confident wordmark over aerial footage, then generous space for the writing to breathe.
       </p>
 
-      <figure class="project__figure project__figure--wide">
-        <img src="../assets/leadu.jpg" alt="{{Alt text.}}" />
-      </figure>
-
       <p>
-        {{Continue the narrative — surface a specific artifact, framework, or
-        moment that made the difference. Reference the visual above.}}
+        The system flexes from a marketing site that has to sell a subscription to an in-product surface that has to get out of the way. Same type scale, same restraint, so the brand never breaks character between “convince me” and “teach me.”
       </p>
 
       <h2>Outcome</h2>
       <p>
-        {{What shipped. What changed. Numbers if you have them, qualitative
-        outcomes if you don't. End on a forward-looking note where natural.}}
+        Leadership University ships as a subscription — twelve topic-driven episodes, seventy-plus videos, assessments and facilitator guides — sold to teams from Fortune 500s to small private businesses. The throughline held: leadership development that people actually choose to watch.
       </p>
 
-      <figure class="project__figure">
-        <img src="../assets/leadu.jpg" alt="{{Alt text.}}" />
-      </figure>
     </article>
 
     <nav class="project__pager" aria-label="Project navigation">
-      <a class="project__pager__prev" href="imperva-runtime.html">
+      <a class="project__pager__prev" href="prevoty.html">
         <span class="project__pager__label">← Previous</span>
-        <span class="project__pager__name">Imperva Runtime</span>
+        <span class="project__pager__name">Prevoty</span>
       </a>
-      <a class="project__pager__next" href="boundaries-me.html">
+      <a class="project__pager__next" href="cloud-productions.html">
         <span class="project__pager__label">Next →</span>
-        <span class="project__pager__name">Boundaries.me</span>
+        <span class="project__pager__name">Cloud Productions</span>
       </a>
     </nav>
   </main>
@@ -107,5 +136,6 @@
   <footer class="footer">
     <span>© 2026 Jamie McNiel</span>
   </footer>
+  <script src="carousel.js"></script>
 </body>
 </html>

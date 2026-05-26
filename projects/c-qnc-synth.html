@@ -4,11 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>C-QNC Synth — Jamie McNiel</title>
-  <meta name="description" content="{{One-sentence project summary for SEO and social previews.}}" />
+  <meta name="description" content="C-QNC — a browser-native synthesizer and groovebox with three voices, a step sequencer, and a full modulation rack, running entirely in a tab." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;500;600&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="carousel.css" />
 </head>
 <body class="is-dark">
   <header class="nav">
@@ -17,85 +18,107 @@
       <a href="../#about">About</a>
       <a href="../#experience">Experience</a>
       <a href="../#skills">Skills</a>
+      <a href="../#selected-work">Selected Work</a>
       <a href="../#feedback">Feedback</a>
       <a href="../#contact">Contact</a>
     </nav>
     <a class="nav__cta" href="mailto:jm@reductive.co">Get in touch →</a>
   </header>
 
-  <main class="project">
+  <main class="project case-study">
     <a class="project__back" href="../#selected-work">← Back to Selected Work</a>
 
     <header class="project__head">
       <p class="project__kicker">Side Project · 2025</p>
       <h1 class="project__title">C-QNC Synth</h1>
       <p class="project__lede">
-        {{One- or two-sentence positioning statement. What this project is and
-        why it mattered. Plain prose — no marketing-speak.}}
+        A browser-native synth and groovebox — three voices, a step sequencer, and a full modulation rack, running entirely in a tab.
       </p>
     </header>
 
-    <figure class="project__hero">
-      <img src="../assets/cqnc.jpg" alt="{{Descriptive alt text for the hero image.}}" />
+    <figure class="device-figure">
+      <div class="slider-shell" tabindex="0" data-slider role="region" aria-label="C-QNC Synth screens">
+
+        <div class="device-row">
+
+          <!-- The moving track (behind the chrome) -->
+          <div class="slider-track" data-slider-track>
+
+              <div class="slide slide--fill" data-slide-label="Synth + loop" style="background:#0b0b0d">
+                <img class="slide__fill" src="../assets/cqnc/synth-app.jpg" alt="C-QNC — the browser-native synth: three voices (Vapor, Plucked Bass, Snare), a master FX rack, a loop waveform, and the 16-step sequencer." />
+              </div>
+              <div class="slide slide--fill" data-slide-label="Sequencer" style="background:#0b0b0d">
+                <img class="slide__fill" src="../assets/cqnc/synth-seq.jpg" alt="C-QNC sequencer view — a chord/step grid (D#m7, Eb, C) across pages, with per-step pitch-shift lanes." />
+              </div>
+              <div class="slide slide--fill" data-slide-label="LFO matrix" style="background:#0b0b0d">
+                <img class="slide__fill" src="../assets/cqnc/synth-lfo.jpg" alt="C-QNC modulation view — five LFOs, each with waveform, rate divisions, range, and a target." />
+              </div>
+
+          </div>
+
+          <!-- The static laptop chrome on top, framing the active slide -->
+          <div class="laptop-chrome" aria-hidden="true">
+            <div class="laptop-chrome__top">
+              <div class="laptop-chrome__notch"></div>
+            </div>
+            <div class="laptop-chrome__left"></div>
+            <div class="laptop-chrome__right"></div>
+            <div class="laptop-chrome__sheen"></div>
+            <div class="laptop-chrome__bottom"></div>
+            <div class="laptop-chrome__keyboard"></div>
+          </div>
+
+          <button class="slider__btn slider__btn--prev" data-slider-prev type="button" aria-label="Previous screen">←</button>
+          <button class="slider__btn slider__btn--next" data-slider-next type="button" aria-label="Next screen">→</button>
+
+        </div>
+
+        <div class="slider__dots" data-slider-dots role="tablist" aria-label="Choose screen"></div>
+
+        <div class="slider__hint" aria-hidden="true">
+          Use <kbd>←</kbd> <kbd>→</kbd> to switch screens
+        </div>
+      </div>
+      <figcaption>C-QNC — the browser-native synth and groovebox. More screens to follow.</figcaption>
     </figure>
 
     <dl class="project__meta">
-      <dt>Role</dt>      <dd>{{Creative Director / Lead Designer / etc.}}</dd>
-      <dt>Team</dt>      <dd>{{Who you worked with}}</dd>
+      <dt>Role</dt>      <dd>Designer & Developer</dd>
+      <dt>Team</dt>      <dd>Solo</dd>
       <dt>Year</dt>      <dd>2025</dd>
-      <dt>Tools</dt>     <dd>{{Figma, Webflow, etc.}}</dd>
-      <dt>Visit</dt>     <dd><a href="https://example.com">example.com →</a></dd>
+      <dt>Tools</dt>     <dd>Web Audio API, React, Vercel</dd>
+      <dt>Visit</dt>     <dd><a href="https://c-qnc.vercel.app">c-qnc.vercel.app →</a></dd>
     </dl>
 
     <article class="project__body">
       <h2>Context</h2>
       <p>
-        {{2–3 paragraphs setting up what the company / product / brief was, what
-        state things were in when you arrived, and what the constraints or
-        opportunities looked like. This is the "why this work existed" section.
-        Write it as prose — no bullet points yet.}}
+        Most software synths assume a desktop, a license, and a manual. C-QNC is a bet that a capable instrument can live at a URL — open a tab, make a beat, share a link. It began as a side project to learn the Web Audio API properly and became a real instrument.
       </p>
       <p>
-        {{Second paragraph if needed — stakeholders, scale, prior attempts.}}
+        The hard part of a synth isn't the sound engine. It's the interface — dozens of interacting parameters per voice, all needing to be tweakable in the moment without burying the musician in menus.
       </p>
-
-      <figure class="project__figure">
-        <img src="../assets/cqnc.jpg" alt="{{Alt text.}}" />
-        <figcaption>{{Optional caption — keep short.}}</figcaption>
-      </figure>
 
       <h2>Approach</h2>
       <p>
-        {{How you worked the problem. Process, key decisions, what you cut and
-        what you doubled down on. Show your thinking — this section is what
-        distinguishes a creative-director portfolio from a production
-        portfolio. 2–4 paragraphs.}}
+        I built it as a single dark surface where everything that matters is one move away. Three tracks — an acid lead, a sub bass, a 909-style kick — each with its own waveform, ADSR, arpeggiator, and a row of macro sends. A shared rack handles distortion, delay, and reverb with character modes instead of endless knobs.
       </p>
 
-      <figure class="project__figure project__figure--wide">
-        <img src="../assets/cqnc.jpg" alt="{{Alt text.}}" />
-      </figure>
-
       <p>
-        {{Continue the narrative — surface a specific artifact, framework, or
-        moment that made the difference. Reference the visual above.}}
+        Color does the wayfinding. Each track owns a hue that carries through its sequencer lane and its LFO, so a glance tells you what you're editing. The five-LFO modulation matrix lives in its own view, keeping the main surface calm.
       </p>
 
       <h2>Outcome</h2>
       <p>
-        {{What shipped. What changed. Numbers if you have them, qualitative
-        outcomes if you don't. End on a forward-looking note where natural.}}
+        C-QNC runs in any modern browser at ninety BPM out of the box, with swing, per-track modulation, and master effects — no install, no account. It's the side project that taught me the most: that a serious creative tool can be weightless to reach.
       </p>
 
-      <figure class="project__figure">
-        <img src="../assets/cqnc.jpg" alt="{{Alt text.}}" />
-      </figure>
     </article>
 
     <nav class="project__pager" aria-label="Project navigation">
-      <a class="project__pager__prev" href="bbc-walking-with-dinosaurs.html">
+      <a class="project__pager__prev" href="gravity.html">
         <span class="project__pager__label">← Previous</span>
-        <span class="project__pager__name">BBC Walking with Dinosaurs</span>
+        <span class="project__pager__name">Gravity</span>
       </a>
     </nav>
   </main>
@@ -103,5 +126,6 @@
   <footer class="footer">
     <span>© 2026 Jamie McNiel</span>
   </footer>
+  <script src="carousel.js"></script>
 </body>
 </html>

@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Imperva — Jamie McNiel</title>
+  <meta name="description" content="Product design at Imperva — building the security console that protects the world's largest applications, networks, and data." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;500;600&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css" />
+
+  <link rel="stylesheet" href="carousel.css" />
+
+  <!-- Page-scoped overrides: Imperva brand accent + light matte for contained screenshots -->
+  <style>
+    .case-study {
+      --accent:      #1f5dd5;
+      --accent-deep: #133f93;
+    }
+    /* Imperva console screenshots sit on a light matte inside the screen */
+    .case-study .slide        { background: #f3f4f7; }
+    .case-study .slide--fill  { background: #fff; }
+
+    /* In-page video — breaks out wider than the reading column, like the figure */
+    .case-study .video-figure {
+      /* 30% wider than the 1120px column, centered on the viewport */
+      width: min(calc(100vw - var(--gutter) * 2), 1456px);
+      max-width: none;
+      margin: 56px 0;
+      margin-left: 50%;
+      transform: translateX(-50%);
+    }
+    .case-study .video-figure__player {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      background: #000;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.35), 0 8px 18px rgba(0,0,0,0.22);
+    }
+    .case-study .video-figure figcaption {
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--ink-soft);
+      font-style: italic;
+      text-align: center;
+    }
+  </style>
+</head>
+<body class="is-dark">
+  <header class="nav">
+    <a class="nav__brand" href="../#top"><span class="name">J</span><span class="name name--offset">M</span></a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="../#about">About</a>
+      <a href="../#experience">Experience</a>
+      <a href="../#skills">Skills</a>
+      <a href="../#selected-work">Selected Work</a>
+      <a href="../#feedback">Feedback</a>
+      <a href="../#contact">Contact</a>
+    </nav>
+    <a class="nav__cta" href="mailto:jm@reductive.co">Get in touch →</a>
+  </header>
+
+  <main class="project case-study">
+    <a class="project__back" href="../#selected-work">← Back to Selected Work</a>
+
+    <header class="project__head">
+      <p class="project__kicker">Product Design · 2018 — 2022</p>
+      <h1 class="project__title">Imperva</h1>
+      <p class="project__lede">
+        A runtime-security product hire that turned into a company-wide design
+        mandate — from one product's UI to a unified system across every app, and
+        then the brand, the website, events, video, and the offices themselves.
+      </p>
+    </header>
+
+    <dl class="project__meta">
+      <dt>Role</dt>      <dd>Sr. Product Designer → Creative Director</dd>
+      <dt>Year</dt>      <dd>2018 — 2022</dd>
+      <dt>Scope</dt>     <dd>Product UI system · Brand · Web · Events · Video · Interiors</dd>
+      <dt>Visit</dt>     <dd><a href="https://www.imperva.com">imperva.com →</a></dd>
+    </dl>
+
+    <article class="project__body">
+
+      <h2>Context</h2>
+      <p>
+        When Imperva acquired Prevoty in 2018, I joined the product design org to
+        find where I fit. A quick audit made it obvious: the legacy UX and
+        information-architecture practice was a generation behind — in tooling and
+        in method. So we rebuilt it. We adopted the then-nascent, DOM-centric way
+        of designing in Figma and got to work on design systems: first the product
+        UI, then the brand, and eventually — as Creative Director — the interior
+        design of the global offices.
+      </p>
+
+      <h2>The work</h2>
+      <p>
+        A slice of the output: the brand foundations, the company values as a
+        printed poster series, and the unified product UI that started it all.
+      </p>
+
+      <figure class="device-figure">
+        <div class="slider-shell" tabindex="0" data-slider role="region" aria-label="Imperva product screens">
+
+          <div class="device-row">
+
+            <!-- The moving track (behind the chrome) -->
+            <div class="slider-track" data-slider-track>
+
+              <div class="slide slide--scroll" data-slide-label="Website — homepage">
+                <img class="slide__scroll" src="../assets/imperva/web-homepage.jpg" alt="Imperva.com homepage — full-page design." />
+              </div>
+
+              <div class="slide slide--fill" data-slide-label="Brand guide">
+                <img class="slide__fill" src="../assets/imperva.jpg" alt="Imperva brand guide: logo, color palette, typography, and photography direction." />
+              </div>
+
+              <div class="slide slide--scroll" data-slide-label="Website — Web Attacks">
+                <img class="slide__scroll" src="../assets/imperva/web-exploration.png" alt="Imperva.com ‘Identify and Respond to Web Attacks’ page — full-page design exploration." />
+              </div>
+
+              <div class="slide slide--fill" data-slide-label="Values posters">
+                <img class="slide__fill" src="../assets/imperva/posters/poster-series.jpg" alt="The five Imperva values posters hung as a series on a wall — Innovation, Customer Obsession, Sense of Urgency, Collaboration, and Community." />
+              </div>
+
+              <div class="slide" data-slide-label="Environmental design">
+                <img class="slide__inset" src="../assets/imperva/brand-environmental.png" alt="Imperva environmental design overview — paint, furniture, carpet tiles, biophilic plantings, and signage, with the Sushi Rice, Space Grey, and Admiral Blue palette." />
+              </div>
+
+              <div class="slide" data-slide-label="Sonar — web">
+                <img class="slide__inset" src="../assets/imperva/sonar-layout.png" alt="Imperva Sonar ‘Edge to End Protection’ marketing page layout." />
+              </div>
+
+            </div>
+
+            <!-- The static laptop chrome on top, framing the active slide -->
+            <div class="laptop-chrome" aria-hidden="true">
+              <div class="laptop-chrome__top">
+                <div class="laptop-chrome__notch"></div>
+              </div>
+              <div class="laptop-chrome__left"></div>
+              <div class="laptop-chrome__right"></div>
+              <div class="laptop-chrome__sheen"></div>
+              <div class="laptop-chrome__bottom"></div>
+              <div class="laptop-chrome__keyboard"></div>
+            </div>
+
+            <button class="slider__btn slider__btn--prev" data-slider-prev type="button" aria-label="Previous screen">←</button>
+            <button class="slider__btn slider__btn--next" data-slider-next type="button" aria-label="Next screen">→</button>
+
+          </div>
+
+          <div class="slider__dots" data-slider-dots role="tablist" aria-label="Choose product screen"></div>
+
+          <div class="slider__hint" aria-hidden="true">
+            Use <kbd>←</kbd> <kbd>→</kbd> to switch screens
+          </div>
+        </div>
+        <figcaption>Brand foundations and guidelines, the values poster series, and the marketing site. More — internal comms, events, video, and office interiors — to be added.</figcaption>
+      </figure>
+
+      <h2>A widening mandate</h2>
+      <p>
+        My hands-on product work was the runtime-security UI. But as the company's
+        strongest design resource, I kept being handed larger, higher-profile
+        briefs — and kept taking them on.
+      </p>
+      <p>
+        First the UI of every app, rebuilt as a single unified system. Then
+        internal communications. Then the public website, a full brand-package
+        refresh, tradeshow and events production, video production, and
+        interior-design overhauls of four-plus regional hub offices.
+      </p>
+
+      <figure class="video-figure">
+        <video class="video-figure__player" data-autoplay-inview
+                muted loop playsinline preload="metadata"
+                poster="../assets/imperva/video/overview-poster.jpg">
+          <source src="../assets/imperva/video/overview-1080.mp4" type="video/mp4" />
+        </video>
+        <figcaption>Brand film — the 3D overview produced for the Imperva platform.</figcaption>
+      </figure>
+
+      <h2>Outcome</h2>
+      <p>
+        It was a steep climb in scope and visibility — from one product screen to
+        Imperva's entire visual footprint, digital and physical. By the end, as
+        Creative Director, the throughline still held: one design system, extended
+        far past the browser.
+      </p>
+    </article>
+
+    <nav class="project__pager" aria-label="Project navigation">
+      <a class="project__pager__prev" href="nudge-security.html">
+        <span class="project__pager__label">← Previous</span>
+        <span class="project__pager__name">Nudge Security</span>
+      </a>
+      <a class="project__pager__next" href="prevoty.html">
+        <span class="project__pager__label">Next →</span>
+        <span class="project__pager__name">Prevoty</span>
+      </a>
+    </nav>
+  </main>
+
+  <footer class="footer">
+    <span>© 2026 Jamie McNiel</span>
+  </footer>
+
+  <script src="carousel.js"></script>
+  <script>
+  /* Autoplay muted videos only while in view; pause + rewind when scrolled away. */
+  (function () {
+    const vids = document.querySelectorAll('video[data-autoplay-inview]');
+    if (!vids.length || !('IntersectionObserver' in window)) {
+      vids.forEach((v) => { v.play && v.play().catch(() => {}); });
+      return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        const v = e.target;
+        if (e.isIntersecting) { v.play().catch(() => {}); }
+        else { v.pause(); }
+      });
+    }, { threshold: 0.35 });
+    vids.forEach((v) => io.observe(v));
+  })();
+  </script>
+</body>
+</html>
