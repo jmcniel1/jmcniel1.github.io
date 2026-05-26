@@ -336,6 +336,14 @@
       background: radial-gradient(circle, rgba(194,83,42,0.12) 0%, transparent 60%);
       z-index: 0;
     }
+    .phone-sim {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 300px;
+      max-width: 78%;
+      height: auto;
+    }
     .iphone {
       position: relative;
       width: 260px;
@@ -866,7 +874,7 @@
     /* ───────── Outcome ───────── */
     .case-study .outcome-lead {
       display: flex;
-      align-items: baseline;
+      align-items: flex-end;
       gap: 24px;
       margin: 16px 0 8px;
       padding-bottom: 24px;
@@ -891,6 +899,7 @@
       line-height: 1.25;
       max-width: 18ch;
       color: var(--ink);
+      padding-bottom: 5px;
     }
 
     .case-study .outcome-grid {
@@ -1086,16 +1095,10 @@
 
       <figure class="device-figure device-figure--phone">
         <div class="phone-stage">
-          <div class="iphone">
-            <div class="iphone__screen">
-              <div class="iphone__island"></div>
-              <img class="screen-img"
-                src="../assets/nudge/mobile-hero.png"
-                alt="nudgesecurity.com mobile hero: 'Secure and govern every AI & SaaS app' with the shadow apps supercard." />
-            </div>
-          </div>
+          <img class="phone-sim"
+               src="../assets/nudge/mobile-sim.png"
+               alt="nudgesecurity.com on iPhone — 'Secure and govern every AI & SaaS app', with the shadow-apps discovery dashboard." />
         </div>
-        <figcaption>A nudge in hand. One verb on the primary button. The temperature stays low.</figcaption>
       </figure>
 
       <h2>The system</h2>
