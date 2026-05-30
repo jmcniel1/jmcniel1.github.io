@@ -206,11 +206,17 @@
 }
 .case-study .device-row::before {
   left: calc(50% - 50vw);
-  background: linear-gradient(90deg, var(--bg) 60%, transparent 100%);
+  background: linear-gradient(90deg,
+    var(--bg) 0%,
+    var(--bg) 92%,
+    color-mix(in srgb, var(--bg), transparent) 100%);
 }
 .case-study .device-row::after {
   right: calc(50% - 50vw);
-  background: linear-gradient(270deg, var(--bg) 60%, transparent 100%);
+  background: linear-gradient(270deg,
+    var(--bg) 0%,
+    var(--bg) 92%,
+    color-mix(in srgb, var(--bg), transparent) 100%);
 }
 
 /* Prev/next buttons — flanking the laptop, not inside the screen */

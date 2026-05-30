@@ -274,7 +274,7 @@
 
       <ol class="worklist">
         <li class="worklist__item">
-          <a class="worklist__link" href="projects/nudge-security.html">
+          <a class="worklist__link" href="projects/nudge-security.html" data-preview="assets/nudge/work-bento-2026.png">
             <span class="worklist__num">01</span>
             <span class="worklist__body">
               <span class="worklist__title">Nudge Security</span>
@@ -284,7 +284,7 @@
           </a>
         </li>
         <li class="worklist__item">
-          <a class="worklist__link" href="projects/imperva.html">
+          <a class="worklist__link" href="projects/imperva.html" data-preview="assets/imperva.jpg">
             <span class="worklist__num">02</span>
             <span class="worklist__body">
               <span class="worklist__title">Imperva</span>
@@ -294,7 +294,7 @@
           </a>
         </li>
         <li class="worklist__item">
-          <a class="worklist__link" href="projects/prevoty.html">
+          <a class="worklist__link" href="projects/prevoty.html" data-preview="assets/prevoty/brand-bento.jpg">
             <span class="worklist__num">03</span>
             <span class="worklist__body">
               <span class="worklist__title">Prevoty</span>
@@ -304,7 +304,7 @@
           </a>
         </li>
         <li class="worklist__item">
-          <a class="worklist__link" href="projects/leadership-university.html">
+          <a class="worklist__link" href="projects/leadership-university.html" data-preview="assets/leadu/app-dubrovnik.jpg">
             <span class="worklist__num">04</span>
             <span class="worklist__body">
               <span class="worklist__title">Leadership University</span>
@@ -314,7 +314,7 @@
           </a>
         </li>
         <li class="worklist__item">
-          <a class="worklist__link" href="projects/cloud-productions.html">
+          <a class="worklist__link" href="projects/cloud-productions.html" data-preview="assets/boundaries/drcloud-home.png">
             <span class="worklist__num">05</span>
             <span class="worklist__body">
               <span class="worklist__title">Cloud Productions</span>
@@ -324,7 +324,7 @@
           </a>
         </li>
         <li class="worklist__item">
-          <a class="worklist__link" href="projects/bbc-worldwide.html">
+          <a class="worklist__link" href="projects/bbc-worldwide.html" data-preview="assets/bbc-wwd/01_dino_home.jpg">
             <span class="worklist__num">06</span>
             <span class="worklist__body">
               <span class="worklist__title">BBC Worldwide</span>
@@ -334,7 +334,7 @@
           </a>
         </li>
         <li class="worklist__item">
-          <a class="worklist__link" href="projects/gravity.html">
+          <a class="worklist__link" href="projects/gravity.html" data-preview="assets/gravity/gcom_Seal._1100.png">
             <span class="worklist__num">07</span>
             <span class="worklist__body">
               <span class="worklist__title">Gravity</span>
@@ -344,7 +344,7 @@
           </a>
         </li>
         <li class="worklist__item">
-          <a class="worklist__link" href="projects/c-qnc-synth.html">
+          <a class="worklist__link" href="projects/c-qnc-synth.html" data-preview="assets/cqnc/synth-app.jpg">
             <span class="worklist__num">08</span>
             <span class="worklist__body">
               <span class="worklist__title">C-QNC Synth</span>
@@ -354,6 +354,10 @@
           </a>
         </li>
       </ol>
+
+      <div class="worklist__preview" aria-hidden="true">
+        <img class="worklist__preview__img" alt="" />
+      </div>
 
       <a class="worklist__archive" href="https://cargocollective.com/reductive">
         <img class="worklist__archive__logo" src="assets/reductive-logo.png" alt="Reductive / r.co" />
@@ -631,6 +635,75 @@
 
       window.addEventListener('resize', update, { passive: true });
       update();
+    })();
+
+    // Cursor-tracked preview image for Selected Work
+    (function () {
+      const list = document.querySelector('.worklist');
+      const preview = document.querySelector('.worklist__preview');
+      if (!list || !preview) return;
+      if (window.matchMedia && matchMedia('(hover: none)').matches) return;
+      if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      const img = preview.querySelector('.worklist__preview__img');
+      const links = list.querySelectorAll('.worklist__link[data-preview]');
+      const W = 360, H = 240;
+      const OFFSET_X = 24, OFFSET_Y = 24;
+
+      let targetX = 0, targetY = 0;
+      let currentX = 0, currentY = 0;
+      let visible = false;
+      let rafId = null;
+      let currentSrc = '';
+
+      // Preload images so they pop in instantly
+      links.forEach(a => {
+        const src = a.getAttribute('data-preview');
+        if (src) { const p = new Image(); p.src = src; }
+      });
+
+      function loop() {
+        currentX += (targetX - currentX) * 0.18;
+        currentY += (targetY - currentY) * 0.18;
+        const scale = visible ? 1 : 0.96;
+        preview.style.transform =
+          'translate3d(' + (currentX - W / 2) + 'px,' + (currentY - H / 2) + 'px,0) scale(' + scale + ')';
+        rafId = requestAnimationFrame(loop);
+      }
+
+      list.addEventListener('mousemove', function (e) {
+        targetX = e.clientX + OFFSET_X;
+        targetY = e.clientY + OFFSET_Y;
+        // Clamp to viewport so it never clips offscreen
+        const maxX = window.innerWidth - W / 2 - 8;
+        const minX = W / 2 + 8;
+        const maxY = window.innerHeight - H / 2 - 8;
+        const minY = H / 2 + 8;
+        if (targetX > maxX) targetX = maxX;
+        if (targetX < minX) targetX = minX;
+        if (targetY > maxY) targetY = maxY;
+        if (targetY < minY) targetY = minY;
+        if (rafId == null) {
+          currentX = targetX; currentY = targetY;
+          rafId = requestAnimationFrame(loop);
+        }
+      }, { passive: true });
+
+      links.forEach(function (a) {
+        a.addEventListener('mouseenter', function () {
+          const src = a.getAttribute('data-preview');
+          if (src && src !== currentSrc) {
+            img.src = src;
+            currentSrc = src;
+          }
+          visible = true;
+          preview.classList.add('is-visible');
+        });
+        a.addEventListener('mouseleave', function () {
+          visible = false;
+          preview.classList.remove('is-visible');
+        });
+      });
     })();
   </script>
 

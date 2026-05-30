@@ -794,29 +794,23 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
 
 .worklist__item {
   border-bottom: 1px solid var(--rule);
+  position: relative;
+  z-index: 2;
 }
 
 .worklist__link {
   display: grid;
   grid-template-columns: auto 1fr auto;
-  align-items: baseline;
+  align-items: start;
   gap: 22px;
   padding: 28px 0;
-  transition: padding .25s ease, color .25s ease;
 }
-
-.worklist__link:hover { padding-left: 12px; padding-right: 12px; }
-.worklist__link:hover .worklist__title { color: var(--accent); }
 
 /* Disabled / coming-soon items — visible but not interactive */
 .worklist__link--disabled {
   cursor: default;
   opacity: 0.55;
 }
-.worklist__link--disabled:hover {
-  padding-left: 0; padding-right: 0;
-}
-.worklist__link--disabled:hover .worklist__title { color: var(--ink); }
 .worklist__soon {
   font-size: 12px;
   letter-spacing: -0.02em;
@@ -830,6 +824,7 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
   font-size: 14px;
   letter-spacing: 0.06em;
   color: var(--ink-soft);
+  margin-top: 15px;
 }
 
 .worklist__body {
@@ -841,10 +836,10 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
 .worklist__title {
   font-family: var(--serif);
   font-size: clamp(24px, 3vw, 32px);
+  font-weight: 500;
   line-height: 1.15;
   letter-spacing: -0.005em;
   color: var(--ink);
-  transition: color .2s ease;
 }
 
 .worklist__discipline {
@@ -859,6 +854,37 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
   color: var(--ink-soft);
   white-space: nowrap;
   align-self: center;
+}
+
+/* Cursor-tracked preview shown while hovering a worklist item */
+.worklist__preview {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 360px;
+  height: 240px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate3d(-9999px, -9999px, 0) scale(0.96);
+  transition: opacity .35s ease, transform .35s cubic-bezier(.2,.7,.2,1);
+  z-index: 1;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,.35), 0 10px 25px -10px rgba(0,0,0,.2);
+  will-change: transform, opacity;
+}
+.worklist__preview.is-visible {
+  opacity: 1;
+}
+.worklist__preview__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+@media (hover: none), (max-width: 720px) {
+  .worklist__preview { display: none; }
 }
 
 .worklist__archive {
