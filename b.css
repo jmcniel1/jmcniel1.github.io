@@ -143,12 +143,12 @@ img { display: block; }
 
 .card__pills--top { top: 14px; bottom: auto; }
 /* Train cards, sized for a 640px stage. Widths fixed, heights follow the source aspect. */
-.card--10 { left: 0;      top: 6%;  width: 570px; aspect-ratio: 1312 / 816; }
+.card--10 { left: 1560px; top: 40%; width: 420px; aspect-ratio: 1312 / 816; }
 .card--0  { left: 600px;  top: 28%; width: 225px; aspect-ratio: 9 / 16; z-index: 2; }
 .card--1  { left: 870px;  top: 10%; width: 630px; aspect-ratio: 16 / 9; z-index: 3; }
-.card--2  { left: 1560px; top: 34%; width: 360px; aspect-ratio: 1; }
+.card--2  { left: 0;      top: 8%;  width: 400px; aspect-ratio: 1; }
 .card--3  { left: 1980px; top: 8%;  width: 450px; aspect-ratio: 16 / 10; z-index: 2; }
-.card--4  { left: 2340px; top: 40%; width: 600px; aspect-ratio: 16 / 9; }
+.card--4  { left: 2340px; top: 8%;  width: 600px; aspect-ratio: 16 / 9; }
 .card--5  { left: 2985px; top: 6%;  width: 480px; aspect-ratio: 3208 / 2008; z-index: 3; }
 .card--6  { left: 3390px; top: 44%; width: 510px; aspect-ratio: 3212 / 2012; }
 .card--7  { left: 3960px; top: 12%; width: 420px; aspect-ratio: 670 / 372; z-index: 2; }
@@ -157,18 +157,22 @@ img { display: block; }
 
 /* Left-set hero variant: hed flush left on the rail edge, mesh pushed right and dimmed under the type, no peeking card */
 .hero__pin { display: flex; flex-direction: column; }
-.hero__band { position: relative; z-index: 2; flex: none; height: var(--band); padding: 44px 0 0; background: var(--obsidian); display: grid; grid-template-columns: minmax(0, 1fr) repeat(3, minmax(0, 1.5fr)); }
-.hero__band .hero__hed { grid-column: 2 / -1; padding: 0 var(--gutter); }
 .hero__stage { position: relative; flex: 1 1 auto; min-height: 0; overflow: hidden; }
 .hero--left .hero__hed {
-  position: static; transform: none;
-  width: auto; max-width: 21em;
+  position: absolute; left: var(--gutter); top: 44px; transform: none;
+  width: min(72vw, 1040px);
   text-align: left;
-  font-size: clamp(36px, 3.6vw, 52px);
+  font-size: clamp(40px, 4.2vw, 60px);
   mix-blend-mode: normal;
   color: var(--ghost);
+  z-index: 2;
+  padding: 0; line-height: 1.16;
 }
-.hero--left .hero__mesh { object-position: center 45%; opacity: .75; transform: scale(1.1); filter: saturate(.55) brightness(.8) contrast(1.05); }
+.hero--left .hero__hed span {
+  display: inline; background: var(--obsidian); padding: 0.02em 0.18em 0.02em; box-decoration-break: clone; -webkit-box-decoration-break: clone;
+  margin-left: -0.18em;
+}
+.hero--left .hero__mesh { object-position: center 40%; opacity: .75; transform: translateX(8%) scale(1.14); transform-origin: right center; }
 .hero__caption { position: absolute; right: var(--gutter); bottom: 18px; font-size: 16px; color: var(--ghost); z-index: 6; }
 .hero__caption:hover { color: var(--ghost); }
 .hero--left .train { left: 100vw; }
@@ -263,9 +267,7 @@ img { display: block; }
   .hero__scroll { display: none; }
   .hero { height: auto; }
   .hero__pin { height: auto; }
-  .hero__band { height: auto; padding: 56px 0 32px; grid-template-columns: 1fr; }
-  .hero__band .hero__hed { grid-column: 1; grid-row: 1; }
-  .hero--left .hero__hed { width: auto; font-size: clamp(38px, 10vw, 56px); margin: 0; }
+  .hero--left .hero__hed { position: relative; top: auto; left: auto; width: auto; margin: 56px var(--gutter) 32px; }
   .hero__caption { display: none; }
   .hero__mesh { display: none; }
   .hero--left .train { left: 0; }
