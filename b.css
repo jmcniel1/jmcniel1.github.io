@@ -109,7 +109,7 @@ img { display: block; }
   position: absolute;
   top: 0; left: calc(100vw - 205px);
   height: 100%;
-  width: 3900px;
+  width: 4340px;
   z-index: 4;
   will-change: transform;
 }
@@ -125,16 +125,17 @@ img { display: block; }
 }
 .card__pills { position: absolute; left: 14px; bottom: 14px; display: flex; gap: 9px; }
 .card__pills--top { top: 14px; bottom: auto; }
-.card--0 { left: 0;     top: 0;    width: 420px; height: 72%; }
-.card--1 { left: 380px; top: 30%;  width: 440px; height: 60%; z-index: 2; }
-.card--2 { left: 760px; top: 4%;   width: 400px; height: 25%; }
-.card--3 { left: 900px; top: 40%;  width: 400px; height: 48%; z-index: 2; }
-.card--4 { left: 1280px; top: 0;   width: 660px; height: 50%; }
-.card--5 { left: 1720px; top: 46%; width: 520px; height: 38%; z-index: 2; }
-.card--6 { left: 2160px; top: 7%;  width: 560px; height: 44%; }
-.card--7 { left: 2550px; top: 52%; width: 480px; height: 32%; }
-.card--8 { left: 2940px; top: 14%; width: 420px; height: 52%; }
-.card--9 { left: 3300px; top: 32%; width: 560px; height: 46%; }
+.card--10 { left: 0;    top: 8%;   width: 420px; height: 56%; }
+.card--0 { left: 440px;  top: 0;    width: 420px; height: 72%; }
+.card--1 { left: 820px; top: 30%;  width: 440px; height: 60%; z-index: 2; }
+.card--2 { left: 1200px; top: 4%;   width: 400px; height: 25%; }
+.card--3 { left: 1340px; top: 40%;  width: 400px; height: 48%; z-index: 2; }
+.card--4 { left: 1720px; top: 0;   width: 660px; height: 50%; }
+.card--5 { left: 2160px; top: 46%; width: 520px; height: 38%; z-index: 2; }
+.card--6 { left: 2600px; top: 7%;  width: 560px; height: 44%; }
+.card--7 { left: 2990px; top: 52%; width: 480px; height: 32%; }
+.card--8 { left: 3380px; top: 14%; width: 420px; height: 52%; }
+.card--9 { left: 3740px; top: 32%; width: 560px; height: 46%; }
 
 /* Sheet: four columns, hairline seams, sections stacked */
 .sheet {
