@@ -33,11 +33,12 @@
     </header>
 
     <figure class="video-figure">
-      <video class="video-figure__player" data-autoplay-inview
+      <video class="video-figure__player" data-autoplay-inview data-sound
               muted loop playsinline preload="metadata"
               poster="../assets/leadu/video/trailer-poster.jpg">
         <source src="../assets/leadu/video/trailer-1080.mp4" type="video/mp4" />
       </video>
+      <button class="video-figure__sound pill" type="button" aria-pressed="false">Tap for sound</button>
       <figcaption>The series trailer. Twelve cities, one episode each.</figcaption>
     </figure>
 
@@ -142,19 +143,6 @@
     <span>© 2026 Jamie McNiel</span>
   </footer>
   <script src="carousel.js"></script>
-  <script>
-  /* Autoplay muted videos only while in view; pause when scrolled away. */
-  (function () {
-    const vids = document.querySelectorAll('video[data-autoplay-inview]');
-    if (!vids.length || !('IntersectionObserver' in window)) {
-      vids.forEach((v) => { v.play && v.play().catch(() => {}); });
-      return;
-    }
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => { const v = e.target; if (e.isIntersecting) { v.play().catch(() => {}); } else { v.pause(); } });
-    }, { threshold: 0.35 });
-    vids.forEach((v) => io.observe(v));
-  })();
-  </script>
+  <script src="video.js"></script>
 </body>
 </html>

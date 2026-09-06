@@ -146,6 +146,14 @@ body.is-dark { background: var(--bg); color: var(--ink); }
 .project > .video-figure { padding: 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
 .project > .video-figure .video-figure__player { display: block; width: 100%; height: auto; background: var(--obsidian); }
 .project > .video-figure figcaption { padding: 9px var(--gutter) 14px; }
+.project > .video-figure { position: relative; }
+.project > .video-figure .video-figure__player[data-sound] { cursor: pointer; }
+.video-figure__sound {
+  position: absolute; left: var(--gutter); bottom: 54px;
+  background: var(--obsidian); color: var(--ghost);
+  font-family: var(--font); cursor: pointer;
+}
+.video-figure__sound:hover { background: var(--ghost); color: var(--obsidian); }
 .project > .device-figure figcaption,
 .project > .video-figure figcaption { padding: 0 var(--gutter); }
 
