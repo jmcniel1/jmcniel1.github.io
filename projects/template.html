@@ -3,36 +3,32 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{{Project Name}} — Jamie McNiel</title>
+  <title>{{Project Name}}, Jamie McNiel</title>
   <meta name="description" content="{{One-sentence project summary for SEO and social previews.}}" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;500;600&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css" />
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../b.css" />
+  <link rel="stylesheet" href="../project.css" />
 </head>
 <body class="is-dark">
-  <header class="nav">
-    <a class="nav__brand" href="../#top"><span class="name">J</span><span class="name name--offset">M</span></a>
-    <nav class="nav__links" aria-label="Primary">
-      <a href="../#about">About</a>
-      <a href="../#experience">Experience</a>
-      <a href="../#skills">Skills</a>
-      <a href="../#selected-work">Selected Work</a>
-      <a href="../#feedback">Feedback</a>
-      <a href="../#contact">Contact</a>
+  <header class="bar bar--top">
+    <a class="bar__name" href="../b.html#top"><span class="name">Jamie</span> <span class="name name--offset">McNiel</span></a>
+    <nav class="bar__nav" aria-label="Primary">
+      <a href="../b.html#work">Work</a>
+      <a href="../b.html#about">About</a>
+      <a href="../b.html#contact">Contact</a>
     </nav>
-    <a class="nav__cta" href="mailto:jm@reductive.co">Get in touch →</a>
   </header>
 
   <main class="project">
-    <a class="project__back" href="../#selected-work">← Back to Selected Work</a>
+    <a class="project__back" href="../b.html#work">Back to work</a>
 
     <header class="project__head">
       <p class="project__kicker">{{Discipline · e.g. Brand & Web · 2025}}</p>
       <h1 class="project__title">{{Project Name}}</h1>
       <p class="project__lede">
         {{One- or two-sentence positioning statement. What this project is and
-        why it mattered. Plain prose — no marketing-speak.}}
+        why it mattered. Plain prose, no marketing-speak.}}
       </p>
     </header>
 
@@ -43,9 +39,9 @@
     <dl class="project__meta">
       <dt>Role</dt>      <dd>{{Creative Director / Lead Designer / etc.}}</dd>
       <dt>Team</dt>      <dd>{{Who you worked with}}</dd>
-      <dt>Year</dt>      <dd>{{2025 or 2022 — Present}}</dd>
+      <dt>Year</dt>      <dd>{{2025 or 2022 to Present}}</dd>
       <dt>Tools</dt>     <dd>{{Figma, Webflow, etc.}}</dd>
-      <dt>Visit</dt>     <dd><a href="https://example.com">example.com →</a></dd>
+      <dt>Visit</dt>     <dd><a href="https://example.com">example.com</a></dd>
     </dl>
 
     <article class="project__body">
@@ -54,21 +50,21 @@
         {{2–3 paragraphs setting up what the company / product / brief was, what
         state things were in when you arrived, and what the constraints or
         opportunities looked like. This is the "why this work existed" section.
-        Write it as prose — no bullet points yet.}}
+        Write it as prose, no bullet points yet.}}
       </p>
       <p>
-        {{Second paragraph if needed — stakeholders, scale, prior attempts.}}
+        {{Second paragraph if needed, stakeholders, scale, prior attempts.}}
       </p>
 
       <figure class="project__figure">
         <img src="../assets/{{slug}}-01.jpg" alt="{{Alt text.}}" />
-        <figcaption>{{Optional caption — keep short.}}</figcaption>
+        <figcaption>{{Optional caption, keep short.}}</figcaption>
       </figure>
 
       <h2>Approach</h2>
       <p>
         {{How you worked the problem. Process, key decisions, what you cut and
-        what you doubled down on. Show your thinking — this section is what
+        what you doubled down on. Show your thinking, this section is what
         distinguishes a creative-director portfolio from a production
         portfolio. 2–4 paragraphs.}}
       </p>
@@ -78,7 +74,7 @@
       </figure>
 
       <p>
-        {{Continue the narrative — surface a specific artifact, framework, or
+        {{Continue the narrative, surface a specific artifact, framework, or
         moment that made the difference. Reference the visual above.}}
       </p>
 
@@ -95,11 +91,11 @@
 
     <nav class="project__pager" aria-label="Project navigation">
       <a class="project__pager__prev" href="{{previous-slug}}.html">
-        <span class="project__pager__label">← Previous</span>
+        <span class="project__pager__label">Previous</span>
         <span class="project__pager__name">{{Previous Project Name}}</span>
       </a>
       <a class="project__pager__next" href="{{next-slug}}.html">
-        <span class="project__pager__label">Next →</span>
+        <span class="project__pager__label">Next</span>
         <span class="project__pager__name">{{Next Project Name}}</span>
       </a>
     </nav>
