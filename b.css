@@ -212,8 +212,13 @@ img { display: block; }
   .hero__hed { position: relative; left: 0; top: 0; transform: none; width: auto; margin: 80px var(--gutter) 40px; text-align: left; }
   .hero__scroll { display: none; }
   .train { position: relative; left: 0; width: auto; height: auto; display: flex; flex-direction: column; gap: 14px; padding: 0 var(--gutter) 80px; transform: none !important; }
-  .card { position: static; width: auto !important; height: auto !important; }
-  .card img { aspect-ratio: 4 / 3; }
+  .card { position: relative; left: auto !important; top: auto !important; width: auto !important; height: auto !important; aspect-ratio: auto !important; display: flex; flex-direction: column; }
+  .card img { aspect-ratio: 4 / 3; order: 2; }
+  .card__title { position: static; order: 1; padding: 0 0 12px; font-size: 27px; letter-spacing: -0.032em; }
+  .card__title br { display: none; }
+  .card__pills { position: static; order: 3; padding: 12px 0 0; }
+  .card--2, .card--7, .card--8 { display: none; }
+  .train { gap: 36px; }
   .bar--corner { position: relative; }
   .sheet { grid-template-columns: 1fr 1fr; }
   .cell:nth-child(4n) { border-right: 1px solid var(--ash); }
