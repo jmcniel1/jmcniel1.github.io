@@ -20,90 +20,159 @@
   </header>
 
   <main id="top">
+    <!-- Pinned hero. The card train slides right to left as the page scrolls. -->
     <section class="hero">
-      <svg class="hero__arcs" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-        <g fill="none" stroke="#5a5a5a" stroke-width="1">
-          <line x1="0" y1="200" x2="1440" y2="200"/>
-          <line x1="0" y1="400" x2="1440" y2="400"/>
-          <line x1="0" y1="600" x2="1440" y2="600"/>
-          <circle cx="-30" cy="400" r="360"/>
-          <circle cx="210" cy="400" r="360"/>
-          <circle cx="450" cy="400" r="360"/>
-          <circle cx="690" cy="400" r="360"/>
-          <circle cx="930" cy="400" r="360"/>
-          <circle cx="1170" cy="400" r="360"/>
-          <circle cx="1410" cy="400" r="360"/>
-        </g>
-      </svg>
-      <h1 class="hero__hed">Brand, product and web design for security software and AI silicon</h1>
-      <a class="hero__card" href="projects/nudge-security.html">
-        <img src="assets/nudge/work-bento-2026.png" alt="Nudge Security brand and product work" />
-        <span class="hero__card__title">Nudge<br/>Security</span>
-        <span class="pill">Project</span>
+      <div class="hero__pin">
+        <svg class="hero__arcs" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <g fill="none" stroke="#5a5a5a" stroke-width="1">
+            <line x1="0" y1="200" x2="1440" y2="200"/><line x1="0" y1="400" x2="1440" y2="400"/><line x1="0" y1="600" x2="1440" y2="600"/>
+            <circle cx="-30" cy="400" r="360"/><circle cx="210" cy="400" r="360"/><circle cx="450" cy="400" r="360"/><circle cx="690" cy="400" r="360"/><circle cx="930" cy="400" r="360"/><circle cx="1170" cy="400" r="360"/><circle cx="1410" cy="400" r="360"/>
+          </g>
+        </svg>
+        <h1 class="hero__hed">Brand, product and web design for security software and AI silicon</h1>
+        <span class="hero__scroll">Scroll down</span>
+        <div class="train" id="train">
+          <a class="card card--1" href="projects/nudge-security.html"><img src="assets/nudge/work-bento-2026.png" alt="" /><span class="card__title">Nudge<br/>Security</span><span class="card__pills"><span class="pill">Brand</span><span class="pill">Product</span></span></a>
+          <a class="card card--2" href="projects/imperva.html"><img src="assets/imperva/posters/poster-series.jpg" alt="" /><span class="card__pills card__pills--top"><span class="pill">Brand</span><span class="pill">Print</span></span></a>
+          <a class="card card--3" href="projects/prevoty.html"><img src="assets/prevoty/brand-bento.jpg" alt="" /><span class="card__title">Prevoty</span><span class="card__pills"><span class="pill">Brand</span></span></a>
+          <a class="card card--4" href="projects/imperva.html"><img src="assets/imperva/attack-analytics-2024.png" alt="" /><span class="card__title">Imperva</span><span class="card__pills"><span class="pill">Product</span><span class="pill">Data</span></span></a>
+          <a class="card card--5" href="projects/leadership-university.html"><img src="assets/leadu/app-dubrovnik.jpg" alt="" /><span class="card__title">Leadership University</span><span class="card__pills"><span class="pill">Web</span></span></a>
+          <a class="card card--6" href="projects/c-qnc-synth.html"><img src="assets/cqnc/synth-app.jpg" alt="" /><span class="card__title">C-QNC Synth</span><span class="card__pills"><span class="pill">Instrument</span></span></a>
+          <a class="card card--7" href="projects/bbc-worldwide.html"><img src="assets/bbc-wwd/01_dino_home.jpg" alt="" /><span class="card__pills card__pills--top"><span class="pill">BBC</span><span class="pill">Digital</span></span></a>
+          <a class="card card--8" href="projects/gravity.html"><img src="assets/gravity/gcom_Seal._1100.png" alt="" /><span class="card__title">Gravity</span><span class="card__pills"><span class="pill">Identity</span></span></a>
+        </div>
+        <div class="bar bar--corner">
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Four column hairline sheet -->
+    <section id="work" class="sheet">
+      <div class="cell cell--label">
+        <h2 class="display-xl">Work</h2>
+        <p class="body">Eight projects across security software, media and a synthesizer, 2010 to 2026.</p>
+      </div>
+      <a class="cell cell--card" href="projects/nudge-security.html">
+        <img src="assets/nudge/work-bento-2026.png" alt="" />
+        <span class="meta"><span class="pill">Brand</span><span class="pill">Product</span><span class="date">2022 to 2026</span></span>
+        <span class="heading-lg">Nudge Security</span>
+        <span class="body">Creative direction for a SaaS security platform, from a four person prototype to a shipped design system.</span>
       </a>
-      <span class="hero__scroll">Scroll down</span>
-      <div class="bar bar--corner">
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+      <a class="cell cell--card" href="projects/imperva.html">
+        <img src="assets/imperva/attack-analytics-2024.png" alt="" />
+        <span class="meta"><span class="pill">Product</span><span class="pill">Brand</span><span class="date">2018 to 2022</span></span>
+        <span class="heading-lg">Imperva</span>
+        <span class="body">Attack analytics, dashboards and brand for a public cybersecurity company.</span>
+      </a>
+      <div class="cell cell--action"><a class="ghost" href="https://cargocollective.com/reductive">Earlier work at Reductive</a></div>
+
+      <div class="cell cell--blank"></div>
+      <a class="cell cell--card" href="projects/prevoty.html">
+        <img src="assets/prevoty/brand-bento.jpg" alt="" />
+        <span class="meta"><span class="pill">Brand</span><span class="pill">Product</span><span class="date">2012 to 2018</span></span>
+        <span class="heading-lg">Prevoty</span>
+        <span class="body">Identity and product design for a runtime security startup, through its acquisition by Imperva.</span>
+      </a>
+      <a class="cell cell--card" href="projects/leadership-university.html">
+        <img src="assets/leadu/app-dubrovnik.jpg" alt="" />
+        <span class="meta"><span class="pill">Brand</span><span class="pill">Web</span><span class="date">2019</span></span>
+        <span class="heading-lg">Leadership University</span>
+        <span class="body">Brand and marketing site for a leadership platform, built on aerial cinematography and large type.</span>
+      </a>
+      <div class="cell cell--blank"></div>
+
+      <div class="cell cell--blank"></div>
+      <a class="cell cell--card" href="projects/cloud-productions.html">
+        <img src="assets/boundaries/drcloud-home.png" alt="" />
+        <span class="meta"><span class="pill">Brand</span><span class="pill">Web</span><span class="date">2019</span></span>
+        <span class="heading-lg">Cloud Productions</span>
+        <span class="body">Brand and web for Dr. Henry Cloud's courses, coaching and community.</span>
+      </a>
+      <a class="cell cell--card" href="projects/c-qnc-synth.html">
+        <img src="assets/cqnc/synth-app.jpg" alt="" />
+        <span class="meta"><span class="pill">Instrument</span><span class="pill">Side project</span><span class="date">2025</span></span>
+        <span class="heading-lg">C-QNC Synth</span>
+        <span class="body">A browser polyphonic synthesizer: instrument racks, step sequencer, granular controls.</span>
+      </a>
+      <div class="cell cell--blank"></div>
+    </section>
+
+    <section id="about" class="sheet">
+      <div class="cell cell--label">
+        <h2 class="display-xl">About</h2>
+        <p class="body">Long Beach, California. Working with Seoul.</p>
       </div>
-    </section>
-
-    <section id="work" class="mosaic">
-      <a class="tile tile--1" href="projects/imperva.html">
-        <span class="tile__head"><span class="tile__title">Imperva</span><span class="pill">Product</span></span>
-        <img src="assets/imperva/attack-analytics-2024.png" alt="" /></a>
-      <a class="tile tile--2" href="projects/prevoty.html">
-        <span class="tile__head"><span class="tile__title">Prevoty</span><span class="pill">Brand</span></span>
-        <img src="assets/prevoty/brand-bento.jpg" alt="" /></a>
-      <a class="tile tile--3" href="projects/leadership-university.html">
-        <span class="tile__head"><span class="tile__title">Leadership University</span><span class="pill">Brand and web</span></span>
-        <img src="assets/leadu/app-dubrovnik.jpg" alt="" /></a>
-      <a class="tile tile--4" href="projects/cloud-productions.html">
-        <span class="tile__head"><span class="tile__title">Cloud Productions</span><span class="pill">Brand and web</span></span>
-        <img src="assets/boundaries/drcloud-home.png" alt="" /></a>
-      <a class="tile tile--5" href="projects/c-qnc-synth.html">
-        <span class="tile__head"><span class="tile__title">C-QNC Synth</span><span class="pill">Instrument</span></span>
-        <img src="assets/cqnc/synth-app.jpg" alt="" /></a>
-      <a class="tile tile--6" href="projects/bbc-worldwide.html">
-        <span class="tile__head"><span class="tile__title">BBC Worldwide</span><span class="pill">Brand and digital</span></span>
-        <img src="assets/bbc-wwd/01_dino_home.jpg" alt="" /></a>
-      <a class="tile tile--7" href="projects/gravity.html">
-        <span class="tile__head"><span class="tile__title">Gravity</span><span class="pill">Identity</span></span>
-        <img src="assets/gravity/gcom_Seal._1100.png" alt="" /></a>
-    </section>
-
-    <section id="about" class="spread">
-      <div class="spread__lede">
+      <div class="cell cell--wide">
         <p class="display">Creative Director at Rebellions, the Korean AI inference chip company, since July 2026.</p>
-        <p class="body">Before that, four years leading brand, product and web at Nudge Security, and ten at Imperva and Prevoty building the design system for a runtime security product. Earlier work at BBC Worldwide, Gravity and MySpace. Based in Long Beach, California.</p>
-        <p class="body meta"><a href="mailto:jm@reductive.co">jm@reductive.co</a><br/><a href="https://www.linkedin.com/in/mcnielj/">LinkedIn</a><br/><a href="https://cargocollective.com/reductive">Earlier work at Reductive</a></p>
+        <p class="body">Before that, four years leading brand, product and web at Nudge Security, and ten at Imperva and Prevoty building the design system for a runtime security product. Earlier work at BBC Worldwide, Gravity and MySpace.</p>
       </div>
-      <ol class="roles">
-        <li class="role"><span class="role__meta"><span class="pill">Creative director</span><span class="date">2026 to now</span></span><span class="role__co">Rebellions</span></li>
-        <li class="role"><span class="role__meta"><span class="pill">Creative director</span><span class="date">2022 to 2026</span></span><span class="role__co">Nudge Security</span></li>
-        <li class="role"><span class="role__meta"><span class="pill">Creative director</span><span class="date">2020 to 2022</span></span><span class="role__co">Imperva</span></li>
-        <li class="role"><span class="role__meta"><span class="pill">Sr. product designer</span><span class="date">2012 to 2020</span></span><span class="role__co">Imperva, formerly Prevoty</span></li>
-        <li class="role"><span class="role__meta"><span class="pill">Lead UX and product designer</span><span class="date">2012 to 2013</span></span><span class="role__co">Personagraph</span></li>
-        <li class="role"><span class="role__meta"><span class="pill">Lead UX designer</span><span class="date">2011 to 2012</span></span><span class="role__co">BBC Worldwide</span></li>
-        <li class="role"><span class="role__meta"><span class="pill">Director of design</span><span class="date">2010</span></span><span class="role__co">Gravity</span></li>
-        <li class="role"><span class="role__meta"><span class="pill">UX and UI designer</span><span class="date">2008 to 2009</span></span><span class="role__co">MySpace</span></li>
-        <li class="role"><span class="role__meta"><span class="pill">Designer, art director</span><span class="date">2002 to 2011</span></span><span class="role__co">isodsgn, Lathian Systems, Nichols International</span></li>
+      <div class="cell cell--action cell--stack">
+        <a class="ghost" href="mailto:jm@reductive.co">jm@reductive.co</a>
+        <a class="ghost" href="https://www.linkedin.com/in/mcnielj/">LinkedIn</a>
+      </div>
+    </section>
+
+    <section id="experience" class="sheet">
+      <div class="cell cell--label">
+        <h2 class="display-xl">Experience</h2>
+      </div>
+      <ol class="cell cell--span3 roles">
+        <li class="role"><span class="meta"><span class="pill">Creative director</span><span class="date">2026 to now</span></span><span class="heading-sm">Rebellions</span></li>
+        <li class="role"><span class="meta"><span class="pill">Creative director</span><span class="date">2022 to 2026</span></span><span class="heading-sm">Nudge Security</span></li>
+        <li class="role"><span class="meta"><span class="pill">Creative director</span><span class="date">2020 to 2022</span></span><span class="heading-sm">Imperva</span></li>
+        <li class="role"><span class="meta"><span class="pill">Sr. product designer</span><span class="date">2012 to 2020</span></span><span class="heading-sm">Imperva, formerly Prevoty</span></li>
+        <li class="role"><span class="meta"><span class="pill">Lead UX and product designer</span><span class="date">2012 to 2013</span></span><span class="heading-sm">Personagraph</span></li>
+        <li class="role"><span class="meta"><span class="pill">Lead UX designer</span><span class="date">2011 to 2012</span></span><span class="heading-sm">BBC Worldwide</span></li>
+        <li class="role"><span class="meta"><span class="pill">Director of design</span><span class="date">2010</span></span><span class="heading-sm">Gravity</span></li>
+        <li class="role"><span class="meta"><span class="pill">UX and UI designer</span><span class="date">2008 to 2009</span></span><span class="heading-sm">MySpace</span></li>
+        <li class="role"><span class="meta"><span class="pill">Designer, art director</span><span class="date">2002 to 2011</span></span><span class="heading-sm">isodsgn, Lathian Systems, Nichols International</span></li>
       </ol>
     </section>
 
-    <section class="quotes">
-      <figure class="quote"><blockquote class="heading">"Trend-setting graphic style and cutting-edge tastes. Truly pushing the envelope."</blockquote><figcaption><span class="pill">Google</span><span class="date">Daniel Vickery, design</span></figcaption></figure>
-      <figure class="quote"><blockquote class="heading">"A unique graphical style on the marketing sites, and neat, clean UIs on the web apps."</blockquote><figcaption><span class="pill">Oracle</span><span class="date">Michael Macmillan, senior architect</span></figcaption></figure>
-      <figure class="quote"><blockquote class="heading">"I've never met anyone with better taste. My number one pick for design and information architecture."</blockquote><figcaption><span class="pill">iv.ai</span><span class="date">F. Brito, CTO</span></figcaption></figure>
+    <section class="sheet">
+      <div class="cell cell--label">
+        <h2 class="display-xl">Said</h2>
+        <p class="body">About the work, by people who paid for it.</p>
+      </div>
+      <figure class="cell quote"><blockquote class="heading">"Trend-setting graphic style and cutting-edge tastes. Truly pushing the envelope."</blockquote><figcaption class="meta"><span class="pill">Google</span><span class="date">Daniel Vickery, design</span></figcaption></figure>
+      <figure class="cell quote"><blockquote class="heading">"A unique graphical style on the marketing sites, and neat, clean UIs on the web apps."</blockquote><figcaption class="meta"><span class="pill">Oracle</span><span class="date">Michael Macmillan, senior architect</span></figcaption></figure>
+      <figure class="cell quote"><blockquote class="heading">"I've never met anyone with better taste. My number one pick for design and information architecture."</blockquote><figcaption class="meta"><span class="pill">iv.ai</span><span class="date">F. Brito, CTO</span></figcaption></figure>
     </section>
   </main>
 
-  <footer id="contact" class="foot">
-    <div class="bar bar--corner bar--foot">
-      <a class="foot__mail" href="mailto:jm@reductive.co">jm@reductive.co</a>
-      <span class="foot__links"><a href="https://www.linkedin.com/in/mcnielj/">LinkedIn</a><a href="https://cargocollective.com/reductive">Reductive</a></span>
-    </div>
-    <p class="caption">&copy; 2026 Jamie McNiel. Long Beach, California.</p>
+  <footer id="contact" class="sheet foot">
+    <div class="cell"><a class="heading-lg" href="#about">About</a><p class="caption foot__low">&copy; 2026 Jamie McNiel<br/>Long Beach, California</p></div>
+    <div class="cell"><span class="heading-lg">Contact</span><p class="caption foot__low"><a href="https://www.linkedin.com/in/mcnielj/">LinkedIn</a><br/><a href="https://cargocollective.com/reductive">Reductive archive</a></p></div>
+    <div class="cell cell--span2"><a class="heading-lg foot__mail" href="mailto:jm@reductive.co">jm@reductive.co</a></div>
   </footer>
+
+  <script>
+    // Scroll-driven card train across the pinned hero.
+    (function () {
+      const hero = document.querySelector('.hero');
+      const train = document.getElementById('train');
+      if (!hero || !train) return;
+      const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const narrow = () => window.innerWidth < 900;
+      let ticking = false;
+      function update() {
+        ticking = false;
+        if (narrow()) { train.style.transform = ''; return; }
+        const rect = hero.getBoundingClientRect();
+        const runway = hero.offsetHeight - window.innerHeight;
+        let p = runway > 0 ? Math.min(1, Math.max(0, -rect.top / runway)) : 0;
+        if (reduce) p = 0.35;
+        const travel = train.scrollWidth + window.innerWidth * 0.15;
+        train.style.transform = 'translate3d(' + (-p * travel) + 'px,0,0)';
+      }
+      window.addEventListener('scroll', function () {
+        if (!ticking) { requestAnimationFrame(update); ticking = true; }
+      }, { passive: true });
+      window.addEventListener('resize', update, { passive: true });
+      update();
+    })();
+  </script>
 </body>
 </html>
