@@ -63,6 +63,8 @@ body.is-dark { background: var(--bg); color: var(--ink); }
   margin: 0;
 }
 
+.project__cta { display: inline-block; width: auto; margin-top: 32px; }
+
 .project__hero {
   grid-column: 1 / -1;
   margin: 0;

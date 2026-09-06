@@ -154,6 +154,20 @@ img { display: block; }
 .card--8  { left: 2820px; top: 8%;  width: 380px; aspect-ratio: 670 / 546; }        /* Gravity seal */
 .card--9  { left: 2960px; top: 42%; width: 560px; aspect-ratio: 3098 / 2180; z-index: 3; } /* Shader lab */
 
+/* Left-set hero variant: hed flush left on the rail edge, mesh pushed right and dimmed under the type, no peeking card */
+.hero--left .hero__hed {
+  left: var(--gutter); top: auto; bottom: 200px;
+  transform: none;
+  width: min(62vw, 900px);
+  text-align: left;
+  font-size: clamp(40px, 5vw, 72px);
+  mix-blend-mode: normal;
+  color: var(--ghost);
+}
+.hero--left .hero__mesh { object-position: 70% 50%; opacity: .5; }
+.hero--left .hero__scroll { left: auto; right: var(--gutter); transform: none; bottom: 200px; }
+.hero--left .train { left: 100vw; }
+
 /* Sheet: four columns, hairline seams, sections stacked */
 .sheet {
   display: grid;
