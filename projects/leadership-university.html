@@ -25,12 +25,21 @@
     <a class="project__back" href="../#work">Back to work</a>
 
     <header class="project__head">
-      <p class="project__kicker">Brand & Web · 2019</p>
+      <p class="project__kicker">Brand and web · 2019</p>
       <h1 class="project__title">Leadership University</h1>
       <p class="project__lede">
         A leadership-development platform that feels less like a course and more like prestige television. Twelve episodes, shot on location, built on how the brain actually learns.
       </p>
     </header>
+
+    <figure class="video-figure">
+      <video class="video-figure__player" data-autoplay-inview
+              muted loop playsinline preload="metadata"
+              poster="../assets/leadu/video/trailer-poster.jpg">
+        <source src="../assets/leadu/video/trailer-1080.mp4" type="video/mp4" />
+      </video>
+      <figcaption>The series trailer. Twelve cities, one episode each.</figcaption>
+    </figure>
 
     <figure class="device-figure">
       <div class="slider-shell" tabindex="0" data-slider role="region" aria-label="Leadership University screens">
@@ -133,5 +142,19 @@
     <span>© 2026 Jamie McNiel</span>
   </footer>
   <script src="carousel.js"></script>
+  <script>
+  /* Autoplay muted videos only while in view; pause when scrolled away. */
+  (function () {
+    const vids = document.querySelectorAll('video[data-autoplay-inview]');
+    if (!vids.length || !('IntersectionObserver' in window)) {
+      vids.forEach((v) => { v.play && v.play().catch(() => {}); });
+      return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { const v = e.target; if (e.isIntersecting) { v.play().catch(() => {}); } else { v.pause(); } });
+    }, { threshold: 0.35 });
+    vids.forEach((v) => io.observe(v));
+  })();
+  </script>
 </body>
 </html>
