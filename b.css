@@ -125,7 +125,7 @@ img { display: block; }
   position: absolute;
   top: 0; left: calc(100vw - 205px);
   height: 100%;
-  width: 5250px;
+  width: 5600px;
   z-index: 4;
   will-change: transform;
 }
@@ -142,18 +142,18 @@ img { display: block; }
 .card__pills { position: absolute; left: 12px; bottom: 12px; display: flex; gap: 6px; }
 
 .card__pills--top { top: 14px; bottom: auto; }
-/* Train cards, sized for a 640px stage. Widths fixed, heights follow the source aspect. */
-.card--10 { left: 1560px; top: 40%; width: 420px; aspect-ratio: 1312 / 816; }
-.card--0  { left: 600px;  top: 28%; width: 225px; aspect-ratio: 9 / 16; z-index: 2; }
-.card--1  { left: 870px;  top: 10%; width: 630px; aspect-ratio: 16 / 9; z-index: 3; }
-.card--2  { left: 0;      top: 8%;  width: 400px; aspect-ratio: 1; }
-.card--3  { left: 1980px; top: 8%;  width: 450px; aspect-ratio: 16 / 10; z-index: 2; }
-.card--4  { left: 2340px; top: 8%;  width: 600px; aspect-ratio: 16 / 9; }
-.card--5  { left: 2985px; top: 6%;  width: 480px; aspect-ratio: 3208 / 2008; z-index: 3; }
-.card--6  { left: 3390px; top: 44%; width: 510px; aspect-ratio: 3212 / 2012; }
-.card--7  { left: 3960px; top: 12%; width: 420px; aspect-ratio: 670 / 372; z-index: 2; }
-.card--8  { left: 4320px; top: 42%; width: 360px; aspect-ratio: 670 / 546; }
-.card--9  { left: 4740px; top: 14%; width: 480px; aspect-ratio: 3098 / 2180; z-index: 3; }
+/* Train cards. Widths fixed, heights follow the source aspect, none overlap, all sit below the hed */
+.card--2  { left: 0;      top: 30%; width: 400px; aspect-ratio: 1; }                /* Rebellions cover */
+.card--0  { left: 460px;  top: 44%; width: 225px; aspect-ratio: 9 / 16; }           /* Night on Earth */
+.card--1  { left: 745px;  top: 30%; width: 630px; aspect-ratio: 16 / 9; }           /* Nudge */
+.card--10 { left: 1435px; top: 50%; width: 420px; aspect-ratio: 1312 / 816; }       /* Imperva posters */
+.card--3  { left: 1915px; top: 32%; width: 450px; aspect-ratio: 16 / 10; }          /* Prevoty */
+.card--4  { left: 2425px; top: 48%; width: 600px; aspect-ratio: 16 / 9; }           /* Imperva wheel */
+.card--5  { left: 3085px; top: 30%; width: 480px; aspect-ratio: 3208 / 2008; }      /* Leadership University */
+.card--6  { left: 3625px; top: 50%; width: 510px; aspect-ratio: 3212 / 2012; }      /* C-QNC */
+.card--7  { left: 4195px; top: 32%; width: 420px; aspect-ratio: 670 / 372; }        /* BBC */
+.card--8  { left: 4675px; top: 46%; width: 360px; aspect-ratio: 670 / 546; }        /* Gravity */
+.card--9  { left: 5095px; top: 30%; width: 480px; aspect-ratio: 3098 / 2180; }      /* Shader lab */
 
 /* Left-set hero variant: hed flush left on the rail edge, mesh pushed right and dimmed under the type, no peeking card */
 .hero__pin { display: flex; flex-direction: column; }
@@ -165,7 +165,7 @@ img { display: block; }
   font-size: clamp(40px, 4.2vw, 60px);
   mix-blend-mode: normal;
   color: var(--ghost);
-  z-index: 2;
+  z-index: 5;
   padding: 0; line-height: 1.16;
 }
 .hero--left .hero__hed span {
@@ -206,7 +206,8 @@ img { display: block; }
 .cell--links { display: flex; flex-direction: column; gap: 4px; padding-top: 22px; }
 .cell--links .textlink { margin-top: 0; align-self: flex-start; }
 .cell--card { display: flex; flex-direction: column; gap: 6px; padding-top: 20px; padding-bottom: 32px; }
-.cell--card img { width: 100%; height: clamp(150px, 16vw, 240px); aspect-ratio: auto; object-fit: cover; margin-bottom: 6px; }
+.cell--card img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; margin-bottom: 6px; }
+.cell--card-wide img { aspect-ratio: 8 / 3; object-position: left center; }
 .cell--card:hover img { opacity: .82; }
 .cell--card .heading-lg { margin-top: 8px; order: 1; font-size: 27px; letter-spacing: -0.032em; }
 .cell--card .meta-line { order: 2; font-size: 16px; color: #b0b0b0; }
