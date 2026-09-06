@@ -132,6 +132,20 @@ body.is-dark { background: var(--bg); color: var(--ink); }
 .project__figure figcaption { margin-top: 9px; font-size: 14px; color: var(--ink-soft); font-style: normal; }
 .project__figure--wide { margin-left: 0; margin-right: 0; width: 100%; max-width: none; }
 
+/* Device carousel placed directly in the grid ( six pages ): full width, centered device */
+.project > .device-figure,
+.project > .video-figure {
+  grid-column: 1 / -1;
+  margin: 0 !important;
+  padding: 45px 0 32px;
+  width: 100% !important;
+  max-width: none !important;
+  border-top: 1px solid var(--rule);
+}
+.project > .device-figure .slider-shell { margin: 0 auto; }
+.project > .device-figure figcaption,
+.project > .video-figure figcaption { padding: 0 var(--gutter); }
+
 /* Shared device carousel and page mockups: caption and matte tweaks only */
 main.case-study .device-figure figcaption,
 main.case-study .video-figure figcaption { font-style: normal; text-align: left; font-size: 14px; color: var(--ink-soft); }
