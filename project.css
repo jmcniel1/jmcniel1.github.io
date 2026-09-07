@@ -251,18 +251,27 @@ main.case-study .video-figure figcaption { font-style: normal; text-align: left;
   width: 44px; height: 44px;
   border-radius: 0;
   background: var(--obsidian);
-  border: 1px solid var(--ghost);
+  border: 0;
   color: var(--ghost);
-  font-size: 16px;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
+}
+/* Drawn, not set. The font's arrow glyph sits above the optical center of its
+   box; an SVG whose ink is symmetric in its viewBox centers exactly. */
+.project.case-study .slider__btn svg {
+  display: block;
+  width: 20px; height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
 }
 .project.case-study .slider__btn--prev { left: var(--gutter); }
 .project.case-study .slider__btn--next { right: var(--gutter); }
 .project.case-study .slider__btn:hover {
   background: var(--ghost);
   color: var(--obsidian);
-  border-color: var(--ghost);
   transform: translateY(-50%);
 }
 
