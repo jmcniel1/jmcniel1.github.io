@@ -74,7 +74,7 @@ img { display: block; }
   padding: 14px var(--gutter);
 }
 .bar--top { position: sticky; top: 0; z-index: 20; background: var(--ash-bg); color: var(--obsidian); border-bottom: 1px solid var(--line); height: var(--bar); }
-.bar__name { font-weight: 500; font-size: 27px; letter-spacing: -1px; line-height: 1; }
+.bar__name { font-weight: 500; font-size: 30px; letter-spacing: -1px; line-height: 1; }
 /* Slow color cycle on the name, the one detail kept from the old site */
 @keyframes name-cycle {
   0%    { color: #b8dfee; }
@@ -90,7 +90,7 @@ img { display: block; }
 .name { color: inherit; }   /* the cycle lives on the project pages, see project.css */
 .name--offset { }
 @media (prefers-reduced-motion: reduce) { .name { animation: none; } }
-.bar__nav { display: flex; gap: 28px; font-weight: 500; font-size: 18px; letter-spacing: -1px; }
+.bar__nav { display: flex; gap: 28px; font-weight: 500; font-size: 30px; letter-spacing: -1px; }
 .bar__nav a:hover { color: var(--ghost); }
 .bar--corner {
   position: absolute; left: 0; right: 0; bottom: 0;
@@ -163,7 +163,8 @@ img { display: block; }
 /* Left-set hero. The hed sits flush left over the full bleed mesh and blends on
    difference, so it inverts to dark across the bright passages and stays white
    over black. Jamie's call over the critic: it is character, and it reads. */
-.hero__pin { display: flex; flex-direction: column; background: var(--ash-bg); }
+.hero, .hero__pin { background: var(--ash-bg); }
+.hero__pin { display: flex; flex-direction: column; }
 .hero__stage { position: relative; flex: 1 1 auto; min-height: 0; overflow: hidden; background: var(--ash-bg); }
 
 .hero__caption { position: absolute; right: var(--gutter); bottom: 18px; font-size: 16px; color: var(--ghost); z-index: 6; }
@@ -230,6 +231,12 @@ img { display: block; }
   z-index: 5;
 }
 
+.cell {
+  min-width: 0;
+  border-right: 1px solid var(--line);
+  padding: 0;
+  min-height: 200px;
+}
 .sheet--full { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .cell--head {
   grid-column: 1 / -1;
@@ -237,12 +244,6 @@ img { display: block; }
   padding: 45px var(--gutter) 40px;
 }
 .cell--head .body { margin-top: 14px; max-width: 30em; color: var(--ink-soft); }
-.cell {
-  min-width: 0;
-  border-right: 1px solid var(--line);
-  padding: var(--gutter);
-  min-height: 200px;
-}
 .sheet::after { content: ""; position: absolute; top: 0; bottom: 0; right: 0; width: 1px; background: var(--ash-bg); }
 .cell--label { padding: 45px var(--gutter) 54px; }
 .cell--label .display-xl { margin-left: -2px; }
@@ -250,7 +251,7 @@ img { display: block; }
 .textlink { display: inline-block; margin-top: 28px; font-size: 18px; border-bottom: 1px solid var(--obsidian); padding-bottom: 2px; }
 .textlink:hover { color: var(--ghost); border-color: var(--ghost); }
 .textlink--foot { margin-top: 0; font-size: 15px; }
-.cell--links { display: flex; flex-direction: column; gap: 4px; padding-top: 22px; }
+.cell--links { display: flex; flex-direction: column; gap: 4px; padding: 22px var(--gutter) 45px; }
 .cell--links .textlink { margin-top: 0; align-self: flex-start; }
 .cell--card {
   display: flex;
@@ -281,7 +282,7 @@ img { display: block; }
 .cell--card-full { grid-column: 2 / -1; }
 .cell--card-full img { aspect-ratio: 21 / 9; object-position: center 62%; }
 
-.cell--action { display: flex; align-items: flex-start; justify-content: stretch; padding-top: 18px; }
+.cell--action { display: flex; align-items: flex-start; justify-content: stretch; padding: 18px var(--gutter) 45px; }
 .cell--action .ghost { width: 100%; }
 .cell--stack { flex-direction: column; gap: 9px; }
 .cell--wide { grid-column: span 2; padding: 45px var(--gutter) 72px; }
