@@ -24,21 +24,21 @@
     <section class="hero">
       <div class="hero__pin">
         <div class="hero__stage">
-        <img class="hero__mesh" src="assets/shader/mesh.png" alt="" />
+        <video class="hero__mesh" data-src="assets/shader/mesh-bg.mp4" poster="assets/shader/mesh-poster.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
         <h1 class="hero__hed">Brand, product and web design for security software, AI silicon and music</h1>
         <a class="hero__caption" href="https://shader-lab-five.vercel.app">Shader lab, WebGL, 2026</a>
         <div class="train" id="train">
           <a class="card card--2" href="projects/rebellions.html"><img src="assets/rebellions/carousel-1-cover.jpg" alt="" /><span class="card__pills"><span class="pill">Brand</span><span class="pill">Social</span></span></a>
-          <a class="card card--0" href="projects/music.html"><img src="assets/music/hb-gradient.png" alt="" /><span class="card__pills"><span class="pill">Identity</span><span class="pill">Posters</span></span></a>
-          <a class="card card--1" href="projects/nudge-security.html"><img src="assets/nudge/work-bento-2026.png" alt="" /><span class="card__pills"><span class="pill">Brand</span><span class="pill">Product</span></span></a>
+          <a class="card card--0" href="projects/music.html"><img src="assets/music/hb-gradient.jpg" alt="" /><span class="card__pills"><span class="pill">Identity</span><span class="pill">Posters</span></span></a>
+          <a class="card card--1" href="projects/nudge-security.html"><img src="assets/nudge/work-bento-2026.jpg" alt="" /><span class="card__pills"><span class="pill">Brand</span><span class="pill">Product</span></span></a>
           <a class="card card--10" href="projects/imperva.html"><img src="assets/imperva/posters/poster-series.jpg" alt="" /><span class="card__pills card__pills--top"><span class="pill">Brand</span><span class="pill">Print</span></span></a>
           <a class="card card--3" href="projects/prevoty.html"><img src="assets/prevoty/brand-bento.jpg" alt="" /><span class="card__title">Prevoty</span><span class="card__pills"><span class="pill">Brand</span></span></a>
           <a class="card card--4" href="projects/imperva.html"><img src="assets/imperva/video/overview-logo.jpg" alt="" /><span class="card__title">Imperva</span><span class="card__pills"><span class="pill">Product</span><span class="pill">Data</span></span></a>
           <a class="card card--5" href="projects/leadership-university.html"><img src="assets/leadu/app-dubrovnik.jpg" alt="" /><span class="card__title">Leadership University</span><span class="card__pills"><span class="pill">Web</span></span></a>
           <a class="card card--6" href="projects/c-qnc-synth.html"><img src="assets/cqnc/synth-app.jpg" alt="" /><span class="card__title">C-QNC Synth</span><span class="card__pills"><span class="pill">Instrument</span></span></a>
           <a class="card card--7" href="projects/bbc-worldwide.html"><img src="assets/bbc-wwd/01_dino_home.jpg" alt="" /><span class="card__pills card__pills--top"><span class="pill">BBC</span><span class="pill">Digital</span></span></a>
-          <a class="card card--9" href="https://shader-lab-five.vercel.app"><img src="assets/shader/dotfield.png" alt="" /><span class="card__title">Shader lab</span><span class="card__pills"><span class="pill">Generative</span></span></a>
-          <a class="card card--8" href="projects/gravity.html"><img src="assets/gravity/gcom_Seal._1100.png" alt="" /><span class="card__title">Gravity</span><span class="card__pills"><span class="pill">Identity</span></span></a>
+          <a class="card card--9" href="https://shader-lab-five.vercel.app"><img src="assets/shader/dotfield.jpg" alt="" /><span class="card__title">Shader lab</span><span class="card__pills"><span class="pill">Generative</span></span></a>
+          <a class="card card--8" href="projects/gravity.html"><img src="assets/gravity/gcom_seal.jpg" alt="" /><span class="card__title">Gravity</span><span class="card__pills"><span class="pill">Identity</span></span></a>
         </div>
         </div>
       </div>
@@ -51,7 +51,7 @@
         <p class="body">Eight projects, 2010 to 2026.</p>
       </div>
       <a class="cell cell--card cell--card-wide" href="projects/rebellions.html">
-        <img src="assets/rebellions/collage-wide.png" alt="" />
+        <img src="assets/rebellions/collage-wide.jpg" alt="" />
         <span class="meta-line">Brand, Social, 2026 to now</span>
         <span class="heading-lg">Rebellions</span>
         <span class="body">The social system and the AI Infra Summit carousel, first public work under a new direction.</span>
@@ -64,7 +64,7 @@
       </a>
       <div class="cell cell--blank"></div>
       <a class="cell cell--card" href="projects/music.html">
-        <img src="assets/music/hb-gradient.png" alt="" />
+        <img src="assets/music/hb-gradient.jpg" alt="" />
         <span class="meta-line">Identity, Posters, 2023 to 2025</span>
         <span class="heading-lg">Music</span>
         <span class="body">Logomarks, tour posters and monthly flyers for five acts.</span>
@@ -159,7 +159,23 @@
       const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
       const narrow = () => window.innerWidth < 900;
       let ticking = false;
-      // Each card carries its own --speed and --drift, so the field separates as
+      // The hero loop is a 2.4MB file behind a poster frame. Fetch it only on the
+    // widths that show it, and never against a reduced motion preference.
+    (function () {
+      const v = document.querySelector('video.hero__mesh');
+      if (!v) return;
+      const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce || window.innerWidth < 900) return;
+      const start = function () {
+        v.src = v.dataset.src;
+        v.load();
+        v.play().catch(function () {});
+      };
+      if (document.readyState === 'complete') start();
+      else window.addEventListener('load', start, { once: true });
+    })();
+
+    // Each card carries its own --speed and --drift, so the field separates as
       // it crosses: nearer cards run a little ahead, and everything rises or
       // settles a touch. Read once, not per frame.
       let layers = [];
