@@ -277,7 +277,16 @@ img { display: block; }
   .card .pill { font-size: 14px; padding: 5px 6px; }
   .card__title br { display: none; }
   .card__pills { position: static; order: 3; padding: 12px 0 0; }
-  .card--2, .card--7, .card--8 { display: none; }
+  /* Mobile train: one Imperva, no BBC or Gravity, and Jamie's running order */
+  .card--10, .card--7, .card--8 { display: none; }
+  .card--2 { order: 1; }   /* Rebellions */
+  .card--1 { order: 2; }   /* Nudge */
+  .card--0 { order: 3; }   /* Music */
+  .card--4 { order: 4; }   /* Imperva */
+  .card--3 { order: 5; }   /* Prevoty */
+  .card--5 { order: 6; }   /* Leadership University */
+  .card--9 { order: 7; }   /* Shader lab */
+  .card--6 { order: 8; }   /* C-QNC Synth */
   .train { gap: 36px; }
   .bar--corner { position: relative; }
   .sheet { grid-template-columns: 1fr 1fr; }
