@@ -71,7 +71,7 @@ img { display: block; }
   align-items: center;
   padding: 14px var(--gutter);
 }
-.bar--top { position: sticky; top: 0; z-index: 20; background: var(--obsidian); border-bottom: 1px solid var(--ghost); height: var(--bar); }
+.bar--top { position: sticky; top: 0; z-index: 20; background: var(--ash-bg); color: var(--obsidian); border-bottom: 1px solid var(--line); height: var(--bar); }
 .bar__name { font-size: 27px; letter-spacing: -0.032em; line-height: 1; }
 /* Slow color cycle on the name, the one detail kept from the old site */
 @keyframes name-cycle {
@@ -89,7 +89,7 @@ img { display: block; }
 .name--offset { animation-delay: -16s; }
 @media (prefers-reduced-motion: reduce) { .name { animation: none; } }
 .bar__nav { display: flex; gap: 28px; font-size: 18px; letter-spacing: -1px; }
-.bar__nav a:hover, .bar--corner a:hover { color: var(--ash); }
+.bar__nav a:hover { color: var(--ghost); }
 .bar--corner {
   position: absolute; left: 0; right: 0; bottom: 0;
   border-top: 1px solid var(--ghost);
@@ -117,7 +117,7 @@ img { display: block; }
   text-align: center;
   font-weight: 500;
   font-size: clamp(40px, 5.35vw, 77px);
-  line-height: 0.9;
+  line-height: 1;
   letter-spacing: -0.056em;
   color: var(--ghost);
   mix-blend-mode: difference;
@@ -151,13 +151,11 @@ img { display: block; }
 .card--2  { left: 0;      top: 12%; width: 480px; aspect-ratio: 1; --speed: 1.14; --drift: 14px; z-index: 3; }                /* Rebellions cover */
 .card--0  { left: 827px;  top: 34%; width: 600px; aspect-ratio: 1800 / 1131; --speed: 1.14; --drift: -26px; z-index: 3; }      /* Harvard Bass */
 .card--1  { left: 1773px;  top: 10%; width: 720px; aspect-ratio: 16 / 9; --speed: 1.14; --drift: -18px; z-index: 3; }           /* Nudge */
-.card--10 { left: 0; top: 58%; width: 520px; aspect-ratio: 1312 / 816; --speed: 0.86; --drift: 22px; z-index: 1; }       /* Imperva posters */
 .card--3  { left: 0; top: 22%; width: 540px; aspect-ratio: 16 / 10; --speed: 1.0; --drift: -20px; z-index: 2; }          /* Prevoty */
-.card--4  { left: 773px; top: 52%; width: 680px; aspect-ratio: 16 / 9; --speed: 1.0; --drift: 18px; z-index: 2; }           /* Imperva wheel */
+.card--4  { left: 1140px; top: 52%; width: 680px; aspect-ratio: 16 / 9; --speed: 1.0; --drift: 18px; z-index: 2; }           /* Imperva wheel */
 .card--5  { left: 2840px; top: 46%; width: 580px; aspect-ratio: 3208 / 2008; --speed: 1.14; --drift: -16px; z-index: 3; }      /* Leadership University */
-.card--6  { left: 1020px; top: 28%; width: 600px; aspect-ratio: 3212 / 2012; --speed: 0.86; --drift: 24px; z-index: 1; }      /* C-QNC */
-.card--7  { left: 1687px; top: 16%; width: 500px; aspect-ratio: 670 / 372; --speed: 1.0; --drift: -22px; z-index: 2; }        /* BBC */
-.card--8  { left: 2120px; top: 50%; width: 460px; aspect-ratio: 670 / 546; --speed: 0.86; --drift: 20px; z-index: 1; }        /* Gravity */
+.card--6  { left: 0; top: 28%; width: 600px; aspect-ratio: 3212 / 2012; --speed: 0.86; --drift: 24px; z-index: 1; }      /* C-QNC */
+.card--7  { left: 2080px; top: 16%; width: 500px; aspect-ratio: 670 / 372; --speed: 0.86; --drift: -22px; z-index: 1; }        /* BBC */
 .card--9  { left: 2420px; top: 40%; width: 580px; aspect-ratio: 3098 / 2180; --speed: 1.0; --drift: -18px; z-index: 2; }      /* Shader lab */
 
 /* Left-set hero. The hed sits flush left over the full bleed mesh and blends on
@@ -280,7 +278,7 @@ img { display: block; }
   .card__title br { display: none; }
   .card__pills { position: static; order: 3; padding: 12px 0 0; }
   /* Mobile train: one Imperva, no BBC or Gravity, and Jamie's running order */
-  .card--10, .card--7, .card--8 { display: none; }
+  .card--7 { display: none; }   /* BBC, desktop only */
   .card--2 { order: 1; }   /* Rebellions */
   .card--1 { order: 2; }   /* Nudge */
   .card--0 { order: 3; }   /* Music */
