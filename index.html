@@ -44,22 +44,25 @@
 
     <!-- Four column hairline sheet -->
     <section id="work" class="sheet">
+
       <div class="cell cell--label">
         <h2 class="display-xl">Work</h2>
         <p class="body">Eight projects, 2010 to 2026.</p>
       </div>
-      <a class="cell cell--card cell--card-wide" href="projects/rebellions.html">
-        <img src="assets/rebellions/collage-wide.jpg" alt="" />
-        <span class="meta-line">Brand, Social, 2026 to now</span>
-        <span class="heading-lg">Rebellions</span>
-        <span class="body">The social system and the AI Infra Summit carousel, first public work under a new direction.</span>
-      </a>
-      <a class="cell cell--card" href="projects/nudge-security.html">
-        <img src="assets/nudge/brand-guidelines.png" alt="" />
-        <span class="meta-line">Brand, Product, 2022 to 2026</span>
-        <span class="heading-lg">Nudge Security</span>
-        <span class="body">Four years across brand, product and web, from a prototype to a shipped design system.</span>
-      </a>
+      <div class="cell cell--feature">
+        <a class="feature" href="projects/rebellions.html">
+          <img src="assets/rebellions/feature-16x9.jpg" alt="" />
+          <span class="feature__meta"><span class="pill">Brand</span><span class="pill">Social</span><span class="date">2026 to now</span></span>
+          <span class="feature__title">Rebellions</span>
+          <span class="body">The social system and the AI Infra Summit carousel, first public work under a new direction.</span>
+        </a>
+        <a class="feature" href="projects/nudge-security.html">
+          <img src="assets/nudge/work-bento-2026.jpg" alt="" />
+          <span class="feature__meta"><span class="pill">Brand</span><span class="pill">Product</span><span class="date">2022 to 2026</span></span>
+          <span class="feature__title">Nudge Security</span>
+          <span class="body">Four years across brand, product and web, from a prototype to a shipped design system.</span>
+        </a>
+      </div>
       <div class="cell cell--blank"></div>
       <a class="cell cell--card" href="projects/music.html">
         <img src="assets/music/hb-gradient.jpg" alt="" />
@@ -74,7 +77,7 @@
         <span class="body">A product UI system that grew into the brand, the site, the events and the offices.</span>
       </a>
       <a class="cell cell--card" href="projects/prevoty.html">
-        <img src="assets/prevoty/web-hero.jpg" alt="" />
+        <img src="assets/prevoty/brand-bento.jpg" alt="" />
         <span class="meta-line">Brand, Product, 2012 to 2018</span>
         <span class="heading-lg">Prevoty</span>
         <span class="body">Identity and product for a runtime security startup, through its acquisition.</span>
@@ -98,7 +101,7 @@
         <span class="heading-lg">C-QNC Synth</span>
         <span class="body">A polyphonic synth and groovebox that runs in a browser tab.</span>
       </a>
-    </section>
+        </section>
 
     <section id="about" class="sheet">
       <div class="cell cell--label">
@@ -157,7 +160,29 @@
       const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
       const narrow = () => window.innerWidth < 900;
       let ticking = false;
-      // The hero loop is a 2.4MB file behind a poster frame. Fetch it only on the
+      // The second featured card lags as the pair scrolls through, which is the
+    // offset the reference's editorial block reads with.
+    (function () {
+      const lag = document.querySelector('.cell--feature .feature + .feature');
+      if (!lag) return;
+      if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      let ticking = false;
+      function update() {
+        ticking = false;
+        if (window.innerWidth < 900) { lag.style.transform = ''; return; }
+        const r = lag.parentElement.getBoundingClientRect();
+        const span = window.innerHeight + r.height;
+        const p = Math.max(0, Math.min(1, (window.innerHeight - r.top) / span));
+        lag.style.transform = 'translate3d(0,' + ((p * 2 - 1) * -70).toFixed(1) + 'px,0)';
+      }
+      window.addEventListener('scroll', function () {
+        if (!ticking) { requestAnimationFrame(update); ticking = true; }
+      }, { passive: true });
+      window.addEventListener('resize', update, { passive: true });
+      update();
+    })();
+
+    // The hero loop is a 2.4MB file behind a poster frame. Fetch it only on the
     // widths that show it, and never against a reduced motion preference.
     (function () {
       const v = document.querySelector('video.hero__mesh');

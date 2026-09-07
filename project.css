@@ -328,3 +328,9 @@ main.case-study .video-figure figcaption { font-style: normal; text-align: left;
   font-size: 14px;
   color: var(--ink-soft);
 }
+
+
+/* The color cycle on the name stays here, on the project pages only. */
+.bar__name .name { animation: name-cycle 32s linear infinite; will-change: color; }
+.bar__name .name--offset { animation-delay: -16s; }
+@media (prefers-reduced-motion: reduce) { .bar__name .name { animation: none; } }

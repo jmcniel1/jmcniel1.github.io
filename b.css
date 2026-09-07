@@ -72,7 +72,7 @@ img { display: block; }
   padding: 14px var(--gutter);
 }
 .bar--top { position: sticky; top: 0; z-index: 20; background: var(--ash-bg); color: var(--obsidian); border-bottom: 1px solid var(--line); height: var(--bar); }
-.bar__name { font-size: 27px; letter-spacing: -0.032em; line-height: 1; }
+.bar__name { font-weight: 500; font-size: 27px; letter-spacing: -1px; line-height: 1; }
 /* Slow color cycle on the name, the one detail kept from the old site */
 @keyframes name-cycle {
   0%    { color: #b8dfee; }
@@ -85,10 +85,10 @@ img { display: block; }
   87.5% { color: #9c4ba3; }
   100%  { color: #b8dfee; }
 }
-.name { animation: name-cycle 32s linear infinite; will-change: color; }
-.name--offset { animation-delay: -16s; }
+.name { color: inherit; }   /* the cycle lives on the project pages, see project.css */
+.name--offset { }
 @media (prefers-reduced-motion: reduce) { .name { animation: none; } }
-.bar__nav { display: flex; gap: 28px; font-size: 18px; letter-spacing: -1px; }
+.bar__nav { display: flex; gap: 28px; font-weight: 500; font-size: 18px; letter-spacing: -1px; }
 .bar__nav a:hover { color: var(--ghost); }
 .bar--corner {
   position: absolute; left: 0; right: 0; bottom: 0;
@@ -167,6 +167,38 @@ img { display: block; }
 .hero__caption { position: absolute; right: var(--gutter); bottom: 18px; font-size: 16px; color: var(--ghost); z-index: 6; }
 .hero__caption:hover { color: var(--ghost); }
 .hero .train { left: 100vw; }
+
+/* Featured two-up, built on the reference's editorial block: image, a tag row,
+   a large title, and a second column that sits lower and lags as it scrolls in. */
+.cell--feature {
+  grid-column: 2 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  padding: 0;
+  border-right: 0;
+  align-items: start;
+}
+.feature {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 45px;
+  border-right: 1px solid var(--line);
+  will-change: transform;
+}
+.feature:last-child { border-right: 0; }
+.feature img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
+.feature:hover img { opacity: .88; }
+.feature__meta { display: flex; align-items: center; gap: 9px; padding: 18px var(--gutter) 0; }
+.feature__title {
+  font-weight: 500;
+  font-size: 45px;
+  line-height: 0.95;
+  letter-spacing: -1px;
+  padding: 16px var(--gutter) 0;
+}
+.feature .body { padding: 12px var(--gutter) 0; color: var(--ink-soft); max-width: 30em; }
+.feature + .feature { margin-top: 140px; }
 
 /* Work rows: continuous horizontal rules */
 #work .cell { border-bottom: 1px solid var(--line); }
@@ -296,6 +328,10 @@ img { display: block; }
   .cell:nth-child(2n) { border-right: 0; }
   .cell--label { grid-column: span 2; border-right: 0; min-height: 0; }
   .cell--wide, .cell--span3, .cell--span2 { grid-column: span 2; border-right: 0; }
+  .cell--feature { grid-column: span 2; grid-template-columns: 1fr; }
+  .feature { border-right: 0; border-bottom: 1px solid var(--line); }
+  .feature + .feature { margin-top: 0; transform: none !important; }
+  .feature__title { font-size: 32px; }
   .role { grid-template-columns: 1fr 1fr; gap: 6px 14px; }
   .role .heading-sm { grid-column: 1 / -1; }
   .role__date { text-align: left; }
@@ -303,6 +339,6 @@ img { display: block; }
 @media (max-width: 560px) {
   .sheet { grid-template-columns: 1fr; }
   .cell, .cell:nth-child(4n) { border-right: 0; border-bottom: 1px solid var(--line); }
-  .cell--label, .cell--wide, .cell--span3, .cell--span2, .cell--card-wide, .cell--card-full { grid-column: span 1; }
+  .cell--label, .cell--wide, .cell--span3, .cell--span2, .cell--card-wide, .cell--card-full, .cell--feature { grid-column: span 1; }
   .bar__nav { gap: 16px; font-size: 16px; }
 }
