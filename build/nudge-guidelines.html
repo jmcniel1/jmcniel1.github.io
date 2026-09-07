@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* Nudge Security brand guidelines spread, rebuilt flat at 3200x1800.
+     Palette hex from the nudge-brand-guidelines skill, cross checked against
+     the swatches sampled out of the original photograph. */
+  :root {
+    --iris:     #794AFF;
+    --aqua:     #00B8AA;
+    --dawn:     #F04438;
+    --midnight: #010139;
+    --light:    #F5F5F7;
+    --midgray:  #A3A3B8;
+    --lightgray:#D7D7E0;
+    --rule:     #E4E4EA;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    width: 3200px; height: 1800px;
+    background: #ffffff;
+    font-family: "Inter", system-ui, sans-serif;
+    font-weight: 400;
+    color: var(--midnight);
+    -webkit-font-smoothing: antialiased;
+  }
+  .spread { display: grid; grid-template-columns: 1fr 1fr; height: 100%; }
+  .page { padding: 130px 120px 90px; position: relative; display: flex; flex-direction: column; }
+  .page + .page { border-left: 2px solid var(--rule); }
+
+  .kicker { font-size: 26px; letter-spacing: 0.02em; color: var(--midgray); }
+  h2 { font-size: 74px; font-weight: 400; letter-spacing: -0.03em; line-height: 1; margin: 34px 0 26px; }
+  .lede { font-size: 30px; line-height: 1.5; color: #4a4a63; max-width: 30em; }
+  .folio { position: absolute; left: 120px; bottom: 70px; font-size: 24px; color: var(--midgray); }
+  .folio--r { left: auto; right: 120px; }
+
+  /* Left page: the two primary variants */
+  .panels { margin-top: 92px; display: flex; flex-direction: column; gap: 54px; }
+  .panel { border-radius: 34px; height: 476px; display: grid; place-items: center; }
+  .panel--dark  { background: var(--midnight); }
+  .panel--light { background: var(--light); }
+  .panel img { width: 700px; height: auto; display: block; }
+  .cap { margin-top: 20px; font-size: 25px; color: var(--midgray); }
+
+  /* Right page: the palette */
+  .grid { margin-top: 92px; display: grid; grid-template-columns: 1fr 1fr; gap: 44px; }
+  .sw { border-radius: 30px; overflow: hidden; }
+  .sw__block { height: 352px; padding: 30px 34px; display: flex; flex-direction: column; justify-content: space-between; }
+  .sw__name { font-size: 38px; letter-spacing: -0.02em; }
+  .sw__hex  { font-size: 25px; opacity: .78; }
+  .sw__tints { display: flex; height: 92px; }
+  .sw__tints span { flex: 1; }
+  .on-dark { color: #ffffff; }
+
+  .neutrals { margin-top: 52px; }
+  .neutrals h3 { font-size: 30px; font-weight: 400; letter-spacing: -0.02em; margin-bottom: 22px; }
+  .nrow { display: flex; gap: 24px; }
+  .n { flex: 1; }
+  .n__chip { height: 124px; border-radius: 20px; border: 2px solid var(--rule); }
+  .n__label { margin-top: 16px; font-size: 23px; color: var(--midgray); }
+</style>
+</head>
+<body>
+  <div class="spread">
+    <section class="page">
+      <p class="kicker">Nudge Security, brand guidelines</p>
+      <h2>Primary variants</h2>
+      <p class="lede">The wordmark runs in two variants. The gradient stays on the n in both. The remaining letters switch between white and Midnight so the mark holds its contrast on either ground.</p>
+      <div class="panels">
+        <div>
+          <div class="panel panel--dark"><img src="../assets/logos/nudge-white.png" alt="" /></div>
+          <p class="cap">On Midnight</p>
+        </div>
+        <div>
+          <div class="panel panel--light"><img src="../assets/logos/nudge.png" alt="" /></div>
+          <p class="cap">On Light</p>
+        </div>
+      </div>
+      <span class="folio">04</span>
+    </section>
+
+    <section class="page">
+      <p class="kicker">Nudge Security, brand guidelines</p>
+      <h2>Color palette</h2>
+      <p class="lede">Four brand colors and a neutral ramp. Iris leads, Aqua and Dawn support it, and Midnight carries type and dark grounds.</p>
+      <div class="grid">
+        <div class="sw">
+          <div class="sw__block on-dark" style="background:var(--iris)">
+            <span class="sw__name">Iris</span><span class="sw__hex">#794AFF</span>
+          </div>
+          <div class="sw__tints">
+            <span style="background:color-mix(in srgb, var(--iris) 80%, #fff)"></span>
+            <span style="background:color-mix(in srgb, var(--iris) 60%, #fff)"></span>
+            <span style="background:color-mix(in srgb, var(--iris) 40%, #fff)"></span>
+            <span style="background:color-mix(in srgb, var(--iris) 20%, #fff)"></span>
+            <span style="background:color-mix(in srgb, var(--iris) 10%, #fff)"></span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="sw__block on-dark" style="background:var(--aqua)">
+            <span class="sw__name">Aqua</span><span class="sw__hex">#00B8AA</span>
+          </div>
+          <div class="sw__tints">
+            <span style="background:color-mix(in srgb, var(--aqua) 80%, #fff)"></span>
+            <span style="background:color-mix(in srgb, var(--aqua) 60%, #fff)"></span>
+            <span style="background:color-mix(in srgb, var(--aqua) 40%, #fff)"></span>
+            <span style="background:color-mix(in srgb, var(--aqua) 20%, #fff)"></span>
+            <span style="background:color-mix(in srgb, var(--aqua) 10%, #fff)"></span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="sw__block on-dark" style="background:var(--dawn)">
+            <span class="sw__name">Dawn</span><span class="sw__hex">#F04438</span>
+          </div>
+          <div class="sw__tints">
+            <span style="background:color-mix(in srgb, var(--dawn) 80%, #fff)"></span>
+            <span style="background:color-mix(in srgb, var(--dawn) 60%, #fff)"></span>
+            <span style="background:color-mix(in srgb, var(--dawn) 40%, #fff)"></span>
+            <span style="background:color-mix(in srgb, var(--dawn) 20%, #fff)"></span>
+            <span style="background:color-mix(in srgb, var(--dawn) 10%, #fff)"></span>
+          </div>
+        </div>
+        <div class="sw">
+          <div class="sw__block on-dark" style="background:var(--midnight)">
+            <span class="sw__name">Midnight</span><span class="sw__hex">#010139</span>
+          </div>
+          <div class="sw__tints">
+            <span style="background:color-mix(in srgb, var(--midnight) 80%, #fff)"></span>
+            <span style="background:color-mix(in srgb, var(--midnight) 60%, #fff)"></span>
+            <span style="background:color-mix(in srgb, var(--midnight) 40%, #fff)"></span>
+            <span style="background:color-mix(in srgb, var(--midnight) 20%, #fff)"></span>
+            <span style="background:color-mix(in srgb, var(--midnight) 10%, #fff)"></span>
+          </div>
+        </div>
+      </div>
+      <div class="neutrals">
+        <h3>Neutrals</h3>
+        <div class="nrow">
+          <div class="n"><div class="n__chip" style="background:var(--light)"></div><p class="n__label">Light #F5F5F7</p></div>
+          <div class="n"><div class="n__chip" style="background:var(--lightgray)"></div><p class="n__label">Light gray #D7D7E0</p></div>
+          <div class="n"><div class="n__chip" style="background:var(--midgray)"></div><p class="n__label">Mid gray #A3A3B8</p></div>
+        </div>
+      </div>
+      <span class="folio folio--r">05</span>
+    </section>
+  </div>
+</body>
+</html>
