@@ -23,7 +23,7 @@ body {
   background: var(--obsidian);
   color: var(--ghost);
   font-family: var(--font);
-  font-weight: 400;
+  font-weight: 500;
   font-size: 16px;
   line-height: 1.43;
   -webkit-font-smoothing: antialiased;
@@ -154,7 +154,7 @@ img { display: block; }
 .card--0  { left: 827px;  top: 61%; width: 520px; aspect-ratio: 1800 / 1131; --speed: 1.14; --drift: -26px; z-index: 3; }      /* Harvard Bass */
 .card--1  { left: 1773px;  top: 10%; width: 720px; aspect-ratio: 16 / 9; --speed: 1.14; --drift: -18px; z-index: 3; }           /* Nudge */
 .card--3  { left: 0; top: 55%; width: 540px; aspect-ratio: 16 / 10; --speed: 1.0; --drift: -20px; z-index: 2; }          /* Prevoty */
-.card--4  { left: 1140px; top: 39%; width: 680px; aspect-ratio: 16 / 9; --speed: 1.28; --drift: 18px; z-index: 2; }           /* Imperva wheel */
+.card--4  { left: 1470px; top: 39%; width: 680px; aspect-ratio: 16 / 9; --speed: 1.28; --drift: 18px; z-index: 2; }           /* Imperva wheel */
 .card--5  { left: 2340px; top: 59%; width: 550px; aspect-ratio: 3208 / 2008; --speed: 1.14; --drift: -16px; z-index: 3; }      /* Leadership University */
 .card--6  { left: 0; top: 5%; width: 600px; aspect-ratio: 3212 / 2012; --speed: 0.86; --drift: 24px; z-index: 1; }      /* C-QNC */
 .card--7  { left: 2080px; top: 16%; width: 500px; aspect-ratio: 670 / 372; --speed: 0.86; --drift: -22px; z-index: 1; }        /* BBC */
@@ -184,10 +184,10 @@ img { display: block; }
   display: flex;
   flex-direction: column;
   padding: var(--gutter) var(--gutter) 40px;
-  border: 1px solid var(--line);
-  margin: 0 -1px -1px 0;
+  border-right: 1px solid var(--line);
   will-change: transform;
 }
+.feature:last-child { border-right: 0; }
 .feature img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
 .feature:hover img { opacity: .88; }
 .feature__meta { display: flex; align-items: center; gap: 9px; margin-top: 18px; }
@@ -201,8 +201,18 @@ img { display: block; }
 .feature .body { margin-top: 12px; color: var(--ink-soft); max-width: 30em; }
 
 
+/* Hover turns the whole block white, borders included, as the reference does */
+.cell--card,
+.feature { transition: color .2s ease; }
+.cell--card:hover,
+.feature:hover { color: var(--ghost); }
+.cell--card:hover .meta-line,
+.cell--card:hover .body,
+.feature:hover .body { color: var(--ghost); }
+
 /* Work rows: continuous horizontal rules */
 #work .cell { border-bottom: 1px solid var(--line); }
+#work .cell--feature { border-bottom: 1px solid var(--line); }
 #work + .sheet { border-top: 0; }
 
 /* Sheet: four columns, hairline seams, sections stacked */
@@ -215,6 +225,7 @@ img { display: block; }
   display: grid;
   grid-template-columns: minmax(400px, 1.2fr) repeat(3, minmax(0, 1fr));
   border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
   position: relative;
   z-index: 5;
 }
@@ -247,8 +258,6 @@ img { display: block; }
   gap: 4px;
   padding: var(--gutter) var(--gutter) 40px;
   overflow: hidden;
-  border: 1px solid var(--line);
-  margin: 0 -1px -1px 0;
 }
 .cell--card .heading-lg,
 .cell--card .meta-line,
