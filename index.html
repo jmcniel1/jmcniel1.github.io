@@ -169,9 +169,10 @@
         ticking = false;
         if (window.innerWidth < 900) { lag.style.transform = ''; return; }
         const r = lag.parentElement.getBoundingClientRect();
-        const span = window.innerHeight + r.height;
-        const p = Math.max(0, Math.min(1, (window.innerHeight - r.top) / span));
-        lag.style.transform = 'translate3d(0,' + ((p * 2 - 1) * -70).toFixed(1) + 'px,0)';
+        const from = window.innerHeight;
+        const to = window.innerHeight * 0.35;
+        const p = Math.max(0, Math.min(1, (from - r.top) / (from - to)));
+        lag.style.transform = 'translate3d(0,' + ((1 - p) * 140).toFixed(1) + 'px,0)';
       }
       window.addEventListener('scroll', function () {
         if (!ticking) { requestAnimationFrame(update); ticking = true; }
