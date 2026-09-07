@@ -31,12 +31,12 @@ ol { list-style: none; padding: 0; }
 img { display: block; }
 
 .caption { font-size: 14px; line-height: 1.43; }
-.body { font-size: 16px; line-height: 1.43; }
-.heading-sm { font-size: 23px; line-height: 1.2; letter-spacing: -0.029em; }
-.heading { font-size: 27px; line-height: 1.2; letter-spacing: -0.032em; }
-.heading-lg { font-size: 32px; line-height: 1; letter-spacing: -0.037em; }
-.display { font-size: clamp(32px, 3.5vw, 50px); line-height: 1; letter-spacing: -0.044em; }
-.display-xl { font-weight: 400; font-size: 20px; line-height: 1.1; letter-spacing: -0.02em; }
+.body { font-size: 18px; line-height: 1.35; letter-spacing: -0.01em; }
+.heading-sm { font-size: 22.5px; line-height: 1.2; letter-spacing: -1px; }
+.heading { font-size: 27px; line-height: 1; letter-spacing: -1px; }
+.heading-lg { font-size: 31.5px; line-height: 1; letter-spacing: -1px; }
+.display { font-size: 49.5px; line-height: 0.9; letter-spacing: -1px; }
+.display-xl { font-weight: 400; font-size: 45px; line-height: 0.9; letter-spacing: -1px; }
 
 .pill {
   display: inline-block;
@@ -85,7 +85,7 @@ img { display: block; }
 .name { animation: name-cycle 32s linear infinite; will-change: color; }
 .name--offset { animation-delay: -16s; }
 @media (prefers-reduced-motion: reduce) { .name { animation: none; } }
-.bar__nav { display: flex; gap: 28px; font-size: 20px; letter-spacing: -0.02em; }
+.bar__nav { display: flex; gap: 28px; font-size: 18px; letter-spacing: -1px; }
 .bar__nav a:hover, .bar--corner a:hover { color: var(--ash); }
 .bar--corner {
   position: absolute; left: 0; right: 0; bottom: 0;
@@ -125,7 +125,7 @@ img { display: block; }
   position: absolute;
   top: 0; left: calc(100vw - 205px);
   height: 100%;
-  width: 5800px;
+  width: 6690px;
   z-index: 4;
   will-change: transform;
 }
@@ -143,17 +143,17 @@ img { display: block; }
 
 .card__pills--top { top: 14px; bottom: auto; }
 /* Train cards. Widths fixed, heights follow the source aspect, none overlap, all sit below the hed */
-.card--2  { left: 0;      top: 30%; width: 400px; aspect-ratio: 1; }                /* Rebellions cover */
-.card--0  { left: 460px;  top: 42%; width: 400px; aspect-ratio: 1800 / 1131; }      /* Harvard Bass */
-.card--1  { left: 920px;  top: 30%; width: 630px; aspect-ratio: 16 / 9; }           /* Nudge */
-.card--10 { left: 1610px; top: 50%; width: 420px; aspect-ratio: 1312 / 816; }       /* Imperva posters */
-.card--3  { left: 2090px; top: 32%; width: 450px; aspect-ratio: 16 / 10; }          /* Prevoty */
-.card--4  { left: 2600px; top: 48%; width: 600px; aspect-ratio: 16 / 9; }           /* Imperva wheel */
-.card--5  { left: 3260px; top: 30%; width: 480px; aspect-ratio: 3208 / 2008; }      /* Leadership University */
-.card--6  { left: 3800px; top: 50%; width: 510px; aspect-ratio: 3212 / 2012; }      /* C-QNC */
-.card--7  { left: 4370px; top: 32%; width: 420px; aspect-ratio: 670 / 372; }        /* BBC */
-.card--8  { left: 4850px; top: 46%; width: 360px; aspect-ratio: 670 / 546; }        /* Gravity */
-.card--9  { left: 5270px; top: 30%; width: 480px; aspect-ratio: 3098 / 2180; }      /* Shader lab */
+.card--2  { left: 0;      top: 30%; width: 400px; aspect-ratio: 1; --speed: 1.006; --drift: 18px; }                /* Rebellions cover */
+.card--0  { left: 540px;  top: 42%; width: 400px; aspect-ratio: 1800 / 1131; --speed: 0.996; --drift: 26px; }      /* Harvard Bass */
+.card--1  { left: 1080px;  top: 30%; width: 630px; aspect-ratio: 16 / 9; --speed: 1.008; --drift: -22px; }           /* Nudge */
+.card--10 { left: 1850px; top: 50%; width: 420px; aspect-ratio: 1312 / 816; --speed: 0.994; --drift: -30px; }       /* Imperva posters */
+.card--3  { left: 2410px; top: 32%; width: 450px; aspect-ratio: 16 / 10; --speed: 0.995; --drift: 24px; }          /* Prevoty */
+.card--4  { left: 3000px; top: 48%; width: 600px; aspect-ratio: 16 / 9; --speed: 1.007; --drift: -26px; }           /* Imperva wheel */
+.card--5  { left: 3740px; top: 30%; width: 480px; aspect-ratio: 3208 / 2008; --speed: 0.996; --drift: 20px; }      /* Leadership University */
+.card--6  { left: 4360px; top: 50%; width: 510px; aspect-ratio: 3212 / 2012; --speed: 1.006; --drift: -18px; }      /* C-QNC */
+.card--7  { left: 5010px; top: 32%; width: 420px; aspect-ratio: 670 / 372; --speed: 0.994; --drift: 28px; }        /* BBC */
+.card--8  { left: 5570px; top: 46%; width: 360px; aspect-ratio: 670 / 546; --speed: 1.008; --drift: -24px; }        /* Gravity */
+.card--9  { left: 6070px; top: 30%; width: 480px; aspect-ratio: 3098 / 2180; --speed: 0.997; --drift: 22px; }      /* Shader lab */
 
 /* Left-set hero. The hed sits flush left over the full bleed mesh and blends on
    difference, so it inverts to dark across the bright passages and stays white
@@ -164,7 +164,8 @@ img { display: block; }
   position: absolute; left: var(--gutter); top: 44px; transform: none;
   width: min(72vw, 1040px);
   text-align: left;
-  font-size: clamp(40px, 4.2vw, 60px);
+  font-size: clamp(44px, 5.3vw, 77px);
+  line-height: 0.9;
   mix-blend-mode: difference;
   color: var(--ghost);
   z-index: 5;
@@ -181,6 +182,7 @@ img { display: block; }
 
 /* Sheet: four columns, hairline seams, sections stacked */
 .sheet {
+  scroll-margin-top: var(--bar);
   display: grid;
   grid-template-columns: minmax(0, 1fr) repeat(3, minmax(0, 1.5fr));
   border-top: 1px solid var(--ash);
@@ -195,7 +197,7 @@ img { display: block; }
   min-height: 200px;
 }
 .sheet::after { content: ""; position: absolute; top: 0; bottom: 0; right: 0; width: 1px; background: var(--obsidian); }
-.cell--label { padding-top: 20px; }
+.cell--label { padding: 45px var(--gutter) 54px; }
 .cell--label .display-xl { margin-left: -2px; }
 .cell--label .body { margin-top: 14px; max-width: 22em; font-size: 17px; color: var(--ash-text); }
 .textlink { display: inline-block; margin-top: 28px; font-size: 16px; border-bottom: 1px solid var(--ghost); padding-bottom: 2px; }
@@ -203,12 +205,15 @@ img { display: block; }
 .textlink--foot { margin-top: 0; font-size: 15px; }
 .cell--links { display: flex; flex-direction: column; gap: 4px; padding-top: 22px; }
 .cell--links .textlink { margin-top: 0; align-self: flex-start; }
-.cell--card { display: flex; flex-direction: column; gap: 6px; padding-top: 20px; padding-bottom: 32px; }
-.cell--card img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; margin-bottom: 6px; }
+.cell--card { display: flex; flex-direction: column; gap: 4px; padding: 0 0 45px; overflow: hidden; }
+.cell--card .heading-lg,
+.cell--card .meta-line { padding: 0 var(--gutter); }
+.cell--card img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; margin-bottom: 14px; }
 .cell--card-wide img { aspect-ratio: 8 / 3; object-position: left center; }
 .cell--card:hover img { opacity: .82; }
-.cell--card .heading-lg { margin-top: 8px; order: 1; font-size: 27px; letter-spacing: -0.032em; }
-.cell--card .meta-line { order: 2; font-size: 16px; color: #b0b0b0; }
+.cell--card .heading-lg { order: 1; }
+.cell--card .meta-line { order: 2; font-size: 16px; color: #b0b0b0; letter-spacing: -0.01em; }
+.cell--card .body { order: 3; padding: 10px var(--gutter) 0; color: #b0b0b0; max-width: 30em; font-size: 17px; line-height: 1.35; }
 .cell--card .body { order: 3; }
 .cell--card img { order: 0; }
 
@@ -225,8 +230,8 @@ img { display: block; }
 .cell--action { display: flex; align-items: flex-start; justify-content: stretch; padding-top: 18px; }
 .cell--action .ghost { width: 100%; }
 .cell--stack { flex-direction: column; gap: 9px; }
-.cell--wide { grid-column: span 2; padding-top: 20px; padding-bottom: 54px; }
-.cell--wide .display { max-width: 20em; line-height: 1; margin-top: -0.06em; font-size: clamp(28px, 2.8vw, 40px); }
+.cell--wide { grid-column: span 2; padding: 45px var(--gutter) 72px; }
+.cell--wide .display { max-width: 20em; margin-top: -0.06em; }
 .cell--wide .body { margin-top: 28px; max-width: 40em; font-size: 17px; }
 .cell--span2 { grid-column: span 2; }
 .cell--span3 { grid-column: span 3; }
@@ -238,7 +243,7 @@ img { display: block; }
   grid-template-columns: 1fr 1fr 1fr;
   gap: 0;
   align-items: center;
-  padding: 14px 0;
+  padding: 22px 0;
   border-bottom: 1px solid var(--ash);
 }
 .role > span { padding: 0 var(--gutter); }
@@ -248,9 +253,9 @@ img { display: block; }
 
 
 .quotes { padding: 0; }
-.quote { padding: 20px var(--gutter) 36px; border-bottom: 1px solid var(--ash); margin: 0; }
+.quote { padding: 36px var(--gutter) 54px; border-bottom: 1px solid var(--ash); margin: 0; }
 .quote:last-child { border-bottom: 0; }
-.quote__text { font-size: 32px; line-height: 1.15; letter-spacing: -0.037em; max-width: 24em; text-indent: -0.38em; }
+.quote__text { font-size: 31.5px; line-height: 1.1; letter-spacing: -1px; max-width: 22em; text-indent: -0.38em; }
 .quote__by { margin-top: 18px; font-size: 16px; color: #b0b0b0; }
 
 /* Footer: one ruled row */
@@ -288,13 +293,15 @@ img { display: block; }
   .card--9 { order: 7; }   /* Shader lab */
   .card--6 { order: 8; }   /* C-QNC Synth */
   .train { gap: 36px; }
+  .display { font-size: 32px; line-height: 0.95; }
+  .display-xl { font-size: 38px; }
   .bar--corner { position: relative; }
   .sheet { grid-template-columns: 1fr 1fr; }
   .cell:nth-child(4n) { border-right: 1px solid var(--ash); }
   .cell:nth-child(2n) { border-right: 0; }
   .cell--label { grid-column: span 2; border-right: 0; min-height: 0; }
   .cell--wide, .cell--span3, .cell--span2 { grid-column: span 2; border-right: 0; }
-  .cell--blank,   .role { grid-template-columns: 1fr 1fr; gap: 6px 14px; }
+  .role { grid-template-columns: 1fr 1fr; gap: 6px 14px; }
   .role .heading-sm { grid-column: 1 / -1; }
   .role__date { text-align: left; }
 }

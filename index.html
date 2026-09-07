@@ -54,43 +54,51 @@
         <img src="assets/rebellions/collage-wide.png" alt="" />
         <span class="meta-line">Brand, Social, 2026 to now</span>
         <span class="heading-lg">Rebellions</span>
+        <span class="body">The social system and the AI Infra Summit carousel, first public work under a new direction.</span>
       </a>
       <a class="cell cell--card" href="projects/nudge-security.html">
         <img src="assets/nudge/brand-guidelines.png" alt="" />
         <span class="meta-line">Brand, Product, 2022 to 2026</span>
         <span class="heading-lg">Nudge Security</span>
+        <span class="body">Four years across brand, product and web, from a prototype to a shipped design system.</span>
       </a>
       <div class="cell cell--blank"></div>
       <a class="cell cell--card" href="projects/music.html">
         <img src="assets/music/hb-gradient.png" alt="" />
         <span class="meta-line">Identity, Posters, 2023 to 2025</span>
         <span class="heading-lg">Music</span>
+        <span class="body">Logomarks, tour posters and monthly flyers for five acts.</span>
       </a>
       <a class="cell cell--card" href="projects/imperva.html">
         <img src="assets/imperva/video/overview-logo.jpg" alt="" />
         <span class="meta-line">Product, Brand, 2018 to 2022</span>
         <span class="heading-lg">Imperva</span>
+        <span class="body">A product UI system that grew into the brand, the site, the events and the offices.</span>
       </a>
       <a class="cell cell--card" href="projects/prevoty.html">
         <img src="assets/prevoty/web-hero.jpg" alt="" />
         <span class="meta-line">Brand, Product, 2012 to 2018</span>
         <span class="heading-lg">Prevoty</span>
+        <span class="body">Identity and product for a runtime security startup, through its acquisition.</span>
       </a>
       <div class="cell cell--blank"></div>
       <a class="cell cell--card" href="projects/leadership-university.html">
         <img src="assets/leadu/app-dubrovnik.jpg" alt="" />
         <span class="meta-line">Brand, Web, 2019</span>
         <span class="heading-lg">Leadership University</span>
+        <span class="body">Brand and site for a twelve episode leadership series, shot on location.</span>
       </a>
       <a class="cell cell--card" href="https://shader-lab-five.vercel.app">
         <img src="assets/shader/mesh-card.jpg" alt="" />
         <span class="meta-line">Generative, WebGL, 2026</span>
         <span class="heading-lg">Shader lab</span>
+        <span class="body">Three live shaders. The URL hash is the saved look.</span>
       </a>
       <a class="cell cell--card" href="projects/c-qnc-synth.html">
         <img src="assets/cqnc/synth-app.jpg" alt="" />
         <span class="meta-line">Instrument, Side project, 2025</span>
         <span class="heading-lg">C-QNC Synth</span>
+        <span class="body">A polyphonic synth and groovebox that runs in a browser tab.</span>
       </a>
     </section>
 
@@ -151,20 +159,45 @@
       const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
       const narrow = () => window.innerWidth < 900;
       let ticking = false;
+      // Each card carries its own --speed and --drift, so the field separates as
+      // it crosses: nearer cards run a little ahead, and everything rises or
+      // settles a touch. Read once, not per frame.
+      let layers = [];
+      function measure() {
+        layers = Array.prototype.map.call(train.querySelectorAll('.card'), function (el) {
+          const cs = getComputedStyle(el);
+          return {
+            el: el,
+            speed: parseFloat(cs.getPropertyValue('--speed')) || 1,
+            drift: parseFloat(cs.getPropertyValue('--drift')) || 0
+          };
+        });
+      }
+      measure();
+
       function update() {
         ticking = false;
-        if (narrow()) { train.style.transform = ''; return; }
+        if (narrow()) {
+          train.style.transform = '';
+          layers.forEach(function (l) { l.el.style.transform = ''; });
+          return;
+        }
         const rect = hero.getBoundingClientRect();
         const runway = hero.offsetHeight - window.innerHeight;
         let p = runway > 0 ? Math.min(1, Math.max(0, -rect.top / runway)) : 0;
         if (reduce) p = 0.35;
         const travel = train.scrollWidth + window.innerWidth * 0.15;
         train.style.transform = 'translate3d(' + (-p * travel) + 'px,0,0)';
+        layers.forEach(function (l) {
+          const x = -p * travel * (l.speed - 1);
+          const y = p * l.drift;
+          l.el.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0)';
+        });
       }
       window.addEventListener('scroll', function () {
         if (!ticking) { requestAnimationFrame(update); ticking = true; }
       }, { passive: true });
-      window.addEventListener('resize', update, { passive: true });
+      window.addEventListener('resize', function () { measure(); update(); }, { passive: true });
       update();
     })();
   </script>
