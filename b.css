@@ -35,11 +35,11 @@ img { display: block; }
 
 .caption { font-size: 14px; line-height: 1.43; }
 .body { font-size: 18px; line-height: 1.35; letter-spacing: -0.01em; }
-.heading-sm { font-size: 22.5px; line-height: 1.2; letter-spacing: -1px; }
-.heading { font-size: 27px; line-height: 1; letter-spacing: -1px; }
-.heading-lg { font-size: 31.5px; line-height: 1; letter-spacing: -1px; }
-.display { font-size: 49.5px; line-height: 0.9; letter-spacing: -1px; }
-.display-xl { font-weight: 400; font-size: 76.5px; line-height: 1; letter-spacing: -2.25px; }
+.heading-sm { font-weight: 500; font-size: 22.5px; line-height: 1.2; letter-spacing: -1px; }
+.heading { font-weight: 500; font-size: 27px; line-height: 1; letter-spacing: -1px; }
+.heading-lg { font-weight: 500; font-size: 31.5px; line-height: 1; letter-spacing: -1px; }
+.display { font-weight: 500; font-size: 49.5px; line-height: 0.9; letter-spacing: -1px; }
+.display-xl { font-weight: 500; font-size: 76.5px; line-height: 1; letter-spacing: -2.25px; }
 
 .pill {
   display: inline-block;
@@ -128,7 +128,7 @@ img { display: block; }
   position: absolute;
   top: 0; left: calc(100vw - 205px);
   height: 100%;
-  width: 5590px;
+  width: 3043px;
   z-index: 4;
   will-change: transform;
 }
@@ -139,6 +139,7 @@ img { display: block; }
 }
 .card img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
 .card__title {
+  font-weight: 500;
   position: absolute; left: 14px; top: 14px;
   font-size: 27px; line-height: 1; letter-spacing: -0.032em;
 }
@@ -146,17 +147,17 @@ img { display: block; }
 
 .card__pills--top { top: 14px; bottom: auto; }
 /* Train cards. Widths fixed, heights follow the source aspect, none overlap, all sit below the hed */
-.card--2  { left: 0;      top: 38%; width: 400px; aspect-ratio: 1; --speed: 1.14; --drift: 14px; z-index: 3; }                /* Rebellions cover */
-.card--0  { left: 440px;  top: 50%; width: 400px; aspect-ratio: 1800 / 1131; --speed: 0.86; --drift: -26px; z-index: 1; }      /* Harvard Bass */
-.card--1  { left: 880px;  top: 38%; width: 630px; aspect-ratio: 16 / 9; --speed: 1.14; --drift: -18px; z-index: 3; }           /* Nudge */
-.card--10 { left: 1550px; top: 58%; width: 420px; aspect-ratio: 1312 / 816; --speed: 0.86; --drift: 22px; z-index: 1; }       /* Imperva posters */
-.card--3  { left: 2010px; top: 40%; width: 450px; aspect-ratio: 16 / 10; --speed: 1.0; --drift: -20px; z-index: 2; }          /* Prevoty */
-.card--4  { left: 2500px; top: 56%; width: 600px; aspect-ratio: 16 / 9; --speed: 1.0; --drift: 18px; z-index: 2; }           /* Imperva wheel */
-.card--5  { left: 3140px; top: 38%; width: 480px; aspect-ratio: 3208 / 2008; --speed: 1.14; --drift: -16px; z-index: 3; }      /* Leadership University */
-.card--6  { left: 3660px; top: 58%; width: 510px; aspect-ratio: 3212 / 2012; --speed: 0.86; --drift: 24px; z-index: 1; }      /* C-QNC */
-.card--7  { left: 4210px; top: 40%; width: 420px; aspect-ratio: 670 / 372; --speed: 1.0; --drift: -22px; z-index: 2; }        /* BBC */
-.card--8  { left: 4670px; top: 54%; width: 360px; aspect-ratio: 670 / 546; --speed: 0.86; --drift: 20px; z-index: 1; }        /* Gravity */
-.card--9  { left: 5070px; top: 38%; width: 480px; aspect-ratio: 3098 / 2180; --speed: 1.0; --drift: -18px; z-index: 2; }      /* Shader lab */
+.card--2  { left: 0;      top: 38%; width: 480px; aspect-ratio: 1; --speed: 1.14; --drift: 14px; z-index: 3; }                /* Rebellions cover */
+.card--0  { left: 675px;  top: 44%; width: 600px; aspect-ratio: 1800 / 1131; --speed: 1.14; --drift: -26px; z-index: 3; }      /* Harvard Bass */
+.card--1  { left: 1469px;  top: 38%; width: 720px; aspect-ratio: 16 / 9; --speed: 1.14; --drift: -18px; z-index: 3; }           /* Nudge */
+.card--10 { left: 0; top: 44%; width: 520px; aspect-ratio: 1312 / 816; --speed: 0.86; --drift: 22px; z-index: 1; }       /* Imperva posters */
+.card--3  { left: 0; top: 40%; width: 540px; aspect-ratio: 16 / 10; --speed: 1.0; --drift: -20px; z-index: 2; }          /* Prevoty */
+.card--4  { left: 640px; top: 48%; width: 680px; aspect-ratio: 16 / 9; --speed: 1.0; --drift: 18px; z-index: 2; }           /* Imperva wheel */
+.card--5  { left: 2384px; top: 38%; width: 580px; aspect-ratio: 3208 / 2008; --speed: 1.14; --drift: -16px; z-index: 3; }      /* Leadership University */
+.card--6  { left: 848px; top: 44%; width: 600px; aspect-ratio: 3212 / 2012; --speed: 0.86; --drift: 24px; z-index: 1; }      /* C-QNC */
+.card--7  { left: 1420px; top: 40%; width: 500px; aspect-ratio: 670 / 372; --speed: 1.0; --drift: -22px; z-index: 2; }        /* BBC */
+.card--8  { left: 1776px; top: 46%; width: 460px; aspect-ratio: 670 / 546; --speed: 0.86; --drift: 20px; z-index: 1; }        /* Gravity */
+.card--9  { left: 2020px; top: 38%; width: 580px; aspect-ratio: 3098 / 2180; --speed: 1.0; --drift: -18px; z-index: 2; }      /* Shader lab */
 
 /* Left-set hero. The hed sits flush left over the full bleed mesh and blends on
    difference, so it inverts to dark across the bright passages and stays white
@@ -167,6 +168,7 @@ img { display: block; }
   position: absolute; left: var(--gutter); top: 44px; transform: none;
   width: min(72vw, 1040px);
   text-align: left;
+  font-weight: 500;
   font-size: clamp(44px, 5.3vw, 77px);
   line-height: 0.9;
   mix-blend-mode: difference;
