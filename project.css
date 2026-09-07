@@ -151,7 +151,7 @@ body.is-dark { background: var(--bg); color: var(--ink); }
 .project > .video-figure { position: relative; }
 .project > .video-figure .video-figure__player[data-sound] { cursor: pointer; }
 .video-figure__sound {
-  position: absolute; left: var(--gutter); bottom: 54px;
+  position: absolute; left: var(--gutter); bottom: 84px;
   background: var(--obsidian); color: var(--ghost);
   font-family: var(--font); cursor: pointer;
 }
@@ -162,8 +162,7 @@ body.is-dark { background: var(--bg); color: var(--ink); }
 /* Shared device carousel and page mockups: caption and matte tweaks only */
 main.case-study .device-figure figcaption,
 main.case-study .video-figure figcaption { font-style: normal; text-align: left; font-size: 14px; color: var(--ink-soft); }
-.case-study .device-figure,
-.case-study .video-figure { max-width: none; width: 100%; margin-left: 0; margin-right: 0; }
+
 
 .project__pager {
   grid-column: 1 / -1;
@@ -208,4 +207,115 @@ main.case-study .video-figure figcaption { font-style: normal; text-align: left;
   .project__pager { grid-template-columns: 1fr; }
   .project__pager__prev { border-right: 0; border-bottom: 1px solid var(--rule); }
   .project__pager__next { justify-content: flex-start; text-align: left; }
+}
+
+/* ─────────────────────────────────────────────────────────
+   Carousel, flat. The laptop chrome is gone: no radius, no
+   shadow, no sheen. A full-width plate on black between two
+   hairlines, with square controls in the same system.
+   Selectors carry .project.case-study so they beat the
+   inline copy of the old device CSS on the Nudge page.
+   ───────────────────────────────────────────────────────── */
+
+.project.case-study .slider-shell {
+  --device-w:   100vw;
+  --bezel:      0px;
+  --bottom-lip: 0px;
+  --kbd-h:      0px;
+  --screen-w:   100vw;
+  --screen-h:   min(calc(100vw * 10 / 16), 86vh);
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+.project.case-study .device-row {
+  height: var(--screen-h);
+  filter: none;
+}
+.project.case-study .slider-track {
+  column-gap: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+.project.case-study .slide {
+  flex: 0 0 100vw;
+  border-radius: 0;
+  background: var(--obsidian);
+}
+.project.case-study .slide__inset { border-radius: 0; max-width: 92%; max-height: 92%; }
+.project.case-study .slide__fill { object-position: center; }
+
+/* Square hairline controls, seated inside the plate */
+.project.case-study .slider__btn {
+  top: calc(var(--screen-h) / 2);
+  width: 44px; height: 44px;
+  border-radius: 0;
+  background: var(--obsidian);
+  border: 1px solid var(--ghost);
+  color: var(--ghost);
+  font-size: 16px;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+.project.case-study .slider__btn--prev { left: var(--gutter); }
+.project.case-study .slider__btn--next { right: var(--gutter); }
+.project.case-study .slider__btn:hover {
+  background: var(--ghost);
+  color: var(--obsidian);
+  border-color: var(--ghost);
+  transform: translateY(-50%);
+}
+
+.project.case-study .slider__dots { gap: 6px; margin: 0; padding: 18px 0 0; }
+.project.case-study .slider__dot {
+  width: 9px; height: 9px;
+  border-radius: 0;
+  background: transparent;
+  border: 1px solid var(--ink-soft);
+  transition: background .2s ease, border-color .2s ease;
+}
+.project.case-study .slider__dot.is-active,
+.project.case-study .slider__dot:hover {
+  background: var(--ghost);
+  border-color: var(--ghost);
+  transform: none;
+}
+
+.project.case-study .slider__hint {
+  margin-top: 12px;
+  font-size: 14px;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink-soft);
+}
+.project.case-study .slider__hint kbd {
+  font-size: 14px;
+  border-radius: 0;
+  border-color: var(--ink-soft);
+  padding: 1px 6px;
+}
+
+/* Full bleed wherever the figure sits: directly in the page grid on six pages,
+   inside the reading column on Imperva and Nudge. */
+.project.case-study .device-figure,
+.project.case-study .video-figure {
+  width: 100vw;
+  max-width: none;
+  margin: 0 0 0 calc(50% - 50vw);
+  padding: 45px 0 40px;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  transform: none;
+}
+.project.case-study .video-figure__player {
+  border-radius: 0;
+  box-shadow: none;
+}
+.project.case-study .device-figure figcaption,
+.project.case-study .video-figure figcaption {
+  padding: 0 var(--gutter);
+  text-align: left;
+  font-style: normal;
+  font-size: 14px;
+  color: var(--ink-soft);
 }
