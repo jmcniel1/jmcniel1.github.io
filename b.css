@@ -322,7 +322,7 @@ img { display: block; }
 @media (max-width: 900px) {
   .sheet .cell--blank { display: none; }
   .hero { height: auto; }
-  .hero__pin { position: relative; display: block; height: auto; min-height: 0; padding-bottom: 40px; }
+  .hero__pin { position: relative; top: 0; display: block; height: auto; min-height: 0; padding-bottom: 40px; }
   .hero__stage { position: static; overflow: visible; }
   .hero__hed { position: relative; left: 0; top: 0; transform: none; width: auto; margin: 80px var(--gutter) 40px; text-align: left; }
   .hero__scroll { display: none; }
