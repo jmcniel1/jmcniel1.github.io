@@ -1,0 +1,64 @@
+<!doctype html>
+<meta charset="utf-8" />
+<link rel="preconnect" href="https://api.fontshare.com" />
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" rel="stylesheet" />
+<title>Share card, 1200x630. Shoot .card at dsf 2, encode to assets/og/share.jpg</title>
+<style>
+  :root {
+    --ash: #5a5a5a;
+    --line: rgba(0, 0, 0, .5);
+    --ghost: #fff;
+  }
+  html, body { margin: 0; }
+  /* The share card is the hero, held still: mesh lightened over ash, the
+     lockup knocked through it the way the headline is on the page. */
+  .card {
+    position: relative;
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+    background: var(--ash);
+    isolation: isolate;
+  }
+  .card__mesh {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    mix-blend-mode: lighten;
+    /* The frame and these three numbers are the card: 8s into mesh-bg.mp4,
+       pushed until the bright arc runs the length of the lockup. */
+    transform: scale(var(--z, 2.6)) translate(var(--tx, -2%), var(--ty, 0%));
+    transform-origin: center;
+  }
+  .card__grid {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(to right,
+      transparent calc(25% - 1px), var(--line) calc(25% - 1px), var(--line) 25%,
+      transparent 25%, transparent calc(50% - 1px), var(--line) calc(50% - 1px), var(--line) 50%,
+      transparent 50%, transparent calc(75% - 1px), var(--line) calc(75% - 1px), var(--line) 75%,
+      transparent 75%);
+  }
+  .card__hed {
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    width: 1000px;
+    text-align: center;
+    font-family: "Satoshi", ui-sans-serif, system-ui, sans-serif;
+    font-weight: 500;
+    font-size: 76px;
+    line-height: 1;
+    letter-spacing: -0.056em;
+    color: var(--ghost);
+    mix-blend-mode: difference;
+  }
+</style>
+<div class="card">
+  <img class="card__mesh" id="mesh" src="og-frame-8.jpg" alt="" />
+  <div class="card__grid"></div>
+  <h1 class="card__hed">reductive.co &mdash; jamie mcniel</h1>
+</div>
