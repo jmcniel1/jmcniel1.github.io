@@ -53,9 +53,11 @@
       position: relative;
       z-index: 1;
       display: block;
-      width: 300px;
-      max-width: 78%;
+      width: 420px;
+      max-width: 88%;
       height: auto;
+      /* the png carries a black ground; the phone's own radius clips it away */
+      border-radius: 9%;
     }
     .iphone {
       position: relative;
@@ -233,7 +235,7 @@
 
     /* Constrain the phone figure to a centered column */
     .case-study .device-figure--phone {
-      max-width: 720px;
+      max-width: none;
     }
 
     /* ───────── Real product images filling device screens ───────── */
@@ -710,13 +712,6 @@
         </div>
         <figcaption>SaaS discovery and the wider product surface. Every app every employee has signed up for, ranked by risk.</figcaption>
       </figure>
-
-      <h2>The nudge</h2>
-      <p>
-        Nudges are how a finding becomes an action. The mobile alert lands
-        at the moment a policy meets the person who can resolve it. The
-        tone matters. A colleague pulling you aside, not a klaxon.
-      </p>
 
       <figure class="device-figure device-figure--phone">
         <div class="phone-stage">
