@@ -169,7 +169,7 @@ img { display: block; }
 .card--5  { left: 2340px; top: 59%; width: 550px; aspect-ratio: 3208 / 2008; --speed: 1.14; --drift: -16px; z-index: 3; }      /* Leadership University */
 .card--6  { left: 0; top: 5%; width: 600px; aspect-ratio: 3212 / 2012; --speed: 0.86; --drift: 24px; z-index: 1; }      /* C-QNC */
 .card--7  { left: 2080px; top: 16%; width: 500px; aspect-ratio: 670 / 372; --speed: 0.86; --drift: -22px; z-index: 1; }        /* BBC */
-.card--9  { left: 2420px; top: 40%; width: 580px; aspect-ratio: 3098 / 2180; --speed: 1.0; --drift: -18px; z-index: 2; }      /* Shader lab */
+.card--9  { left: 2420px; top: 40%; width: 580px; aspect-ratio: 16 / 9; --speed: 1.0; --drift: -18px; z-index: 2; }      /* Shader lab */
 
 /* Left-set hero. The hed sits flush left over the full bleed mesh and blends on
    difference, so it inverts to dark across the bright passages and stays white
@@ -349,7 +349,8 @@ img { display: block; }
     width: auto; margin: 0; transform: none;
     mix-blend-mode: normal; color: var(--obsidian);
   }
-  .hero__caption { display: block; position: absolute; top: calc(100vh - 40px); right: var(--gutter); }
+  /* the desktop rule pins bottom too; leaving both stretched it down the whole stage */
+  .hero__caption { display: block; position: absolute; top: calc(100vh - 40px); bottom: auto; right: var(--gutter); }
   .card { background: transparent; color: var(--obsidian); }
   .train { position: relative; left: 0; width: auto; height: auto; display: flex; flex-direction: column; gap: 14px; padding: 0 var(--gutter) 80px; transform: none !important; }
   .card { position: relative; left: auto !important; top: auto !important; width: auto !important; height: auto !important; aspect-ratio: auto !important; display: flex; flex-direction: column; }

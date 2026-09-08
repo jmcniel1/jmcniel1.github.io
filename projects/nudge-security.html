@@ -7,7 +7,7 @@
   <meta name="description" content="Creative direction across product, brand, and marketing for Nudge Security, a SaaS-security platform discovering shadow IT for modern security teams." />
   <link rel="preconnect" href="https://api.fontshare.com">
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../b.css?v=84047079" />
+  <link rel="stylesheet" href="../b.css?v=6157a48c" />
   <link rel="stylesheet" href="../project.css?v=fce47554" />
 
   <!-- Case-study scoped styles for in-device mockups.
@@ -40,25 +40,18 @@
     .phone-stage {
       display: flex; justify-content: center; align-items: center;
       padding: 24px 0;
-      position: relative;
     }
-    .phone-stage::before {
-      content: "";
-      position: absolute;
-      width: 480px; height: 480px;
-      background: radial-gradient(circle, rgba(194,83,42,0.12) 0%, transparent 60%);
-      z-index: 0;
-    }
-    .phone-sim {
-      position: relative;
-      z-index: 1;
-      display: block;
-      width: 420px;
+    /* A phone drawn rather than photographed: one 8px rule, nothing else. */
+    .phone {
+      width: 440px;
       max-width: 88%;
-      height: auto;
-      /* the png carries a black ground; the phone's own radius clips it away */
-      border-radius: 9%;
+      border: 8px solid var(--obsidian);
+      border-radius: 30px;
+      overflow: hidden;
+      background: var(--obsidian);
+      line-height: 0;
     }
+    .phone img { display: block; width: 100%; height: auto; }
     .iphone {
       position: relative;
       width: 260px;
@@ -715,9 +708,10 @@
 
       <figure class="device-figure device-figure--phone">
         <div class="phone-stage">
-          <img class="phone-sim"
-               src="../assets/nudge/mobile-sim.png"
-               alt="nudgesecurity.com on iPhone, 'Secure and govern every AI & SaaS app', with the shadow-apps discovery dashboard." />
+          <div class="phone">
+            <img src="../assets/nudge/mobile-screen.jpg"
+                 alt="nudgesecurity.com on a phone, 'Secure and govern every AI and SaaS app', with the shadow apps discovery dashboard." />
+          </div>
         </div>
       </figure>
 
