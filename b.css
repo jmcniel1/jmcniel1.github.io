@@ -174,9 +174,9 @@ img { display: block; }
 /* Left-set hero. The hed sits flush left over the full bleed mesh and blends on
    difference, so it inverts to dark across the bright passages and stays white
    over black. Jamie's call over the critic: it is character, and it reads. */
-.hero, .hero__pin { background: var(--ash-bg); }
+.hero, .hero__pin { background-color: var(--ash-bg); }
 .hero__pin { display: flex; flex-direction: column; }
-.hero__stage { position: relative; flex: 1 1 auto; min-height: 0; overflow: hidden; background: var(--ash-bg); }
+.hero__stage { position: relative; flex: 1 1 auto; min-height: 0; overflow: hidden; background-color: var(--ash-bg); }
 
 .hero__caption { position: absolute; right: var(--gutter); bottom: 18px; font-size: 16px; color: var(--ghost); z-index: 6; }
 .hero__caption:hover { color: var(--ghost); }
@@ -227,27 +227,20 @@ img { display: block; }
 #work .cell--feature { border-bottom: 1px solid var(--line); }
 
 /* Sheet: four columns, hairline seams, sections stacked */
-/* The four column grid, held visible the whole way down. It sits above the
-   sheets and the menu so the rules read as one continuous system, and under
-   the loader, which cuts its own. */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 95;
-  pointer-events: none;
-  background-image:
-    linear-gradient(to right, var(--line) 1px, transparent 1px),
-    linear-gradient(to right, var(--line) 1px, transparent 1px),
-    linear-gradient(to right, var(--line) 1px, transparent 1px);
-  background-size: 1px 100%, 1px 100%, 1px 100%;
-  background-position: 25% 0, 50% 0, 75% 0;
-  background-repeat: no-repeat;
+.sheet,
+.menu,
+.hero__stage,
+.loader__sheet {
+  background-image: linear-gradient(to right,
+    transparent calc(25% - 1px), var(--line) calc(25% - 1px), var(--line) 25%,
+    transparent 25%, transparent calc(50% - 1px), var(--line) calc(50% - 1px), var(--line) 50%,
+    transparent 50%, transparent calc(75% - 1px), var(--line) calc(75% - 1px), var(--line) 75%,
+    transparent 75%);
 }
 
 .sheet {
   overflow: hidden;
-  background: var(--ash-bg);
+  background-color: var(--ash-bg);
   color: var(--obsidian);
   border-color: var(--line);
   scroll-margin-top: var(--bar);
@@ -441,7 +434,7 @@ body::before {
   z-index: 100;
   background: transparent;
   display: grid;
-  place-items: center start;
+  place-items: center stretch;
   transition: opacity .5s ease, visibility .5s ease;
 }
 /* What the holes look onto. Black under the mesh, so the letters read even
@@ -454,13 +447,6 @@ body::before {
   position: absolute;
   inset: 0;
   background-color: var(--ash-bg);
-  background-image:
-    linear-gradient(to right, var(--line) 1px, transparent 1px),
-    linear-gradient(to right, var(--line) 1px, transparent 1px),
-    linear-gradient(to right, var(--line) 1px, transparent 1px);
-  background-size: 1px 100%, 1px 100%, 1px 100%;
-  background-position: 25% 0, 50% 0, 75% 0;
-  background-repeat: no-repeat;
 }
 /* Pinned to the loader's top-left so its user units are viewport pixels. */
 .loader__cut { position: absolute; top: 0; left: 0; width: 0; height: 0; overflow: visible; pointer-events: none; }
@@ -474,27 +460,26 @@ body::before {
 .loader.is-done { opacity: 0; visibility: hidden; }
 .loader__inner {
   position: relative;
-  /* on the 25% rule, one gutter in, the way a cell's copy sits */
-  margin-left: calc(25vw + var(--gutter));
-  display: flex;
-  align-items: flex-start;
-  gap: 0;
+  /* Straddles the centre rule: the grid is the separator, so there is no pipe. */
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
   font-weight: 500;
   font-size: 50px;
   letter-spacing: -1px;
   line-height: 1;
   color: var(--obsidian);
 }
-.loader__name { padding-right: calc(var(--gutter) / 2); line-height: 1.25; }
+.loader__name { justify-self: end; padding-right: var(--gutter); line-height: 1.25; }
 .loader__roll {
   display: block;
   overflow: hidden;
   /* Room for the descender on "synths": a 1em box clips it. */
   height: 1.25em;
-  padding-left: calc(var(--gutter) / 2);
-  border-left: 1px solid var(--line);
+  padding-left: var(--gutter);
 }
-.loader__word { display: block; width: 4.4em; line-height: 1.25; transition: transform .56s cubic-bezier(.4,0,.2,1), opacity .56s ease; }
+.loader__word { display: block; line-height: 1.25; transition: transform .56s cubic-bezier(.4,0,.2,1), opacity .56s ease; }
 .loader__word.is-out { transform: translateY(-100%); opacity: 0; }
 .loader__word.is-in { transform: translateY(100%); opacity: 0; transition: none; }
 
@@ -527,7 +512,7 @@ body::before {
   position: fixed;
   inset: var(--bar) 0 0 0;
   z-index: 90;
-  background: var(--ash-bg);
+  background-color: var(--ash-bg);
   color: var(--obsidian);
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -592,7 +577,8 @@ body::before {
 
 @media (max-width: 900px) {
   /* the lockup is wider than a phone: it starts at the gutter, not the rule */
-  .loader__inner { font-size: 32px; margin-left: var(--gutter); }
+  /* half a phone is 181px of room: the name only fits at 28 */
+  .loader__inner { font-size: 28px; }
   .menu {
     grid-template-columns: 1fr;
     gap: 32px;

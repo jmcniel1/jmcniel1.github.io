@@ -22,7 +22,16 @@ body.is-dark { background: var(--bg); color: var(--ink); }
 /* The bar is fixed and only turns solid behind the home page's loop. There is
    no loop here, so it is solid from the start and the page clears its height. */
 .bar--top { background: var(--ash-bg); border-bottom: 1px solid var(--line); }
-.project { padding-top: var(--bar); overflow-x: clip; }
+.project {
+  padding-top: var(--bar);
+  overflow-x: clip;
+  /* Same four rules as the home page, on the same pixel as a cell border. */
+  background-image: linear-gradient(to right,
+    transparent calc(25% - 1px), var(--rule) calc(25% - 1px), var(--rule) 25%,
+    transparent 25%, transparent calc(50% - 1px), var(--rule) calc(50% - 1px), var(--rule) 50%,
+    transparent 50%, transparent calc(75% - 1px), var(--rule) calc(75% - 1px), var(--rule) 75%,
+    transparent 75%);
+}
 
 /* Sheet layout: four columns, ash seams */
 .project {
@@ -123,8 +132,6 @@ body.is-dark { background: var(--bg); color: var(--ink); }
 .project__body {
   grid-column: 2 / span 2;
   padding: 54px var(--gutter) 96px;
-  border-left: 1px solid var(--rule);
-  border-right: 1px solid var(--rule);
 }
 .project__body h2 {
   font-weight: 500;
