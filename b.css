@@ -330,9 +330,15 @@ img { display: block; }
   .hero__pin { height: auto; }
   .hero__hed { position: relative; top: auto; left: auto; transform: none; width: auto; margin: 56px var(--gutter) 32px; text-align: left; font-size: clamp(38px, 10vw, 56px); }
   .hero__caption { display: none; }
-  .hero__mesh { display: none; }
-  /* No dark ground on phones, so the hero copy and the cards read as ink on ash */
-  .hero__hed { mix-blend-mode: normal; color: var(--obsidian); }
+  /* A full screen of the loop, then the cards flow beneath it */
+  .hero__stage { position: relative; padding-top: 100vh; }
+  .hero__mesh { display: block; height: 100vh; bottom: auto; }
+  .hero__hed {
+    position: absolute; top: 96px; left: var(--gutter); right: var(--gutter);
+    width: auto; margin: 0; transform: none;
+    mix-blend-mode: normal; color: var(--obsidian);
+  }
+  .hero__caption { display: block; position: absolute; top: calc(100vh - 40px); right: var(--gutter); }
   .card { background: transparent; color: var(--obsidian); }
   .train { position: relative; left: 0; width: auto; height: auto; display: flex; flex-direction: column; gap: 14px; padding: 0 var(--gutter) 80px; transform: none !important; }
   .card { position: relative; left: auto !important; top: auto !important; width: auto !important; height: auto !important; aspect-ratio: auto !important; display: flex; flex-direction: column; }
@@ -375,4 +381,158 @@ img { display: block; }
   .cell, .cell:nth-child(4n) { border-right: 0; border-bottom: 1px solid var(--line); }
   .cell--label, .cell--wide, .cell--span3, .cell--span2, .cell--card-wide, .cell--card-full, .cell--feature { grid-column: span 1; }
   .bar__nav { gap: 16px; font-size: 16px; }
+}
+
+/* ─────────────────────────────────────────────────────────
+   Loader and overlay menu, built on the reference's pattern:
+   the wordmark held against a column rule with a word rolling
+   beside it, then a full sheet of links on the same grid.
+   ───────────────────────────────────────────────────────── */
+
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: var(--ash-bg);
+  display: grid;
+  place-items: center;
+  transition: opacity .5s ease, visibility .5s ease;
+}
+.loader::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, var(--line) 1px, transparent 1px),
+    linear-gradient(to right, var(--line) 1px, transparent 1px),
+    linear-gradient(to right, var(--line) 1px, transparent 1px);
+  background-size: 1px 100%, 1px 100%, 1px 100%;
+  background-position: 25% 0, 50% 0, 75% 0;
+  background-repeat: no-repeat;
+}
+.loader.is-done { opacity: 0; visibility: hidden; }
+.loader__inner {
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+  font-weight: 500;
+  font-size: 50px;
+  letter-spacing: -1px;
+  line-height: 1;
+  color: var(--obsidian);
+}
+.loader__name { padding-right: var(--gutter); }
+.loader__roll {
+  display: block;
+  overflow: hidden;
+  height: 1em;
+  padding-left: var(--gutter);
+  border-left: 1px solid var(--line);
+}
+.loader__word { display: block; transition: transform .28s cubic-bezier(.4,0,.2,1), opacity .28s ease; }
+.loader__word.is-out { transform: translateY(-100%); opacity: 0; }
+.loader__word.is-in { transform: translateY(100%); opacity: 0; transition: none; }
+
+/* Toggle, two rules that cross when the sheet is open */
+.bar__toggle {
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  width: 34px;
+  height: 22px;
+  position: relative;
+  cursor: pointer;
+  color: inherit;
+}
+.bar__toggle span {
+  position: absolute;
+  left: 0;
+  width: 34px;
+  height: 1.5px;
+  background: currentColor;
+  transition: transform .3s ease, opacity .3s ease;
+}
+.bar__toggle span:first-child { top: 6px; }
+.bar__toggle span:last-child { top: 14px; }
+.bar__toggle[aria-expanded="true"] span:first-child { transform: translateY(4px) rotate(45deg); }
+.bar__toggle[aria-expanded="true"] span:last-child { transform: translateY(-4px) rotate(-45deg); }
+
+.menu {
+  position: fixed;
+  inset: var(--bar) 0 0 0;
+  z-index: 90;
+  background: var(--ash-bg);
+  color: var(--obsidian);
+  display: grid;
+  grid-template-columns: minmax(400px, 1.2fr) repeat(3, minmax(0, 1fr));
+  align-content: start;
+  padding-top: 45px;
+  overflow-y: auto;
+  visibility: hidden;
+  transform: translateY(-100%);
+  transition: transform .62s cubic-bezier(.65, 0, .35, 1), visibility 0s linear .62s;
+}
+.menu.is-open {
+  visibility: visible;
+  transform: translateY(0);
+  transition: transform .62s cubic-bezier(.65, 0, .35, 1), visibility 0s;
+}
+/* the rows arrive after the sheet lands, one behind the next */
+.menu__primary a,
+.menu__secondary a {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .42s ease, transform .42s cubic-bezier(.2, .7, .2, 1);
+}
+.menu.is-open .menu__primary a,
+.menu.is-open .menu__secondary a { opacity: 1; transform: none; }
+.menu.is-open .menu__primary a:nth-child(1) { transition-delay: .34s; }
+.menu.is-open .menu__primary a:nth-child(2) { transition-delay: .40s; }
+.menu.is-open .menu__primary a:nth-child(3) { transition-delay: .46s; }
+.menu.is-open .menu__primary a:nth-child(4) { transition-delay: .52s; }
+.menu.is-open .menu__secondary a:nth-child(1) { transition-delay: .46s; }
+.menu.is-open .menu__secondary a:nth-child(2) { transition-delay: .52s; }
+.menu.is-open .menu__secondary a:nth-child(3) { transition-delay: .58s; }
+@media (prefers-reduced-motion: reduce) {
+  .menu, .menu__primary a, .menu__secondary a { transition: none; }
+}
+.menu__primary {
+  grid-column: 3;
+  display: flex;
+  flex-direction: column;
+}
+.menu__primary a {
+  font-weight: 500;
+  font-size: 77px;
+  line-height: 1;
+  letter-spacing: -2.25px;
+  padding: 0 var(--gutter) 6px;
+}
+.menu__secondary {
+  grid-column: 4;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.menu__secondary a {
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.2;
+  letter-spacing: -1px;
+  padding: 0 var(--gutter);
+}
+.menu a:hover { color: var(--ghost); }
+
+@media (max-width: 900px) {
+  .loader__inner { font-size: 32px; }
+  .menu {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 40px 0;
+  }
+  .menu__primary, .menu__secondary { grid-column: 1; }
+  .menu__primary a { font-size: 44px; letter-spacing: -1px; }
+  .menu__secondary a { font-size: 20px; }
 }

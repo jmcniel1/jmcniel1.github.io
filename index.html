@@ -10,13 +10,32 @@
   <link rel="stylesheet" href="b.css" />
 </head>
 <body>
-  <header class="bar bar--top">
-    <a class="bar__name" href="#top"><span class="name">Jamie</span> <span class="name name--offset">McNiel</span></a>
-    <nav class="bar__nav" aria-label="Primary">
+  <div class="loader" id="loader">
+    <div class="loader__inner">
+      <span class="loader__name">Jamie McNiel</span>
+      <span class="loader__roll"><span class="loader__word" id="loader-word">brands</span></span>
+    </div>
+  </div>
+
+  <div class="menu" id="menu" hidden>
+    <nav class="menu__primary" aria-label="Sections">
       <a href="#work">Work</a>
       <a href="#about">About</a>
+      <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
     </nav>
+    <div class="menu__secondary">
+      <a href="mailto:jm@reductive.co">jm@reductive.co</a>
+      <a href="https://www.linkedin.com/in/mcnielj/">LinkedIn</a>
+      <a href="https://cargocollective.com/reductive">Reductive archive</a>
+    </div>
+  </div>
+
+  <header class="bar bar--top">
+    <a class="bar__name" href="#top"><span class="name">Jamie</span> <span class="name name--offset">McNiel</span></a>
+    <button class="bar__toggle" id="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
   </header>
 
   <main id="top">
@@ -158,7 +177,53 @@
       const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
       const narrow = () => window.innerWidth < 900;
       let ticking = false;
-      // The second featured card lags as the pair scrolls through, which is the
+      // Loader: the name holds while a word rolls beside it, then the sheet clears.
+    (function () {
+      const el = document.getElementById('loader');
+      const word = document.getElementById('loader-word');
+      if (!el || !word) return;
+      const words = ['brands', 'interfaces', 'systems', 'synths', 'ideas'];
+      const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const done = function () { el.classList.add('is-done'); setTimeout(function () { el.remove(); }, 600); };
+      if (reduce) { done(); return; }
+      let i = 0;
+      const step = function () {
+        i += 1;
+        if (i >= words.length) { done(); return; }
+        word.classList.add('is-out');
+        setTimeout(function () {
+          word.textContent = words[i];
+          word.classList.remove('is-out');
+          word.classList.add('is-in');
+          requestAnimationFrame(function () {
+            requestAnimationFrame(function () { word.classList.remove('is-in'); });
+          });
+          setTimeout(step, 130);
+        }, 170);
+      };
+      setTimeout(step, 260);
+      // never hold the page hostage if something stalls
+      setTimeout(done, 2600);
+    })();
+
+    // Overlay menu
+    (function () {
+      const btn = document.getElementById('menu-toggle');
+      const menu = document.getElementById('menu');
+      if (!btn || !menu) return;
+      menu.hidden = false;
+      const set = function (open) {
+        menu.classList.toggle('is-open', open);
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        document.documentElement.style.overflow = open ? 'hidden' : '';
+      };
+      btn.addEventListener('click', function () { set(!menu.classList.contains('is-open')); });
+      menu.addEventListener('click', function (e) { if (e.target.closest('a')) set(false); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
+    })();
+
+    // The second featured card lags as the pair scrolls through, which is the
     // offset the reference's editorial block reads with.
     (function () {
       const lag = document.querySelector('.cell--feature .feature + .feature');
@@ -187,7 +252,7 @@
       const v = document.querySelector('video.hero__mesh');
       if (!v) return;
       const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (reduce || window.innerWidth < 900) return;
+      if (reduce) return;
       const start = function () {
         v.src = v.dataset.src;
         v.load();
