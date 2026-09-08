@@ -470,7 +470,7 @@ img { display: block; }
   padding-left: calc(var(--gutter) / 2);
   border-left: 1px solid var(--line);
 }
-.loader__word { display: block; line-height: 1.25; transition: transform .56s cubic-bezier(.4,0,.2,1), opacity .56s ease; }
+.loader__word { display: block; width: 4.4em; line-height: 1.25; transition: transform .56s cubic-bezier(.4,0,.2,1), opacity .56s ease; }
 .loader__word.is-out { transform: translateY(-100%); opacity: 0; }
 .loader__word.is-in { transform: translateY(100%); opacity: 0; transition: none; }
 
