@@ -12,6 +12,10 @@
   --accent-deep: rgba(0, 0, 0, 0.66);
   --serif: "Satoshi", "Inter", ui-sans-serif, system-ui, sans-serif;
   --sans: "Satoshi", "Inter", ui-sans-serif, system-ui, sans-serif;
+  /* Two text sizes on a detail page: prose, and the small labels beside it.
+     Headings are the only thing allowed to sit outside them. */
+  --body: 20px;
+  --label: 18px;
 }
 body.is-dark { background: var(--bg); color: var(--ink); }
 
@@ -32,7 +36,7 @@ body.is-dark { background: var(--bg); color: var(--ink); }
   grid-column: 1;
   grid-row: 1;
   padding: 18px var(--gutter);
-  font-size: 16px;
+  font-size: var(--body);
   color: var(--ink);
   border-right: 1px solid var(--rule);
   align-self: stretch;
@@ -46,7 +50,7 @@ body.is-dark { background: var(--bg); color: var(--ink); }
   margin: 0;
 }
 .project__kicker {
-  font-size: 14px;
+  font-size: var(--label);
   color: var(--ink-soft);
   margin: 0 0 45px;
   text-transform: none;
@@ -60,7 +64,7 @@ body.is-dark { background: var(--bg); color: var(--ink); }
   margin: 0 0 32px -3px;
 }
 .project__lede {
-  font-size: clamp(23px, 2.2vw, 32px);
+  font-size: var(--body);
   line-height: 1.2;
   letter-spacing: -0.037em;
   color: var(--ink);
@@ -68,7 +72,7 @@ body.is-dark { background: var(--bg); color: var(--ink); }
   margin: 0;
 }
 
-.project__cta { display: inline-block; width: auto; margin-top: 32px; }
+.project__cta { display: inline-block; width: auto; margin-top: 32px; font-size: var(--body); line-height: 1.2; }
 
 .project__hero {
   grid-column: 1 / -1;
@@ -89,7 +93,7 @@ body.is-dark { background: var(--bg); color: var(--ink); }
   padding: 0;
   border-top: 1px solid var(--rule);
   border-bottom: 1px solid var(--rule);
-  font-size: 16px;
+  font-size: var(--body);
 }
 .project__meta dt,
 .project__meta dd {
@@ -99,14 +103,14 @@ body.is-dark { background: var(--bg); color: var(--ink); }
 }
 .project__meta dt {
   border-right: 1px solid var(--rule);
-  font-size: 14px;
+  font-size: var(--label);
   color: var(--ink-soft);
   text-transform: none;
   letter-spacing: 0;
   padding-top: 14px;
   padding-bottom: 0;
 }
-.project__meta dd { grid-row: 2; font-size: 23px; letter-spacing: -0.029em; line-height: 1.2; padding-top: 0; }
+.project__meta dd { grid-row: 2; font-size: var(--body); letter-spacing: -0.029em; line-height: 1.2; padding-top: 0; }
 .project__meta dt:nth-of-type(1), .project__meta dd:nth-of-type(1) { grid-column: 1; }
 .project__meta dt:nth-of-type(2), .project__meta dd:nth-of-type(2) { grid-column: 2; }
 .project__meta dt:nth-of-type(3), .project__meta dd:nth-of-type(3) { grid-column: 3; }
@@ -130,13 +134,13 @@ body.is-dark { background: var(--bg); color: var(--ink); }
   margin: 72px 0 18px;
 }
 .project__body h2:first-child { margin-top: 0; }
-.project__body p { font-size: 20px; line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 1.2em; }
+.project__body p { font-size: var(--body); line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 1.2em; }
 .project__body a { border-bottom: 1px solid var(--ink); }
 .project__body a:hover { color: var(--ash); border-color: var(--ash); }
 
 .project__figure { margin: 45px 0; }
 .project__figure img { width: 100%; height: auto; border-radius: 0; display: block; }
-.project__figure figcaption { margin-top: 9px; font-size: 14px; color: var(--ink-soft); font-style: normal; }
+.project__figure figcaption { margin-top: 9px; font-size: var(--label); color: var(--ink-soft); font-style: normal; }
 .project__figure--wide { margin-left: 0; margin-right: 0; width: 100%; max-width: none; }
 
 /* Device carousel placed directly in the grid ( six pages ): full width, centered device */
@@ -166,7 +170,7 @@ body.is-dark { background: var(--bg); color: var(--ink); }
 
 /* Shared device carousel and page mockups: caption and matte tweaks only */
 main.case-study .device-figure figcaption,
-main.case-study .video-figure figcaption { font-style: normal; text-align: left; font-size: 14px; color: var(--ink-soft); }
+main.case-study .video-figure figcaption { font-style: normal; text-align: left; font-size: var(--label); color: var(--ink-soft); }
 
 
 .project__pager {
@@ -187,7 +191,7 @@ main.case-study .video-figure figcaption { font-style: normal; text-align: left;
 }
 .project__pager__prev { border-right: 1px solid var(--rule); }
 .project__pager__next { justify-content: flex-end; text-align: right; }
-.project__pager__label { font-size: 14px; color: var(--ink-soft); text-transform: none; letter-spacing: 0; }
+.project__pager__label { font-size: var(--label); color: var(--ink-soft); text-transform: none; letter-spacing: 0; }
 .project__pager__name { font-size: 27px; line-height: 1; letter-spacing: -0.032em; color: var(--ink); }
 .project__pager a:hover .project__pager__name { color: var(--ash); }
 
@@ -195,7 +199,7 @@ main.case-study .video-figure figcaption { font-style: normal; text-align: left;
   display: flex;
   justify-content: space-between;
   padding: 18px var(--gutter) 24px;
-  font-size: 14px;
+  font-size: var(--label);
   color: var(--ash);
   border-top: 1px solid var(--rule);
 }
@@ -211,6 +215,8 @@ main.case-study .video-figure figcaption { font-style: normal; text-align: left;
   .project__meta dd:nth-of-type(2) { border-right: 0; }
   .project__pager { grid-template-columns: 1fr; }
   .project__pager__prev { border-right: 0; border-bottom: 1px solid var(--rule); }
+  /* With no Next link the rule below would land on the footer's top border. */
+  .project__pager__prev:last-child { border-bottom: 0; }
   .project__pager__next { justify-content: flex-start; text-align: left; }
 }
 
@@ -299,13 +305,13 @@ main.case-study .video-figure figcaption { font-style: normal; text-align: left;
 
 .project.case-study .slider__hint {
   margin-top: 12px;
-  font-size: 14px;
+  font-size: var(--label);
   letter-spacing: 0;
   text-transform: none;
   color: var(--ink-soft);
 }
 .project.case-study .slider__hint kbd {
-  font-size: 14px;
+  font-size: var(--label);
   border-radius: 0;
   border-color: var(--ink-soft);
   padding: 1px 6px;
@@ -332,7 +338,7 @@ main.case-study .video-figure figcaption { font-style: normal; text-align: left;
   padding: 0 var(--gutter);
   text-align: left;
   font-style: normal;
-  font-size: 14px;
+  font-size: var(--label);
   color: var(--ink-soft);
 }
 
@@ -343,6 +349,44 @@ main.case-study .video-figure figcaption { font-style: normal; text-align: left;
 @media (prefers-reduced-motion: reduce) { .bar__name .name { animation: none; } }
 
 /* Body copy: 8px larger on the phone, reference leading. */
+/* Both text tiers carry their own leading; nothing inherits the 1.43. */
+.project__back,
+.project__lede,
+.project__meta dd { line-height: 1.2; }
+
+/* The label tier tracks the body's leading rather than the inherited 1.43. */
+.project__kicker,
+.project__meta dt,
+.project__figure figcaption,
+.project__pager__label,
+.project.case-study .slider__hint,
+main.case-study figcaption,
+.project.case-study .step__n,
+.project.case-study .outcome-item__label { line-height: 1.25; }
+
 @media (max-width: 560px) {
-  .project__body p { font-size: 26px; line-height: 1.2; }
+  :root { --body: 26px; }
+  /* headings have to stay clear of a 26px body */
+  .project__body h2 { font-size: 38px; }
+  .project__pager__name { font-size: 34px; }
+}
+
+/* Collapse the seams where two bordered blocks meet: the lower one's top
+   border would otherwise land on the upper one's bottom border. */
+.project.case-study :is(.device-figure, .video-figure) + :is(.device-figure, .video-figure),
+:is(.project__hero, .device-figure, .video-figure) + .project__meta { border-top: 0; }
+
+/* The pager's last row and the footer's top edge meet on the same seam. */
+.project__pager + .footer { margin-top: -1px; }
+
+/* The carousel says what it is on its own: the caption goes everywhere, and on
+   a phone the dots and the keyboard hint go with it ( there is no keyboard ). */
+.project.case-study .device-figure figcaption,
+.project.case-study .video-figure figcaption,
+main.case-study .device-figure figcaption,
+main.case-study .video-figure figcaption { display: none; }
+
+@media (max-width: 560px) {
+  .project.case-study .slider__dots,
+  .project.case-study .slider__hint { display: none; }
 }

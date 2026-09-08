@@ -225,7 +225,6 @@ img { display: block; }
 /* Work rows: continuous horizontal rules */
 #work .cell { border-bottom: 1px solid var(--line); }
 #work .cell--feature { border-bottom: 1px solid var(--line); }
-#work + .sheet { border-top: 0; }
 
 /* Sheet: four columns, hairline seams, sections stacked */
 .sheet {
@@ -237,7 +236,7 @@ img { display: block; }
   display: grid;
   grid-template-columns: minmax(400px, 1.2fr) repeat(3, minmax(0, 1fr));
   border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  border-bottom: 0;
   position: relative;
   z-index: 5;
 }
@@ -330,6 +329,12 @@ img { display: block; }
 .foot a.caption:hover { color: var(--ghost); }
 .sheet a.textlink { color: var(--obsidian); }
 
+/* Work cells draw a bottom border on every row, including the last, which would
+   sit directly above the next sheet's top border. Pull the sheet up by that one
+   pixel so the two land on the same line instead of stacking into a 2px rule. */
+.sheet + .sheet,
+.foot { margin-top: -1px; }
+
 @media (max-width: 900px) {
   .sheet .cell--blank { display: none; }
   .hero { height: auto; }
@@ -380,7 +385,7 @@ img { display: block; }
   .cell--label { grid-column: span 2; border-right: 0; min-height: 0; }
   .cell--wide, .cell--span3, .cell--span2 { grid-column: span 2; border-right: 0; }
   .cell--feature { grid-column: span 2; grid-template-columns: 1fr; }
-  .feature { border-right: 0; border-bottom: 1px solid var(--line); }
+  .feature { border-right: 0; border-bottom: 0; }
   .feature + .feature { margin-top: 0; transform: none !important; }
   .feature__title { font-size: 32px; }
   .role { grid-template-columns: 1fr 1fr; gap: 6px 14px; }
@@ -412,16 +417,21 @@ img { display: block; }
   position: fixed;
   inset: 0;
   z-index: 100;
-  background: var(--ash-bg);
+  background: transparent;
   display: grid;
   place-items: center;
   transition: opacity .5s ease, visibility .5s ease;
 }
-.loader::before {
-  content: "";
+/* What the holes look onto. Black under the mesh, so the letters read even
+   before the video has a frame to give. */
+.loader__back { position: absolute; inset: 0; background: #000; overflow: hidden; }
+.loader__vid { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* The sheet is the page cover. The mask cuts the lockup out of it. */
+.loader__sheet {
   position: absolute;
   inset: 0;
-  pointer-events: none;
+  background-color: var(--ash-bg);
   background-image:
     linear-gradient(to right, var(--line) 1px, transparent 1px),
     linear-gradient(to right, var(--line) 1px, transparent 1px),
@@ -430,10 +440,20 @@ img { display: block; }
   background-position: 25% 0, 50% 0, 75% 0;
   background-repeat: no-repeat;
 }
+/* Pinned to the loader's top-left so its user units are viewport pixels. */
+.loader__cut { position: absolute; top: 0; left: 0; width: 0; height: 0; overflow: visible; pointer-events: none; }
+.loader .bl { display: inline-block; width: 0; height: 0; }
+/* Only once the mask is known to work does the lockup stop drawing as ink. */
+.loader.is-cut .loader__sheet {
+  -webkit-mask-image: url(#loader-cut);
+  mask-image: url(#loader-cut);
+}
+.loader.is-cut .loader__inner { visibility: hidden; }
 .loader.is-done { opacity: 0; visibility: hidden; }
 .loader__inner {
+  position: relative;
   display: flex;
-  align-items: baseline;
+  align-items: flex-start;
   gap: 0;
   font-weight: 500;
   font-size: 50px;
@@ -441,15 +461,16 @@ img { display: block; }
   line-height: 1;
   color: var(--obsidian);
 }
-.loader__name { padding-right: var(--gutter); }
+.loader__name { padding-right: calc(var(--gutter) / 2); line-height: 1.25; }
 .loader__roll {
   display: block;
   overflow: hidden;
-  height: 1em;
-  padding-left: var(--gutter);
+  /* Room for the descender on "synths": a 1em box clips it. */
+  height: 1.25em;
+  padding-left: calc(var(--gutter) / 2);
   border-left: 1px solid var(--line);
 }
-.loader__word { display: block; transition: transform .56s cubic-bezier(.4,0,.2,1), opacity .56s ease; }
+.loader__word { display: block; line-height: 1.25; transition: transform .56s cubic-bezier(.4,0,.2,1), opacity .56s ease; }
 .loader__word.is-out { transform: translateY(-100%); opacity: 0; }
 .loader__word.is-in { transform: translateY(100%); opacity: 0; transition: none; }
 

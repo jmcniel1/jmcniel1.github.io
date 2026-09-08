@@ -7,8 +7,8 @@
   <meta name="description" content="Creative direction across product, brand, and marketing for Nudge Security, a SaaS-security platform discovering shadow IT for modern security teams." />
   <link rel="preconnect" href="https://api.fontshare.com">
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../b.css?v=27f95fe1" />
-  <link rel="stylesheet" href="../project.css?v=06d6b188" />
+  <link rel="stylesheet" href="../b.css?v=568bbc5b" />
+  <link rel="stylesheet" href="../project.css?v=9188a54f" />
 
   <!-- Case-study scoped styles for in-device mockups.
        Scoped under .case-study so they don't bleed into the rest of the site. -->
@@ -30,7 +30,7 @@
     }
     .case-study .device-figure figcaption {
       margin-top: 16px;
-      font-size: 13px;
+      font-size: var(--label);
       color: var(--ink-soft);
       font-style: italic;
       text-align: center;
@@ -423,14 +423,14 @@
       text-align: center;
       margin-top: 14px;
       font-family: var(--sans);
-      font-size: 10px;
+      font-size: var(--label);
       letter-spacing: -0.02em;
       text-transform: lowercase;
       color: var(--ink-soft);
     }
     .case-study .slider__hint kbd {
       font-family: var(--sans);
-      font-size: 10px;
+      font-size: var(--label);
       padding: 1px 5px;
       border: 1px solid var(--rule);
       border-radius: 3px;
@@ -480,20 +480,20 @@
     }
     .case-study .step__n {
       font-family: var(--serif);
-      font-size: 13px;
+      font-size: var(--label);
       letter-spacing: 0.06em;
       color: var(--ink-soft);
     }
     .case-study .step h3 {
       font-family: var(--serif);
       font-weight: 500;
-      font-size: 19px;
+      font-size: 24px;
       letter-spacing: -0.005em;
       margin: 8px 0 10px;
     }
     .case-study .step p {
-      font-size: 15px;
-      line-height: 1.55;
+      font-size: var(--body);
+      line-height: 1.2;
       color: var(--ink-soft);
       margin: 0;
     }
@@ -524,8 +524,8 @@
     }
     .case-study .outcome-lead__sub {
       font-family: var(--serif);
-      font-size: clamp(18px, 2.1vw, 24px);
-      line-height: 1.25;
+      font-size: var(--body);
+      line-height: 1.2;
       max-width: 18ch;
       color: var(--ink);
       padding-bottom: 5px;
@@ -542,7 +542,7 @@
       padding-top: 18px;
     }
     .case-study .outcome-item__label {
-      font-size: 11px;
+      font-size: var(--label);
       letter-spacing: -0.02em;
       text-transform: lowercase;
       color: var(--ink-soft);
@@ -557,10 +557,10 @@
     }
     .case-study .outcome-item__value .accent { color: var(--ghost); }
     .case-study .outcome-item p {
-      font-size: 14px;
+      font-size: var(--body);
       margin: 10px 0 0;
       color: var(--ink-soft);
-      line-height: 1.5;
+      line-height: 1.2;
     }
 
     .case-study .placeholder-note {
@@ -568,7 +568,7 @@
       padding: 14px 18px;
       border: 1px dashed var(--rule);
       border-radius: 8px;
-      font-size: 13px;
+      font-size: var(--label);
       color: var(--ink-soft);
       font-style: italic;
     }
@@ -577,17 +577,35 @@
       .case-study .process-grid,
       .case-study .outcome-grid { grid-template-columns: 1fr; }
     }
+
+    /* Must sit last: the base .step h3 rule below would otherwise win at equal
+       specificity, and a 24px heading reads smaller than the 26px body. */
+    @media (max-width: 560px) {
+      .case-study .step h3 { font-size: 30px; }
+    }
   </style>
 </head>
 <body class="is-dark">
   <header class="bar bar--top">
     <a class="bar__name" href="../#top"><span class="name">Jamie</span> <span class="name name--offset">McNiel</span></a>
-    <nav class="bar__nav" aria-label="Primary">
+    <button class="bar__toggle" id="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <div class="menu" id="menu" hidden>
+    <nav class="menu__primary" aria-label="Sections">
       <a href="../#work">Work</a>
       <a href="../#about">About</a>
+      <a href="../#experience">Experience</a>
       <a href="../#contact">Contact</a>
     </nav>
-  </header>
+    <div class="menu__secondary">
+      <a href="mailto:jm@reductive.co">jm@reductive.co</a>
+      <a href="https://www.linkedin.com/in/mcnielj/">LinkedIn</a>
+      <a href="https://cargocollective.com/reductive">Reductive archive</a>
+    </div>
+  </div>
 
   <main class="project case-study">
     <a class="project__back" href="../#work">Back to work</a>
@@ -887,5 +905,6 @@
     });
   })();
   </script>
+  <script src="../menu.js?v=1e8b53f2"></script>
 </body>
 </html>

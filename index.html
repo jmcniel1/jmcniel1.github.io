@@ -7,13 +7,34 @@
   <meta name="description" content="Jamie McNiel. Creative Director at Rebellions. 24 years of brand, product and web design, from Long Beach, California." />
   <link rel="preconnect" href="https://api.fontshare.com">
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="b.css?v=27f95fe1" />
+  <link rel="stylesheet" href="b.css?v=568bbc5b" />
 </head>
 <body>
   <div class="loader" id="loader">
-    <div class="loader__inner">
-      <span class="loader__name">Jamie McNiel</span>
-      <span class="loader__roll"><span class="loader__word" id="loader-word">brands</span></span>
+    <!-- The ash sheet is what covers the page. The lockup below lays itself out
+         in HTML, and its rects are mirrored into the mask, so the words are a
+         hole through the sheet onto the hero video rather than ink on top. -->
+    <div class="loader__back">
+      <video class="loader__vid" src="assets/shader/mesh-bg.mp4?v=9cbe1570" poster="assets/shader/mesh-poster.jpg"
+             autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+    </div>
+    <div class="loader__sheet" id="loader-sheet"></div>
+    <svg class="loader__cut" id="loader-cut-svg" aria-hidden="true" focusable="false">
+      <defs>
+        <clipPath id="loader-roll-clip" clipPathUnits="userSpaceOnUse">
+          <rect id="cut-clip" x="0" y="0" width="0" height="0" />
+        </clipPath>
+        <mask id="loader-cut" maskUnits="userSpaceOnUse" x="0" y="0" width="0" height="0">
+          <rect id="cut-fill" x="0" y="0" width="100%" height="100%" fill="#fff" />
+          <text id="cut-name" fill="#000">Jamie McNiel</text>
+          <rect id="cut-rule" fill="#000" />
+          <g clip-path="url(#loader-roll-clip)"><text id="cut-word" fill="#000">brands</text></g>
+        </mask>
+      </defs>
+    </svg>
+    <div class="loader__inner" id="loader-inner">
+      <span class="loader__name" id="loader-name">Jamie McNiel<i class="bl"></i></span>
+      <span class="loader__roll" id="loader-rollbox"><span class="loader__word" id="loader-word">brands<i class="bl"></i></span></span>
     </div>
   </div>
 
@@ -196,26 +217,85 @@
       update();
     })();
 
-    // Loader: the name holds while a word rolls beside it, then the sheet clears.
+    // Loader. The lockup lays out in HTML; its rects are copied into an SVG
+    // mask each frame, so the ash sheet carries the words as holes and the hero
+    // video shows through them. Falls back to plain ink where masks are absent.
     (function () {
       const el = document.getElementById('loader');
       const word = document.getElementById('loader-word');
       if (!el || !word) return;
+      const inner = document.getElementById('loader-inner');
+      const nameEl = document.getElementById('loader-name');
+      const rollEl = document.getElementById('loader-rollbox');
+      const svg = document.getElementById('loader-cut-svg');
+      const mask = document.getElementById('loader-cut');
+      const fill = document.getElementById('cut-fill');
+      const cutName = document.getElementById('cut-name');
+      const cutRule = document.getElementById('cut-rule');
+      const cutWord = document.getElementById('cut-word');
+      const cutClip = document.getElementById('cut-clip');
+
+      const cuts = window.CSS && CSS.supports &&
+        (CSS.supports('mask-image', 'url(#a)') || CSS.supports('-webkit-mask-image', 'url(#a)'));
+      if (cuts) el.classList.add('is-cut');
+
+      // An empty zero-size inline-block sits on the text baseline, so its
+      // bottom edge is the baseline the SVG text needs.
+      const baseline = function (host) {
+        const p = host.querySelector('.bl');
+        return p ? p.getBoundingClientRect().bottom : host.getBoundingClientRect().bottom;
+      };
+      const set = function (n, a) { for (const k in a) n.setAttribute(k, a[k]); };
+
+      const sync = function () {
+        if (!cuts) return;
+        const vw = window.innerWidth, vh = window.innerHeight;
+        set(mask, { width: vw, height: vh });
+        set(fill, { width: vw, height: vh });
+        const cs = getComputedStyle(inner);
+        const face = {
+          'font-family': cs.fontFamily,
+          'font-size': cs.fontSize,
+          'font-weight': cs.fontWeight,
+          'letter-spacing': cs.letterSpacing === 'normal' ? '0' : cs.letterSpacing
+        };
+        set(cutName, face); set(cutWord, face);
+        const nr = nameEl.getBoundingClientRect();
+        set(cutName, { x: nr.left, y: baseline(nameEl) });
+        const rr = rollEl.getBoundingClientRect();
+        set(cutRule, { x: rr.left, y: rr.top, width: 1, height: rr.height });
+        set(cutClip, { x: rr.left, y: rr.top, width: rr.width + 8, height: rr.height });
+        set(cutWord, { x: word.getBoundingClientRect().left, y: baseline(word) });
+      };
+
+      // Follow the roll while it moves, then settle.
+      let until = 0;
+      const follow = function () {
+        sync();
+        if (performance.now() < until) requestAnimationFrame(follow);
+      };
+      const track = function (ms) { until = performance.now() + ms; requestAnimationFrame(follow); };
+
       const words = ['brands', 'interfaces', 'systems', 'synths', 'ideas'];
       const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
       const done = function () { el.classList.add('is-done'); setTimeout(function () { el.remove(); }, 600); };
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(sync);
+      window.addEventListener('resize', sync);
+      sync();
       if (reduce) { done(); return; }
       let i = 0;
       const step = function () {
         i += 1;
         if (i >= words.length) { done(); return; }
         word.classList.add('is-out');
+        track(620);
         setTimeout(function () {
-          word.textContent = words[i];
+          word.firstChild.nodeValue = words[i];
+          cutWord.textContent = words[i];
           word.classList.remove('is-out');
           word.classList.add('is-in');
           requestAnimationFrame(function () {
-            requestAnimationFrame(function () { word.classList.remove('is-in'); });
+            requestAnimationFrame(function () { word.classList.remove('is-in'); track(620); });
           });
           setTimeout(step, 640);
         }, 560);
@@ -225,22 +305,6 @@
       setTimeout(done, 8200);
     })();
 
-    // Overlay menu
-    (function () {
-      const btn = document.getElementById('menu-toggle');
-      const menu = document.getElementById('menu');
-      if (!btn || !menu) return;
-      menu.hidden = false;
-      const set = function (open) {
-        menu.classList.toggle('is-open', open);
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-        btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-        document.documentElement.style.overflow = open ? 'hidden' : '';
-      };
-      btn.addEventListener('click', function () { set(!menu.classList.contains('is-open')); });
-      menu.addEventListener('click', function (e) { if (e.target.closest('a')) set(false); });
-      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
-    })();
 
     // The second featured card lags as the pair scrolls through, which is the
     // offset the reference's editorial block reads with.
@@ -328,5 +392,6 @@
       update();
     })();
   </script>
+  <script src="menu.js?v=1e8b53f2"></script>
 </body>
 </html>

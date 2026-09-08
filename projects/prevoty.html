@@ -7,8 +7,8 @@
   <meta name="description" content="Prevoty, runtime application self-protection (RASP). Brand and product design, later acquired by Imperva." />
   <link rel="preconnect" href="https://api.fontshare.com">
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../b.css?v=27f95fe1" />
-  <link rel="stylesheet" href="../project.css?v=06d6b188" />
+  <link rel="stylesheet" href="../b.css?v=568bbc5b" />
+  <link rel="stylesheet" href="../project.css?v=9188a54f" />
   <link rel="stylesheet" href="carousel.css?v=293bbaeb" />
   <style>
     /* Prevoty accent — placeholder steel-teal; replace with brand color */
@@ -18,12 +18,24 @@
 <body class="is-dark">
   <header class="bar bar--top">
     <a class="bar__name" href="../#top"><span class="name">Jamie</span> <span class="name name--offset">McNiel</span></a>
-    <nav class="bar__nav" aria-label="Primary">
+    <button class="bar__toggle" id="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <div class="menu" id="menu" hidden>
+    <nav class="menu__primary" aria-label="Sections">
       <a href="../#work">Work</a>
       <a href="../#about">About</a>
+      <a href="../#experience">Experience</a>
       <a href="../#contact">Contact</a>
     </nav>
-  </header>
+    <div class="menu__secondary">
+      <a href="mailto:jm@reductive.co">jm@reductive.co</a>
+      <a href="https://www.linkedin.com/in/mcnielj/">LinkedIn</a>
+      <a href="https://cargocollective.com/reductive">Reductive archive</a>
+    </div>
+  </div>
 
   <main class="project case-study">
     <a class="project__back" href="../#work">Back to work</a>
@@ -110,5 +122,6 @@
     <span>© 2026 Jamie McNiel</span>
   </footer>
   <script src="carousel.js?v=708e4752"></script>
+  <script src="../menu.js?v=1e8b53f2"></script>
 </body>
 </html>
