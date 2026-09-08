@@ -227,6 +227,24 @@ img { display: block; }
 #work .cell--feature { border-bottom: 1px solid var(--line); }
 
 /* Sheet: four columns, hairline seams, sections stacked */
+/* The four column grid, held visible the whole way down. It sits above the
+   sheets and the menu so the rules read as one continuous system, and under
+   the loader, which cuts its own. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 95;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, var(--line) 1px, transparent 1px),
+    linear-gradient(to right, var(--line) 1px, transparent 1px),
+    linear-gradient(to right, var(--line) 1px, transparent 1px);
+  background-size: 1px 100%, 1px 100%, 1px 100%;
+  background-position: 25% 0, 50% 0, 75% 0;
+  background-repeat: no-repeat;
+}
+
 .sheet {
   overflow: hidden;
   background: var(--ash-bg);
@@ -234,7 +252,7 @@ img { display: block; }
   border-color: var(--line);
   scroll-margin-top: var(--bar);
   display: grid;
-  grid-template-columns: minmax(400px, 1.2fr) repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   border-top: 1px solid var(--line);
   border-bottom: 0;
   position: relative;
@@ -247,7 +265,8 @@ img { display: block; }
   padding: 0;
   min-height: 200px;
 }
-.sheet--full { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+/* Work sat on three columns; four puts its seams on the page grid. */
+.sheet--full { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .cell--head {
   grid-column: 1 / -1;
   border-right: 0;
@@ -256,7 +275,10 @@ img { display: block; }
 .cell--head .body { margin-top: 14px; max-width: 30em; color: var(--ink-soft); }
 .sheet::after { content: ""; position: absolute; top: 0; bottom: 0; right: 0; width: 1px; background: var(--ash-bg); }
 .cell--label { padding: 45px var(--gutter) 54px; }
-.cell--label .display-xl { margin-left: -2px; }
+.cell--label .display-xl {
+  margin-left: -2px;
+  font-size: clamp(38px, calc((25vw - 2 * var(--gutter)) / 4.8), 77px);
+}
 .cell--label .body { margin-top: 14px; max-width: 22em; font-size: 20px; color: var(--ink-soft); }
 .textlink { display: inline-block; margin-top: 28px; font-size: 20px; border-bottom: 1px solid var(--obsidian); padding-bottom: 2px; }
 .textlink:hover { color: var(--ghost); border-color: var(--ghost); }
@@ -419,7 +441,7 @@ img { display: block; }
   z-index: 100;
   background: transparent;
   display: grid;
-  place-items: center;
+  place-items: center start;
   transition: opacity .5s ease, visibility .5s ease;
 }
 /* What the holes look onto. Black under the mesh, so the letters read even
@@ -452,6 +474,8 @@ img { display: block; }
 .loader.is-done { opacity: 0; visibility: hidden; }
 .loader__inner {
   position: relative;
+  /* on the 25% rule, one gutter in, the way a cell's copy sits */
+  margin-left: calc(25vw + var(--gutter));
   display: flex;
   align-items: flex-start;
   gap: 0;
@@ -506,7 +530,7 @@ img { display: block; }
   background: var(--ash-bg);
   color: var(--obsidian);
   display: grid;
-  grid-template-columns: minmax(400px, 1.2fr) repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   align-content: start;
   padding-top: 45px;
   overflow-y: auto;
@@ -539,7 +563,7 @@ img { display: block; }
   .menu, .menu__primary a, .menu__secondary a { transition: none; }
 }
 .menu__primary {
-  grid-column: 3;
+  grid-column: 3 / -1;
   display: flex;
   flex-direction: column;
 }
@@ -551,7 +575,8 @@ img { display: block; }
   padding: 0 var(--gutter) 6px;
 }
 .menu__secondary {
-  grid-column: 4;
+  grid-column: 3 / -1;
+  margin-top: 45px;
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -566,7 +591,8 @@ img { display: block; }
 .menu a:hover { color: var(--ghost); }
 
 @media (max-width: 900px) {
-  .loader__inner { font-size: 32px; }
+  /* the lockup is wider than a phone: it starts at the gutter, not the rule */
+  .loader__inner { font-size: 32px; margin-left: var(--gutter); }
   .menu {
     grid-template-columns: 1fr;
     gap: 32px;
