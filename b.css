@@ -331,6 +331,9 @@ img { display: block; }
   .hero__hed { position: relative; top: auto; left: auto; transform: none; width: auto; margin: 56px var(--gutter) 32px; text-align: left; font-size: clamp(38px, 10vw, 56px); }
   .hero__caption { display: none; }
   .hero__mesh { display: none; }
+  /* No dark ground on phones, so the hero copy and the cards read as ink on ash */
+  .hero__hed { mix-blend-mode: normal; color: var(--obsidian); }
+  .card { background: transparent; color: var(--obsidian); }
   .train { position: relative; left: 0; width: auto; height: auto; display: flex; flex-direction: column; gap: 14px; padding: 0 var(--gutter) 80px; transform: none !important; }
   .card { position: relative; left: auto !important; top: auto !important; width: auto !important; height: auto !important; aspect-ratio: auto !important; display: flex; flex-direction: column; }
   .card img { aspect-ratio: auto; height: auto; order: 2; }
