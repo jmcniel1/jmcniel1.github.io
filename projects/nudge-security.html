@@ -46,7 +46,7 @@
       width: 440px;
       max-width: 88%;
       border: 8px solid var(--obsidian);
-      border-radius: 30px;
+      border-radius: 16.1% / 7.6%;
       overflow: hidden;
       background: var(--obsidian);
       line-height: 0;
@@ -501,19 +501,20 @@
     /* ───────── Outcome ───────── */
     .case-study .outcome-lead {
       display: flex;
-      align-items: flex-end;
-      gap: 24px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
       margin: 16px 0 8px;
       padding-bottom: 24px;
       border-bottom: 1px solid var(--rule);
     }
     .case-study .outcome-lead__num {
       font-family: var(--serif);
-      font-weight: 400;
-      font-size: clamp(72px, 10vw, 116px);
-      line-height: 0.9;
+      font-weight: 500;
+      font-size: clamp(216px, 30vw, 348px);
+      line-height: 0.85;
       letter-spacing: -0.04em;
-      color: var(--accent);
+      color: var(--ghost);
     }
     .case-study .outcome-lead__num .x {
       font-size: 0.5em;
@@ -548,12 +549,12 @@
     }
     .case-study .outcome-item__value {
       font-family: var(--serif);
-      font-weight: 400;
-      font-size: 38px;
+      font-weight: 500;
+      font-size: 114px;
       letter-spacing: -0.025em;
       line-height: 1;
     }
-    .case-study .outcome-item__value .accent { color: var(--accent); }
+    .case-study .outcome-item__value .accent { color: var(--ghost); }
     .case-study .outcome-item p {
       font-size: 14px;
       margin: 10px 0 0;
@@ -574,7 +575,6 @@
     @media (max-width: 640px) {
       .case-study .process-grid,
       .case-study .outcome-grid { grid-template-columns: 1fr; }
-      .case-study .outcome-lead { flex-direction: column; gap: 12px; }
     }
   </style>
 </head>
