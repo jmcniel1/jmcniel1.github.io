@@ -18,7 +18,7 @@ body.is-dark { background: var(--bg); color: var(--ink); }
 /* The bar is fixed and only turns solid behind the home page's loop. There is
    no loop here, so it is solid from the start and the page clears its height. */
 .bar--top { background: var(--ash-bg); border-bottom: 1px solid var(--line); }
-.project { padding-top: var(--bar); }
+.project { padding-top: var(--bar); overflow-x: clip; }
 
 /* Sheet layout: four columns, ash seams */
 .project {
@@ -255,11 +255,13 @@ main.case-study .video-figure figcaption { font-style: normal; text-align: left;
   top: calc(var(--screen-h) / 2);
   width: 44px; height: 44px;
   border-radius: 0;
-  background: var(--obsidian);
+  background: transparent;
   border: 0;
   color: var(--ghost);
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
+  /* no chip, so the stroke inverts against whatever plate is behind it */
+  mix-blend-mode: difference;
 }
 /* Drawn, not set. The font's arrow glyph sits above the optical center of its
    box; an SVG whose ink is symmetric in its viewBox centers exactly. */
@@ -275,9 +277,9 @@ main.case-study .video-figure figcaption { font-style: normal; text-align: left;
 .project.case-study .slider__btn--prev { left: var(--gutter); }
 .project.case-study .slider__btn--next { right: var(--gutter); }
 .project.case-study .slider__btn:hover {
-  background: var(--ghost);
-  color: var(--obsidian);
-  transform: translateY(-50%);
+  background: transparent;
+  color: var(--ghost);
+  transform: translateY(-50%) scale(1.12);
 }
 
 .project.case-study .slider__dots { gap: 6px; margin: 0; padding: 18px 0 0; }
