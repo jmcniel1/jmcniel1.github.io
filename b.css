@@ -33,8 +33,8 @@ p, h1, h2, ol, figure, blockquote { margin: 0; }
 ol { list-style: none; padding: 0; }
 img { display: block; }
 
-.caption { font-size: 14px; line-height: 1.43; letter-spacing: normal; }
-.body { font-size: 18px; line-height: 1.35; letter-spacing: normal; }
+.caption { font-size: 16px; line-height: 1.25; letter-spacing: normal; }
+.body { font-size: 20px; line-height: 1.2; letter-spacing: normal; }
 .heading-sm { font-weight: 500; font-size: 23px; line-height: 1.2; letter-spacing: -1px; }
 .heading { font-weight: 500; font-size: 27px; line-height: 1; letter-spacing: -1px; }
 .heading-lg { font-weight: 500; font-size: 32px; line-height: 1; letter-spacing: -1px; }
@@ -258,8 +258,8 @@ img { display: block; }
 .sheet::after { content: ""; position: absolute; top: 0; bottom: 0; right: 0; width: 1px; background: var(--ash-bg); }
 .cell--label { padding: 45px var(--gutter) 54px; }
 .cell--label .display-xl { margin-left: -2px; }
-.cell--label .body { margin-top: 14px; max-width: 22em; font-size: 18px; color: var(--ink-soft); }
-.textlink { display: inline-block; margin-top: 28px; font-size: 18px; border-bottom: 1px solid var(--obsidian); padding-bottom: 2px; }
+.cell--label .body { margin-top: 14px; max-width: 22em; font-size: 20px; color: var(--ink-soft); }
+.textlink { display: inline-block; margin-top: 28px; font-size: 20px; border-bottom: 1px solid var(--obsidian); padding-bottom: 2px; }
 .textlink:hover { color: var(--ghost); border-color: var(--ghost); }
 .textlink--foot { margin-top: 0; font-size: 15px; }
 .cell--links { display: flex; flex-direction: column; gap: 4px; padding: 22px var(--gutter) 45px; }
@@ -278,8 +278,8 @@ img { display: block; }
 .cell--card-wide img { aspect-ratio: 8 / 3; object-position: left center; }
 .cell--card:hover img { opacity: .82; }
 .cell--card .heading-lg { order: 1; }
-.cell--card .meta-line { order: 2; font-size: 16px; color: var(--ink-soft); letter-spacing: -0.01em; }
-.cell--card .body { order: 3; margin-top: 8px; color: var(--ink-soft); max-width: 30em; font-size: 17px; line-height: 1.35; }
+.cell--card .meta-line { order: 2; font-size: 17px; color: var(--ink-soft); letter-spacing: -0.01em; }
+.cell--card .body { order: 3; margin-top: 8px; color: var(--ink-soft); max-width: 30em; font-size: 19px; line-height: 1.2; }
 .cell--card .body { order: 3; }
 .cell--card img { order: 0; }
 
@@ -298,7 +298,7 @@ img { display: block; }
 .cell--stack { flex-direction: column; gap: 9px; }
 .cell--wide { grid-column: span 2; padding: 45px var(--gutter) 72px; }
 .cell--wide .display { max-width: 20em; margin-top: -0.06em; }
-.cell--wide .body { margin-top: 28px; max-width: 40em; font-size: 17px; }
+.cell--wide .body { margin-top: 28px; max-width: 40em; font-size: 19px; }
 .cell--span2 { grid-column: span 2; }
 .cell--span3 { grid-column: span 3; }
 .cell--blank { min-height: 0; }
@@ -313,7 +313,7 @@ img { display: block; }
   border-bottom: 1px solid var(--line);
 }
 .role > span { padding: 0 var(--gutter); }
-.role__title, .role__date { font-size: 16px; color: var(--ink-soft); }
+.role__title, .role__date { font-size: 17px; color: var(--ink-soft); }
 .role__date { text-align: right; font-feature-settings: "tnum"; font-variant-numeric: tabular-nums; }
 .role:last-child { border-bottom: 0; }
 
@@ -322,7 +322,7 @@ img { display: block; }
 .quote { padding: 36px var(--gutter) 54px; border-bottom: 1px solid var(--line); margin: 0; }
 .quote:last-child { border-bottom: 0; }
 .quote__text { font-size: 31.5px; line-height: 1.1; letter-spacing: -1px; max-width: 22em; text-indent: -0.38em; }
-.quote__by { margin-top: 18px; font-size: 16px; color: var(--ink-soft); }
+.quote__by { margin-top: 18px; font-size: 17px; color: var(--ink-soft); }
 
 /* Footer: one ruled row */
 .foot .cell { min-height: 0; padding: 18px var(--gutter) 22px; display: flex; align-items: baseline; }
@@ -393,6 +393,13 @@ img { display: block; }
   .cell, .cell:nth-child(4n) { border-right: 0; border-bottom: 1px solid var(--line); }
   .cell--label, .cell--wide, .cell--span3, .cell--span2, .cell--card-wide, .cell--card-full, .cell--feature { grid-column: span 1; }
   .bar__nav { gap: 16px; font-size: 16px; }
+  /* body copy runs 8px larger on the phone, at the reference's 1.2 leading */
+  .body,
+  .cell--label .body { font-size: 26px; line-height: 1.2; }
+  .cell--card .body,
+  .cell--wide .body { font-size: 25px; line-height: 1.2; }
+  .textlink { font-size: 22px; }
+  .caption { font-size: 18px; line-height: 1.25; }
 }
 
 /* ─────────────────────────────────────────────────────────

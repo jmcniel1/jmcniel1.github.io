@@ -130,7 +130,7 @@ body.is-dark { background: var(--bg); color: var(--ink); }
   margin: 72px 0 18px;
 }
 .project__body h2:first-child { margin-top: 0; }
-.project__body p { font-size: 18px; line-height: 1.43; letter-spacing: -0.02em; margin: 0 0 1.2em; }
+.project__body p { font-size: 20px; line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 1.2em; }
 .project__body a { border-bottom: 1px solid var(--ink); }
 .project__body a:hover { color: var(--ash); border-color: var(--ash); }
 
@@ -341,3 +341,8 @@ main.case-study .video-figure figcaption { font-style: normal; text-align: left;
 .bar__name .name { animation: name-cycle 32s linear infinite; will-change: color; }
 .bar__name .name--offset { animation-delay: -16s; }
 @media (prefers-reduced-motion: reduce) { .bar__name .name { animation: none; } }
+
+/* Body copy: 8px larger on the phone, reference leading. */
+@media (max-width: 560px) {
+  .project__body p { font-size: 26px; line-height: 1.2; }
+}
