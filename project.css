@@ -3,17 +3,22 @@
    so they are aliased onto the Obsidian, Ash, Ghost White tokens. */
 
 :root {
-  --bg: #000000;
-  --bg-elev: #0a0a0a;
-  --ink: #ffffff;
-  --ink-soft: #9a9a9a;
-  --rule: #5a5a5a;
-  --accent: #ffffff;
-  --accent-deep: #5a5a5a;
+  --bg: #5a5a5a;
+  --bg-elev: #4f4f4f;
+  --ink: #000000;
+  --ink-soft: rgba(0, 0, 0, 0.66);
+  --rule: #000000;
+  --accent: #000000;
+  --accent-deep: rgba(0, 0, 0, 0.66);
   --serif: "Satoshi", "Inter", ui-sans-serif, system-ui, sans-serif;
   --sans: "Satoshi", "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 body.is-dark { background: var(--bg); color: var(--ink); }
+
+/* The bar is fixed and only turns solid behind the home page's loop. There is
+   no loop here, so it is solid from the start and the page clears its height. */
+.bar--top { background: var(--ash-bg); border-bottom: 1px solid var(--line); }
+.project { padding-top: var(--bar); }
 
 /* Sheet layout: four columns, ash seams */
 .project {
@@ -48,7 +53,7 @@ body.is-dark { background: var(--bg); color: var(--ink); }
   letter-spacing: 0;
 }
 .project__title {
-  font-weight: 400;
+  font-weight: 500;
   font-size: clamp(56px, 8vw, 128px);
   line-height: 0.9;
   letter-spacing: -0.056em;
@@ -93,12 +98,12 @@ body.is-dark { background: var(--bg); color: var(--ink); }
   border-right: 1px solid var(--rule);
 }
 .project__meta dt {
+  border-right: 1px solid var(--rule);
   font-size: 14px;
   color: var(--ink-soft);
   text-transform: none;
   letter-spacing: 0;
   padding-top: 14px;
-  border-right: 0;
   padding-bottom: 0;
 }
 .project__meta dd { grid-row: 2; font-size: 23px; letter-spacing: -0.029em; line-height: 1.2; padding-top: 0; }
@@ -118,7 +123,7 @@ body.is-dark { background: var(--bg); color: var(--ink); }
   border-right: 1px solid var(--rule);
 }
 .project__body h2 {
-  font-weight: 400;
+  font-weight: 500;
   font-size: 32px;
   line-height: 1;
   letter-spacing: -0.037em;
@@ -285,8 +290,8 @@ main.case-study .video-figure figcaption { font-style: normal; text-align: left;
 }
 .project.case-study .slider__dot.is-active,
 .project.case-study .slider__dot:hover {
-  background: var(--ghost);
-  border-color: var(--ghost);
+  background: var(--obsidian);
+  border-color: var(--obsidian);
   transform: none;
 }
 
