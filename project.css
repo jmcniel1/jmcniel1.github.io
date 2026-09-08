@@ -7,7 +7,7 @@
   --bg-elev: #4f4f4f;
   --ink: #000000;
   --ink-soft: rgba(0, 0, 0, 0.66);
-  --rule: #000000;
+  --rule: rgba(0, 0, 0, .5);
   --accent: #000000;
   --accent-deep: rgba(0, 0, 0, 0.66);
   --serif: "Satoshi", "Inter", ui-sans-serif, system-ui, sans-serif;
@@ -47,7 +47,6 @@ body.is-dark { background: var(--bg); color: var(--ink); }
   padding: 18px var(--gutter);
   font-size: var(--body);
   color: var(--ink);
-  border-right: 1px solid var(--rule);
   align-self: stretch;
 }
 .project__back:hover { color: var(--ash); }
@@ -108,10 +107,8 @@ body.is-dark { background: var(--bg); color: var(--ink); }
 .project__meta dd {
   padding: 14px var(--gutter) 18px;
   margin: 0;
-  border-right: 1px solid var(--rule);
 }
 .project__meta dt {
-  border-right: 1px solid var(--rule);
   font-size: var(--label);
   color: var(--ink-soft);
   text-transform: none;
@@ -125,7 +122,6 @@ body.is-dark { background: var(--bg); color: var(--ink); }
 .project__meta dt:nth-of-type(3), .project__meta dd:nth-of-type(3) { grid-column: 3; }
 .project__meta dt:nth-of-type(4), .project__meta dd:nth-of-type(4) { grid-column: 4; }
 .project__meta dt:nth-of-type(n+5), .project__meta dd:nth-of-type(n+5) { display: none; }
-.project__meta dd:nth-of-type(4) { border-right: 0; }
 .project__meta dd a { border-bottom: 1px solid var(--ink); }
 .project__meta dd a:hover { color: var(--ash); border-color: var(--ash); }
 
@@ -196,7 +192,6 @@ main.case-study .video-figure figcaption { font-style: normal; text-align: left;
   gap: 14px;
   padding: 18px var(--gutter);
 }
-.project__pager__prev { border-right: 1px solid var(--rule); }
 .project__pager__next { justify-content: flex-end; text-align: right; }
 .project__pager__label { font-size: var(--label); color: var(--ink-soft); text-transform: none; letter-spacing: 0; }
 .project__pager__name { font-size: 27px; line-height: 1; letter-spacing: -0.032em; color: var(--ink); }
@@ -213,15 +208,14 @@ main.case-study .video-figure figcaption { font-style: normal; text-align: left;
 
 @media (max-width: 900px) {
   .project { grid-template-columns: 1fr; }
-  .project__back, .project__head, .project__body { grid-column: 1; border-left: 0; border-right: 0; }
+  .project__back, .project__head, .project__body { grid-column: 1; }
   .project__back { grid-row: 1; border-bottom: 1px solid var(--rule); }
   .project__head { grid-row: 2; }
   .project__meta { grid-template-columns: 1fr 1fr; }
   .project__meta dt:nth-of-type(3), .project__meta dd:nth-of-type(3),
   .project__meta dt:nth-of-type(4), .project__meta dd:nth-of-type(4) { display: none; }
-  .project__meta dd:nth-of-type(2) { border-right: 0; }
   .project__pager { grid-template-columns: 1fr; }
-  .project__pager__prev { border-right: 0; border-bottom: 1px solid var(--rule); }
+  .project__pager__prev { border-bottom: 1px solid var(--rule); }
   /* With no Next link the rule below would land on the footer's top border. */
   .project__pager__prev:last-child { border-bottom: 0; }
   .project__pager__next { justify-content: flex-start; text-align: left; }
