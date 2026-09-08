@@ -413,6 +413,7 @@ img { display: block; }
   .cell, .cell:nth-child(4n) { border-right: 0; border-bottom: 1px solid var(--line); }
   .cell--label, .cell--wide, .cell--span3, .cell--span2, .cell--card-wide, .cell--card-full, .cell--feature { grid-column: span 1; }
   .bar__nav { gap: 16px; font-size: 16px; }
+  .bar__name { font-size: 24px; }
   /* body copy runs 8px larger on the phone, at the reference's 1.2 leading */
   .body,
   .cell--label .body { font-size: 26px; line-height: 1.2; }
