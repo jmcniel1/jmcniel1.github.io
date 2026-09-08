@@ -177,7 +177,26 @@
       const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
       const narrow = () => window.innerWidth < 900;
       let ticking = false;
-      // Loader: the name holds while a word rolls beside it, then the sheet clears.
+      // The bar is clear over the hero loop and solid once content is under it.
+    (function () {
+      const bar = document.querySelector('.bar--top');
+      // the loop itself, not the hero: on phones the hero also holds the stacked cards
+      const art = document.querySelector('.hero__mesh') || document.querySelector('.hero');
+      if (!bar || !art) return;
+      let ticking = false;
+      function update() {
+        ticking = false;
+        const past = art.getBoundingClientRect().bottom <= bar.offsetHeight + 1;
+        bar.classList.toggle('is-solid', past);
+      }
+      window.addEventListener('scroll', function () {
+        if (!ticking) { requestAnimationFrame(update); ticking = true; }
+      }, { passive: true });
+      window.addEventListener('resize', update, { passive: true });
+      update();
+    })();
+
+    // Loader: the name holds while a word rolls beside it, then the sheet clears.
     (function () {
       const el = document.getElementById('loader');
       const word = document.getElementById('loader-word');
